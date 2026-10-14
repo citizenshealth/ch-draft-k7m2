@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Obstetricia y Maternity Suites · Citizens Health</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="site.css">
+<style>
+:root{color-scheme:light}
+html,body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+
+.ob-hero{position:relative;background:var(--hero);color:var(--hero-ink);overflow:hidden}
+.ob-hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,5vw,64px);align-items:center;padding-block:clamp(32px,5vw,64px)}
+.crumbs{font-size:14px;color:var(--hero-muted);display:flex;gap:8px}
+.crumbs a{text-decoration:none;font-weight:600}
+.crumbs a:hover{color:#ffffff}
+.ob-hero .eyebrow{color:var(--fchc-ink);margin-top:20px}
+.ob-hero h1{font-size:clamp(38px,5vw,62px);font-weight:800;letter-spacing:-.025em;margin-top:10px}
+.ob-hero p.lede{margin-top:18px;font-size:clamp(18px,1.6vw,20px);color:var(--hero-muted);max-width:32em}
+.ob-hero .ctas{margin-top:28px}
+.ob-hero img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px}
+.callline{margin-top:20px;font-size:15px;color:var(--hero-muted)}
+.callline b{color:#ffffff;font-variant-numeric:tabular-nums}
+@media (max-width:860px){.ob-hero .wrap{grid-template-columns:1fr}.ob-hero img{aspect-ratio:16/10}}
+
+/* journey */
+.journey{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;counter-reset:step;border-top:2px solid var(--ink)}
+.step{padding:22px 22px 0 0;display:flex;flex-direction:column;gap:10px}
+.step .when{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fchc-ink)}
+.step h3{font-size:22px;font-weight:800}
+.step p{color:var(--muted);font-size:16px}
+.step ul{margin:0;padding-left:18px;color:var(--muted);font-size:15px;display:grid;gap:4px}
+.step .where{font-size:14px;font-weight:700;margin-top:auto;padding-top:8px}
+@media (max-width:900px){.journey{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}}
+@media (max-width:540px){.journey{grid-template-columns:1fr}}
+
+/* suites */
+.suites{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.suites-photos{display:grid;grid-template-columns:1fr;gap:12px}
+.suites-photos img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:12px}
+.suites-copy{display:grid;gap:22px}
+.suites-copy h2{font-size:clamp(30px,3.4vw,42px);font-weight:800}
+.suites-copy p{color:var(--muted)}
+.team{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.team li{background:var(--raised);padding:14px 16px;font-weight:600;font-size:15px}
+.suites-copy h3{font-size:17px;font-weight:800;margin-bottom:6px}
+.arrive{background:var(--hero);color:var(--hero-ink);border-radius:var(--r);padding:20px 22px;display:grid;gap:8px}
+.arrive h3{color:#ffffff}
+.suites-copy .arrive p{color:var(--hero-muted)}
+.arrive b{color:#ffffff;font-variant-numeric:tabular-nums;white-space:nowrap}
+.chips2{display:flex;flex-wrap:wrap;gap:8px}
+.chips2 span{font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+@media (max-width:860px){.suites{grid-template-columns:1fr}}
+
+/* providers strip */
+.obprovs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.obprov{display:flex;flex-direction:column;gap:6px;text-decoration:none}
+.obprov img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r);border:1px solid var(--line)}
+.obprov:hover img{border-color:var(--ink)}
+.obprov:hover h3{color:var(--action)}
+.obprov h3{font-size:17px;font-weight:800;margin-top:4px}
+.obprov .role{font-size:14px;color:var(--muted)}
+@media (max-width:900px){.obprovs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:540px){.obprovs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* prepare */
+.prep{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.prep > div{background:var(--raised);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.prep h3{font-size:19px;font-weight:800;margin-bottom:10px}
+.prep ul{margin:0;padding-left:18px;display:grid;gap:6px;color:var(--muted);font-size:15px}
+.prep .leave{border-style:dashed}
+@media (max-width:860px){.prep{grid-template-columns:1fr}}
+
+/* warning signs */
+.signs{background:var(--urgent-soft);border-radius:14px;padding:clamp(22px,3vw,36px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(20px,4vw,48px)}
+.signs h2{font-size:clamp(26px,2.8vw,34px);font-weight:800}
+.signs p{margin-top:10px;color:var(--ink)}
+.signs .phone2{margin-top:14px;font-size:15px}
+.signs .phone2 b{display:block;font-size:26px;color:var(--urgent);font-variant-numeric:tabular-nums}
+.signs ul{margin:0;padding-left:20px;display:grid;gap:8px;columns:2;column-gap:32px;display:block}
+.signs li{margin-bottom:8px;break-inside:avoid}
+@media (max-width:760px){.signs{grid-template-columns:1fr}.signs ul{columns:1}}
+
+.ob-cta{background:var(--raised);border:1px solid var(--line);border-radius:14px;padding:clamp(28px,4vw,48px);display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.ob-cta h2{font-size:clamp(26px,2.8vw,34px);font-weight:800}
+.ob-cta p{color:var(--muted);margin-top:8px;max-width:36em}
+.ob-cta .num{font-size:30px;font-weight:800;font-variant-numeric:tabular-nums}
+
+/* subnav */
+.subnav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 73px);z-index:15;background:var(--bg);border-bottom:1px solid var(--line)}
+.subnav .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:none}
+.subnav a{flex:none;text-decoration:none;font-weight:700;font-size:15px;padding:8px 12px;border-radius:999px;color:var(--muted)}
+.subnav a:hover{background:var(--surface);color:var(--ink)}
+section[id]{scroll-margin-top:140px}
+/* two-col text block */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(24px,5vw,64px);align-items:start}
+.split h2{font-size:clamp(28px,3vw,38px);font-weight:800;margin-top:8px}
+.split .intro{color:var(--muted);margin-top:12px}
+.ticks{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}
+.ticks li{padding:12px 0 12px 28px;border-bottom:1px solid var(--line);position:relative;font-size:16px}
+.ticks li::before{content:"";position:absolute;left:4px;top:19px;width:10px;height:6px;border-left:2px solid var(--good);border-bottom:2px solid var(--good);transform:rotate(-45deg)}
+@media (max-width:860px){.split{grid-template-columns:1fr}}
+@media (max-width:560px){.ticks{grid-template-columns:1fr}}
+/* classes */
+.topics{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;counter-reset:wk}
+.topics li{counter-increment:wk;background:var(--raised);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;font-weight:700}
+.topics li::before{content:"Week " counter(wk);display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--fchc-ink);margin-bottom:4px}
+@media (max-width:640px){.topics{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* medications */
+.meds{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:16px;align-items:start}
+.medtable{width:100%;border-collapse:collapse;background:var(--raised);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;font-size:16px}
+.medtable th,.medtable td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+.medtable th{width:34%;font-weight:700}
+.medtable tr:last-child th,.medtable tr:last-child td{border-bottom:0}
+.medtable caption{caption-side:top;text-align:left;font-weight:800;font-size:19px;padding-bottom:10px;color:var(--ink)}
+.notok{background:var(--urgent-soft);border-radius:var(--r);padding:20px 22px}
+.notok h3{font-size:19px;font-weight:800;color:var(--urgent)}
+.notok p{margin-top:8px}
+.medsnote{margin-top:14px;font-size:15px;color:var(--muted)}
+@media (max-width:860px){.meds{grid-template-columns:1fr}}
+@media (max-width:520px){.medtable th,.medtable td{display:block;width:auto;border-bottom:0;padding:8px 16px}.medtable tr{display:block;border-bottom:1px solid var(--line);padding-block:6px}}
+/* after baby */
+.after{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.after > div{background:var(--raised);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:10px}
+.after h3{font-size:20px;font-weight:800}
+.after p{color:var(--muted);font-size:16px}
+.after a{color:var(--action);font-weight:700}
+.badges{display:flex;gap:8px;flex-wrap:wrap}
+.badges span{font-size:13px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--good-soft);color:var(--good)}
+.badges span.pend{background:var(--surface);color:var(--muted)}
+.clc{margin-top:28px}
+.clc h3{font-size:22px;font-weight:800}
+.clc p{color:var(--muted);margin-top:6px}
+.clclist{list-style:none;margin:16px 0 0;padding:1px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--raised);border-radius:var(--r);overflow:hidden}
+.clclist li{background:var(--raised);padding:14px 16px;display:grid;gap:2px;box-shadow:0 0 0 1px var(--line)}
+.clclist b{font-weight:700}
+.clclist span{color:var(--muted);font-size:15px;font-variant-numeric:tabular-nums}
+@media (max-width:900px){.after{grid-template-columns:1fr}.clclist{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.clclist{grid-template-columns:1fr}}
+/* visiting */
+.visit{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.visit li{border-top:2px solid var(--ink);padding-top:14px}
+.visit b{display:block;font-size:18px;font-weight:800;margin-bottom:6px}
+.visit span{color:var(--muted);font-size:16px}
+@media (max-width:860px){.visit{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.visit{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Ir al contenido principal</a>
+<div class="proto-bar"><div class="wrap"><span class="proto">Prototipo, no es público</span><span class="phone"><a class="pro-link lang-sw" href="obstetrics.html" lang="en">English</a><span class="sep" aria-hidden="true">·</span>Teléfono principal <b>(785) 462-7511</b></span></div></div>
+
+<header class="site" id="siteHeader">
+  <div class="wrap hdr">
+    <a class="brand" href="index.html" aria-label="Inicio de Citizens Health">
+      <img class="on-light" src="img/logo.png" alt="Citizens Health" width="165" height="44">
+      <img class="on-dark" src="img/logo-white.png" alt="Citizens Health" width="165" height="44">
+    </a>
+    <nav class="mainnav" id="mainnav" aria-label="Principal">
+      <a class="top-link" href="providers.html">Proveedores</a>
+      <a class="top-link" href="espanol.html#ubicaciones">Nuestro campus</a>
+      <div class="mm">
+        <button class="top-link mm-btn" type="button" aria-expanded="false">Servicios</button>
+        <div class="mm-panel">
+          <div class="wrap mm-grid">
+            <div class="mm-intro"><h3>Servicios</h3><p>Atención para cada etapa de la vida, cerca de casa en Colby.</p><a class="more" href="services.html">Todos los servicios (en inglés) →</a></div>
+            <div><h4>Atención destacada</h4><ul>
+              <li><a href="es-obstetricia.html">Obstetricia y Maternity Suites</a></li>
+              <li><a href="espanol.html#ahora">Emergencias</a></li>
+              <li><a href="surgery.html">Cirugía general</a></li>
+              <li><a href="specialty-clinic.html">Clínica de especialidades</a></li>
+              <li><a href="es-family-center.html">Medicina familiar</a></li>
+              <li><a href="orthopedics.html">Ortopedia</a></li>
+            </ul></div>
+            <div><h4>Exámenes y terapias</h4><ul>
+              <li><a href="imaging.html">Radiología e imágenes</a></li>
+              <li><a href="laboratory.html">Laboratorio</a></li>
+              <li><a href="rehabilitation.html">Rehabilitación</a></li>
+              <li><a href="respiratory-therapy.html">Terapia respiratoria</a></li>
+              <li><a href="medical-equipment.html">Equipo médico para el hogar</a></li>
+              <li><a href="providers.html#larson">Audiología</a></li>
+            </ul></div>
+            <div><h4>Atención ahora</h4><ul>
+              <li><a href="espanol.html#ahora">Sala de Emergencias, abierta 24/7</a></li>
+              <li><a href="es-family-center.html#hours">Atención urgente y sin cita</a></li>
+              <li><a href="providers.html#accepting">Proveedores que aceptan pacientes nuevos</a></li>
+              <li><a href="providers.html#visiting">Especialistas visitantes</a></li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="mm">
+        <button class="top-link mm-btn" type="button" aria-expanded="false">Pacientes</button>
+        <div class="mm-panel">
+          <div class="wrap mm-grid">
+            <div class="mm-intro"><h3>Pacientes y visitantes</h3><p>Todo lo que necesita antes, durante y después de su visita.</p><a class="more" href="es-patient-resources.html">Facturación y recursos →</a></div>
+            <div><h4>Recursos para pacientes</h4><ul>
+              <li><a href="https://www.cmciks.com/patients-visitors/patient-portal/">MyChart</a></li>
+              <li><a href="https://mychart.ochin.org/cmciks/billing/guestpay">Pagar una factura</a></li>
+              <li><a href="es-patient-resources.html#plans">Planes de pago</a></li>
+              <li><a href="es-patient-resources.html#assistance">Ayuda financiera</a></li>
+              <li><a href="es-patient-resources.html#prices">Precios</a></li>
+              <li><a href="es-patient-resources.html#records">Expedientes médicos</a></li>
+              <li><a href="es-patient-resources.html#forms">Formularios</a></li>
+            </ul></div>
+            <div><h4>Información para visitantes</h4><ul>
+              <li><a href="espanol.html#visitas">Horario de visitas</a></li>
+              <li><a href="hospital-stay.html">Su estadía en el hospital</a></li>
+              <li><a href="es-obstetricia.html#visiting">Visitas a las Maternity Suites</a></li>
+              <li><a href="espanol.html#ubicaciones">Ubicaciones</a></li>
+              <li><a href="about.html#events">Clases y eventos</a></li>
+            </ul></div>
+            <div><h4>Acerca de nosotros</h4><ul>
+              <li><a href="about.html">Acerca de nosotros</a></li>
+              <li><a href="https://www.cmciks.com/patients-visitors/community-health-assessment/">Evaluación de necesidades de salud</a></li>
+              <li><a href="contact.html">Contáctenos</a></li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+      <a class="top-link" href="careers.html">Empleos</a>
+      <a class="top-link give" href="foundation.html">Donar</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="icon-btn" id="searchBtn" type="button" aria-label="Buscar" aria-expanded="false" aria-controls="hsearch"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+      <a class="mychart" href="https://www.cmciks.com/patients-visitors/patient-portal/">MyChart</a>
+      <a class="btn btn-sched" href="espanol.html#citas">Hacer una cita</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainnav">Menú</button>
+    </div>
+  </div>
+  <div class="hsearch" id="hsearch" hidden>
+    <div class="wrap">
+      <label for="hq">Estoy buscando...</label>
+      <input id="hq" class="js-search" data-results="hresults" type="search" placeholder="Un proveedor, un servicio o una página" autocomplete="off">
+      <ul class="results" id="hresults" hidden></ul>
+    </div>
+  </div>
+</header>
+
+
+<main id="main">
+<p class="protonote bar" lang="en">Draft translation. A native Spanish speaker on staff will review this page before launch.</p>
+  <section class="phero">
+    <img class="hero-bg" src="img/photos/maternity-room.jpg" alt="">
+    <div class="wrap"><div class="in">
+      <nav class="crumbs" aria-label="Ruta de navegación"><a href="espanol.html">Español</a><span aria-hidden="true">/</span><span>Obstetricia</span></nav>
+      <p class="eyebrow">Obstetricia y Maternity Suites</p>
+      <h1>Tenga a su bebé cerca de casa.</h1>
+      <p class="lede">Desde su primera visita prenatal hasta el día que se lleva a su bebé a casa, su atención se queda en Colby, con proveedores y enfermeras que la conocen.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="#providers">Elija un proveedor</a>
+        <a class="btn btn-ghost" href="#suites">Conozca las Maternity Suites</a>
+      </div>
+      <p class="callline">Para empezar su atención prenatal, llame a Family Center al <b>(785) 462-6184</b></p>
+    </div></div>
+  </section>
+
+  <nav class="subnav" aria-label="En esta página"><div class="wrap">
+    <a href="#before">Antes del embarazo</a><a href="#expect">Atención prenatal</a><a href="#medications">Medicamentos</a><a href="#suites">Maternity Suites</a><a href="#providers">Proveedores</a><a href="#bring">Qué traer</a><a href="#after">Después del parto</a><a href="#visiting">Visitas</a>
+  </div></nav>
+
+  <section class="block" id="before">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">Si planea un embarazo</p>
+        <h2>Prepare su cuerpo</h2>
+        <p class="intro">La atención antes y durante el embarazo ayuda a prevenir complicaciones y a detectarlas a tiempo. Empiece estos pasos al menos tres meses antes de buscar el embarazo.</p>
+      </div>
+      <ul class="ticks">
+        <li>Haga una cita para un examen antes del embarazo y hable con su proveedor sobre su historial médico familiar</li>
+        <li>No fume ni tome alcohol</li>
+        <li>Limite la cafeína</li>
+        <li>Tome una vitamina prenatal con al menos 800 microgramos de ácido fólico</li>
+        <li>Haga ejercicio con regularidad, antes y durante el embarazo</li>
+        <li>Procure llegar a un peso saludable</li>
+        <li>Coma al menos cinco porciones de frutas y verduras al día</li>
+        <li>Vaya al dentista y use hilo dental</li>
+        <li>Pregunte en su trabajo sobre permisos para citas y licencia de maternidad o paternidad</li>
+        <li>Pregunte a su seguro qué cubre del embarazo, el parto y el cuidado del recién nacido</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block tint" id="expect">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Su embarazo, paso a paso</p>
+          <h2>Qué esperar con nosotros</h2>
+        </div>
+      </div>
+      <div class="journey">
+        <div class="step">
+          <span class="when">Después de una prueba positiva</span>
+          <h3>Su primera visita</h3>
+          <p>Las visitas suelen empezar después de su primera falta de menstruación o una prueba de embarazo positiva en casa.</p>
+          <ul><li>Una hora o más con una enfermera practicante, con examen físico y análisis de laboratorio</li><li>Nuestras enfermeras hablan con usted sobre nutrición, ejercicio y un embarazo saludable</li><li>Ultrasonido programado entre las semanas 9 y 12</li><li>Nuestro equipo de servicios financieros se comunica con usted sobre los costos del parto y del recién nacido</li></ul>
+          <span class="where k-fchc">Family Center for Healthcare</span>
+        </div>
+        <div class="step">
+          <span class="when">Semanas 11 a 13, luego cada mes</span>
+          <h3>Visitas prenatales</h3>
+          <p>Su segunda visita incluye un examen físico, la revisión de sus análisis y una conversación sobre las pruebas prenatales que pueda necesitar. Después, la vemos cada mes.</p>
+          <span class="where k-fchc">Family Center for Healthcare</span>
+        </div>
+        <div class="step">
+          <span class="when">Semanas 32 a 40</span>
+          <h3>Preparación</h3>
+          <p>En la semana 32 repasamos las señales del trabajo de parto y llenamos los papeles del parto. Desde la semana 36 hasta el parto, verá a su médico cada semana.</p>
+          <ul><li>Aprenda a usar el asiento de seguridad para el auto y la inspección requerida</li><li>Visite las Maternity Suites llamando al (785) 462-7511</li></ul>
+          <span class="where k-fchc">Family Center for Healthcare</span>
+        </div>
+        <div class="step">
+          <span class="when">El día del parto</span>
+          <h3>Las Maternity Suites</h3>
+          <p>Usted da a luz en Citizens Medical Center con un equipo que incluye a su proveedor, una enfermera para usted, una enfermera para su bebé y un terapeuta respiratorio.</p>
+          <span class="where k-cmc">Citizens Medical Center</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="medications">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Medicamentos durante el embarazo</p>
+          <h2>Medicamentos sin receta que generalmente son seguros</h2>
+          <p>Algunos medicamentos no son seguros durante el embarazo. Los siguientes generalmente se consideran seguros, pero consulte con su proveedor sobre su caso.</p>
+        </div>
+      </div>
+      <div class="meds">
+        <table class="medtable">
+          <tbody>
+            <tr><th scope="row">Resfriado, sinusitis y alergias</th><td>Tylenol, Tylenol Cold, Tylenol Sinus, Benadryl, Sudafed, Sudafed Sinus, aerosol nasal Dristan, aerosol nasal Ocean</td></tr>
+            <tr><th scope="row">Dolor de garganta y tos</th><td>Chloraseptic en aerosol, pastillas Cepacol, pastillas para la tos (cualquier marca), Robitussin</td></tr>
+            <tr><th scope="row">Acidez y malestar estomacal</th><td>Tums, Mylanta, Riopan, Pepcid</td></tr>
+            <tr><th scope="row">Náuseas</th><td>Dramamine, Emetrol</td></tr>
+            <tr><th scope="row">Diarrea</th><td>Imodium AD</td></tr>
+            <tr><th scope="row">Estreñimiento</th><td>Colace, Milk of Magnesia, Metamucil</td></tr>
+            <tr><th scope="row">Hemorroides</th><td>Crema Anusol, Anusol HC .01%</td></tr>
+          </tbody>
+        </table>
+        <div class="notok">
+          <h3>No tome</h3>
+          <p>Advil, Aleve, aspirina, ibuprofeno, Motrin, Excedrin ni otros AINE (antiinflamatorios no esteroideos).</p>
+          <p class="medsnote" style="color:var(--ink)">¿Tiene dudas sobre un medicamento? Llame a Family Center al <b>(785) 462-6184</b>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block tint" id="suites">
+    <div class="wrap suites">
+      <div class="suites-photos">
+        <img src="img/photos/maternity-lounge.jpg" alt="La sala familiar de las Maternity Suites, con chimenea y asientos" loading="lazy">
+        <img src="img/photos/patient-room.jpg" alt="Un cuarto privado en Citizens Medical Center" loading="lazy">
+      </div>
+      <div class="suites-copy">
+        <div>
+          <p class="eyebrow">Citizens Medical Center</p>
+          <h2 style="margin-top:8px">The Maternity Suites</h2>
+          <p style="margin-top:12px">Nuestras nuevas Maternity Suites le dan espacio para el trabajo de parto, el parto y sus primeros días juntos, con lugar para la familia y una sala familiar en la unidad.</p>
+        </div>
+        <div>
+          <h3>Su equipo para el parto</h3>
+          <ul class="team"><li>Su proveedor médico</li><li>Una enfermera para usted</li><li>Una enfermera para su bebé</li><li>Un terapeuta respiratorio</li></ul>
+        </div>
+        <div>
+          <h3>Comodidad durante el parto</h3>
+          <div class="chips2"><span>Respiración controlada</span><span>Cambios de posición</span><span>Caminar</span><span>Duchas tibias</span><span>Aromaterapia</span><span>Imaginación guiada</span><span>Medicamento para el dolor por vía IV</span><span>Epidural, si la pide</span></div>
+        </div>
+        <p>Usted y su bebé se quedan hasta que los dos estén sanos y recuperándose bien. El tiempo depende del tipo de parto.</p>
+        <p>Le recomendamos tomar una clase de parto y practicar las técnicas de comodidad en casa con su acompañante antes del parto.</p>
+        <div class="arrive">
+          <h3>Cuando llegue el momento</h3>
+          <p>Estaciónese bajo el toldo en la parte de atrás del hospital. Si necesita atención médica, llame antes para que una enfermera de obstetricia sepa que va en camino: <b>(785) 462-7511</b>.</p>
+          <p>Visite las Maternity Suites antes del parto para saber a dónde ir y qué esperar. Llame al <b>(785) 462-7511</b> para programar la visita.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="providers">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Proveedores de obstetricia</p>
+          <h2>Proveedores que atienden partos</h2>
+          <p>Nuestros médicos de familia la atienden durante el embarazo y el parto, y siguen cuidando a su familia después.</p>
+        </div>
+        <a class="more" href="providers.html">Ver todos los proveedores →</a>
+      </div>
+      <div class="obprovs" id="obprovs"></div>
+    </div>
+  </section>
+
+  <section class="block tint" id="bring">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Lista para empacar</p>
+          <h2>Qué traer al hospital</h2>
+          <p>Traiga una identificación con foto y su tarjeta de seguro a cada visita.</p>
+        </div>
+      </div>
+      <div class="prep">
+        <div>
+          <h3>Para usted</h3>
+          <ul><li>Plan de parto</li><li>Bata para el parto (podemos darle una)</li><li>Ropa, calcetines y zapatos cómodos</li><li>Bata y pantuflas</li><li>Lentes, o lentes de contacto con estuche y solución</li><li>Ligas para el cabello, bálsamo para labios, crema y artículos de aseo</li><li>Teléfono y cargador</li><li>Cámara o videocámara</li><li>Libros, revistas, música o juegos para relajarse</li></ul>
+        </div>
+        <div>
+          <h3>Para su bebé</h3>
+          <ul><li>Ropa para salir del hospital, con calcetines y un gorrito suave</li><li>Una cobija de recibir</li><li>Un asiento de seguridad para el auto bien instalado. La oficina del sheriff de su condado puede ayudarle a revisar la instalación.</li><li>Un chupón, si lo desea. Le recomendamos esperar hasta que la lactancia esté bien establecida. Como hospital Baby-Friendly y High 5 for Mom &amp; Baby, no damos chupones.</li></ul>
+        </div>
+        <div class="leave">
+          <h3>Deje en casa</h3>
+          <ul><li>Joyas</li><li>Mucho dinero en efectivo o tarjetas de crédito</li><li>Objetos de valor sentimental o que no se puedan reemplazar</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="signs">
+        <div>
+          <h2>Llame a su proveedor de inmediato si nota</h2>
+          <p>Si necesita atención médica, llame antes para que una enfermera de obstetricia sepa que va en camino.</p>
+          <p class="phone2">Citizens Medical Center<b>(785) 462-7511</b></p>
+        </div>
+        <ul>
+          <li>Hinchazón de la cara, los dedos o el cuerpo, o aumento de peso repentino</li>
+          <li>Dolor de cabeza fuerte, visión borrosa o ver manchas</li>
+          <li>Dolor abdominal o vómito que no se quita</li>
+          <li>Escalofríos, fiebre o dolor al orinar</li>
+          <li>Sangrado vaginal, flujo o salida de líquido</li>
+          <li>Un cambio en cuánto se mueve su bebé</li>
+          <li>Señales de parto prematuro: dolor sordo en la parte baja de la espalda, presión en la pelvis, diarrea, manchado o flujo acuoso</li>
+          <li>Cualquier lesión accidental</li>
+        </ul>
+      </div>
+      <p class="call911" style="margin-top:14px">Si su vida está en peligro, <b>llame al 911</b>.</p>
+    </div>
+  </section>
+
+  <section class="block tint" id="after">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">El parto y después</p>
+          <h2>Después del nacimiento de su bebé</h2>
+          <p>Seguimos cuidando de usted y de su bebé durante la recuperación y las primeras semanas en casa. Llame a su proveedor si tiene preguntas o inquietudes.</p>
+        </div>
+      </div>
+      <div class="after">
+        <div>
+          <h3>Apoyo para la lactancia</h3>
+          <div class="badges"><span>Designación Baby-Friendly</span><span>High 5 for Mom &amp; Baby</span></div>
+          <p>La leche materna le da a su bebé un balance de nutrientes fácil de digerir, y los bebés amamantados tienen menos riesgo de enfermedades e infecciones. Citizens Health es un hospital con designación Baby-Friendly, el más alto estándar de apoyo a la lactancia, y tiene el reconocimiento High 5 for Mom &amp; Baby por seguir cinco prácticas de lactancia basadas en evidencia.</p>
+          <p><a href="https://www.babyfriendlyusa.org/">Acerca de Baby-Friendly USA (en inglés)</a><br><a href="http://www.high5kansas.org/">Acerca de High 5 for Mom &amp; Baby (en inglés)</a></p>
+        </div>
+        <div>
+          <h3>Visitas de seguimiento</h3>
+          <p>Su visita después del parto suele ser unas seis semanas después. Pregunte a su proveedor qué calendario es mejor para usted.</p>
+          <p>Programamos la primera cita de seguimiento de su bebé antes de que se vaya a casa.</p>
+          <p><a href="https://espanol.womenshealth.gov/">Salud de la mujer, en español (womenshealth.gov)</a></p>
+        </div>
+        <div>
+          <h3>Actas de nacimiento</h3>
+          <p>Nuestro personal de obstetricia y de expedientes médicos le ayuda a llenar la información del acta de nacimiento de su bebé. La enviamos a la Oficina de Estadísticas Vitales del Departamento de Salud y Medio Ambiente de Kansas (KDHE).</p>
+          <p>Pida las copias certificadas directamente a la Oficina de Estadísticas Vitales.</p>
+          <p><a href="https://www.kdhe.ks.gov/1186/Birth-Certificate">Pedir un acta de nacimiento de Kansas (en inglés)</a></p>
+        </div>
+      </div>
+      <div class="clc">
+        <h3>Consejeras de lactancia certificadas</h3>
+        <p>Nuestras consejeras de lactancia certificadas le ayudan a amamantar sin costo para usted. Pida una visita cuando quiera.</p>
+        <ul class="clclist">
+          <li><b>Jenny Johnson</b><span>(785) 462-6184</span></li>
+          <li><b>Abby Barnett</b><span>(785) 462-7511, ext. 300</span></li>
+          <li><b>Kristy Kahle</b><span>(785) 460-1276</span></li>
+          <li><b>Phoebe Butts</b><span>(785) 462-7511, ext. 300</span></li>
+          <li><b>Randi Smith</b><span>(785) 462-6184, ext. 722</span></li>
+          <li><b>Jacquie Bartlett</b><span>(785) 462-7511, ext. 300</span></li>
+          <li><b>Kathleen Michaelis</b><span>(785) 462-7511, ext. 300</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="visiting">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Visitas a las Maternity Suites</p>
+          <h2>Para familiares y amigos</h2>
+          <p>Estas reglas protegen a las mamás y a los bebés mientras descansan y se recuperan.</p>
+        </div>
+      </div>
+      <ul class="visit">
+        <li><b>10am a 8:30pm todos los días</b><span>Las visitas fuera de este horario dependen de la mamá.</span></li>
+        <li><b>Hora de descanso, 2 a 3:30pm</b><span>Durante este tiempo solo pueden visitar un acompañante y un hermanito del bebé.</span></li>
+        <li><b>Después del parto</b><span>Espere unas dos horas antes de visitar, a menos que la mamá pida otra cosa.</span></li>
+        <li><b>Niños</b><span>Los hermanos del bebé son bienvenidos. Otros niños menores de 12 años no pueden visitar la unidad.</span></li>
+        <li><b>Si está enfermo</b><span>Quédese en casa. No se permite visitar a nadie con síntomas de enfermedad.</span></li>
+        <li><b>Manos limpias</b><span>Lávese las manos al entrar y al salir del cuarto, y cúbrase al toser o estornudar con el codo.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:0">
+    <div class="wrap">
+      <div class="ob-cta">
+        <div>
+          <h2>¿Lista para empezar su atención prenatal?</h2>
+          <p>Llame a Family Center for Healthcare para programar su primera visita. Si ya es paciente, también puede pedir una cita en MyChart.</p>
+        </div>
+        <span class="num">(785) 462-6184</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ftop">
+      <div>
+        <img class="flogo" src="img/logo-white.png" alt="Citizens Health" width="150" height="40">
+        <p class="mission">Mejorando la vida de quienes servimos.</p>
+      </div>
+      <div class="fcall">
+        <span class="fphone">(785) 462-7511</span>
+        <div class="fbtns"><a class="btn btn-ghost" href="contact.html">Contáctenos</a><a class="btn btn-primary" href="foundation.html#give">Donar</a></div>
+      </div>
+    </div>
+    <div class="cols">
+      <div><h4>Ubicaciones</h4><ul class="contact">
+        <li><a href="medical-center.html"><b>Citizens Medical Center</b></a>(785) 462-7511</li>
+        <li><a href="es-family-center.html"><b>Family Center for Healthcare</b></a>(785) 462-6184</li>
+        <li><a href="prairie-senior.html"><b>Prairie Senior</b></a>(785) 462-8295</li>
+        <li><a href="palace-drug.html"><b>Palace Drug Store</b></a>(785) 460-7507</li>
+      </ul></div>
+      <div><h4>Para pacientes</h4><ul><li><a href="providers.html">Buscar proveedor</a></li><li><a href="https://mychart.ochin.org/cmciks/billing/guestpay">Pagar una factura</a></li><li><a href="es-patient-resources.html#assistance">Ayuda financiera</a></li><li><a href="es-patient-resources.html#records">Expedientes médicos</a></li><li><a href="es-patient-resources.html#forms">Formularios</a></li><li><a href="espanol.html#ubicaciones">Teléfonos</a></li></ul></div>
+      <div><h4>Visitantes y comunidad</h4><ul><li><a href="espanol.html#visitas">Horario de visitas</a></li><li><a href="about.html#events">Clases y eventos</a></li><li><a href="careers.html">Empleos</a></li><li><a href="foundation.html">Citizens Foundation</a></li><li><a href="foundation.html#volunteer">Voluntariado</a></li><li><a href="https://www.cmciks.com/patients-visitors/community-health-assessment/">Evaluación de necesidades de salud</a></li></ul></div>
+      <div><h4>Para profesionales</h4><ul><li><a href="professionals.html#refer">Referir a un paciente</a></li><li><a href="professionals.html#staff">Servicios al personal médico</a></li><li><a href="careers.html#education">Rotaciones de estudiantes</a></li><li><a href="careers.html#education">Clases de ACLS y PALS</a></li><li><a href="careers.html#providers">Reclutamiento de médicos</a></li><li><a href="https://www.cmciks.com/request-for-bids/">Solicitud de ofertas</a></li></ul></div>
+      <div><h4>Manténgase en contacto</h4><ul><li><a href="https://www.facebook.com/cmciks/">Facebook</a></li><li><a href="https://www.instagram.com/citizens_health">Instagram</a></li><li><a href="https://www.youtube.com/user/cmciks">YouTube</a></li><li><a href="https://www.linkedin.com/in/citizenshealth/">LinkedIn</a></li></ul></div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Citizens Health · Dirección postal: 100 E. College Dr., Colby, KS 67701</span>
+      <a href="es-patient-resources.html#rights">Derechos del paciente</a><a href="es-patient-resources.html#rights">Aviso de prácticas de privacidad</a><a href="es-patient-resources.html#rights">No discriminación</a><a href="es-patient-resources.html#prices">Precios</a><a href="es-patient-resources.html#prices">Ley Sin Sorpresas</a><a href="accessibility.html">Accesibilidad</a>
+    </div>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="providers.js"></script>
+<script>
+(function(){
+  var P=window.CH_PROVIDERS.filter(function(p){return p.spec.indexOf('Obstetrics')>-1});
+  P.sort(function(a,b){return a.name.split(' ').pop().localeCompare(b.name.split(' ').pop())});
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  document.getElementById('obprovs').innerHTML=P.map(function(p){
+    return '<a class="obprov" href="providers.html#'+p.id+'"><img src="img/people/'+p.photo+'.jpg" alt="" loading="lazy">'+(p.accepting===true?'<span class="pill">Acepta pacientes nuevos</span>':'<span style="height:22px"></span>')+'<h3>'+esc(p.name)+', '+esc(p.cred)+'</h3><span class="role">'+esc(p.role)+'</span></a>'}).join('');
+})();
+</script>
+<script src="services-data.js"></script>
+<script src="site.js"></script>
+</body>
+</html>

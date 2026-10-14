@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Citizens Foundation · Citizens Health</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="site.css">
+<style>
+
+:root{color-scheme:light}
+html,body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+
+.loc-hero{background:var(--hero);color:var(--hero-ink)}
+.loc-hero .wrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center;padding-block:clamp(32px,5vw,64px)}
+.crumbs{font-size:14px;color:var(--hero-muted);display:flex;gap:8px;flex-wrap:wrap}
+.crumbs a{text-decoration:none;font-weight:600}
+.crumbs a:hover{color:#ffffff}
+.idrow{display:flex;align-items:center;gap:16px;margin-top:22px}
+.idrow img{width:64px;height:64px}
+.idrow .eyebrow{color:var(--hero-muted)}
+.loc-hero h1{font-size:clamp(36px,4.8vw,58px);font-weight:800;letter-spacing:-.025em}
+.loc-hero p.lede{margin-top:16px;font-size:clamp(18px,1.6vw,20px);color:var(--hero-muted);max-width:34em}
+.keyfacts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.14);border-radius:var(--r);overflow:hidden;margin-top:28px}
+.keyfacts div{background:rgba(10,22,38,.72);padding:14px 16px;display:grid;gap:2px}
+.keyfacts dt{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--hero-muted)}
+.keyfacts dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums}
+.loc-hero .heroimg{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:14px}
+@media (max-width:860px){.loc-hero .wrap{grid-template-columns:1fr}.loc-hero .heroimg{aspect-ratio:16/10;object-position:50% 30%}.keyfacts{grid-template-columns:1fr}}
+
+.subnav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 73px);z-index:15;background:var(--bg);border-bottom:1px solid var(--line)}
+.subnav .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:none}
+.subnav a{flex:none;text-decoration:none;font-weight:700;font-size:15px;padding:8px 12px;border-radius:999px;color:var(--muted)}
+.subnav a:hover{background:var(--surface);color:var(--ink)}
+section[id]{scroll-margin-top:140px}
+
+/* department block: meta column + content column */
+.dept{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:clamp(24px,5vw,64px);align-items:start}
+.dept h2{font-size:clamp(28px,3vw,38px);font-weight:800;margin-top:8px}
+.meta{display:grid;gap:0;margin-top:20px;border-top:1px solid var(--line)}
+.meta div{padding:12px 0;border-bottom:1px solid var(--line);display:grid;gap:2px}
+.meta dt{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.meta dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums}
+.meta dd small{display:block;font-weight:500;color:var(--muted);font-size:14px}
+.body{display:grid;gap:22px;min-width:0}
+.body > p{color:var(--muted);max-width:62ch}
+.body p.lead{color:var(--ink);font-size:19px;max-width:58ch}
+.body h3{font-size:18px;font-weight:800;margin-bottom:10px}
+.body img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px}
+.body .cols{columns:2;column-gap:32px;margin:0;padding:0;list-style:none}
+.body .cols li{break-inside:avoid;padding:8px 0;border-bottom:1px solid var(--line);font-size:16px}
+.body .cols.three{columns:3}
+.chips2{display:flex;flex-wrap:wrap;gap:8px}
+.chips2 span{font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+.tint .chips2 span{background:var(--raised)}
+.note{background:var(--surface);border-radius:var(--r);padding:16px 18px;font-size:16px}
+.tint .note{background:var(--raised);border:1px solid var(--line)}
+.note.urgent{background:var(--urgent-soft)}
+.note.urgent b{color:var(--urgent)}
+.pricing{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.pricing div{background:var(--raised);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;display:grid;gap:4px}
+.pricing b{font-size:17px}
+.pricing span{color:var(--muted);font-size:15px}
+.pricing .price{color:var(--ink);font-weight:800;font-size:20px;font-variant-numeric:tabular-nums}
+.linkrow{display:flex;flex-wrap:wrap;gap:8px 20px}
+.linkrow a{color:var(--action);font-weight:700;text-decoration:none}
+.linkrow a:hover{text-decoration:underline}
+.mini-prov{display:flex;gap:16px;align-items:center;text-decoration:none;background:var(--raised);border:1px solid var(--line);border-radius:var(--r);padding:12px;max-width:420px}
+.mini-prov img{width:64px;height:80px;object-fit:cover;border-radius:8px;aspect-ratio:auto}
+.mini-prov b{display:block;font-size:17px}
+.mini-prov span{color:var(--muted);font-size:14px}
+.mini-prov:hover b{color:var(--action)}
+@media (max-width:860px){.dept{grid-template-columns:1fr}.body .cols.three{columns:2}.pricing{grid-template-columns:1fr}}
+@media (max-width:520px){.body .cols,.body .cols.three{columns:1}}
+
+.promo{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.promo img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:14px}
+.promo h2{font-size:clamp(28px,3vw,38px);font-weight:800;margin-top:8px}
+.promo p{color:var(--muted);margin-top:12px;max-width:34em}
+.promo .btn{margin-top:20px}
+.promo .eyebrow{color:var(--fchc-ink)}
+@media (max-width:820px){.promo{grid-template-columns:1fr}}
+
+.dir{width:100%;border-collapse:collapse;font-size:16px;font-variant-numeric:tabular-nums}
+.dir th,.dir td{text-align:left;padding:12px 0;border-bottom:1px solid var(--line)}
+.dir td{text-align:right;font-weight:700;white-space:nowrap}
+.dirwrap{columns:2;column-gap:48px}
+.dirwrap table{break-inside:avoid}
+@media (max-width:760px){.dirwrap{columns:1}}
+
+.weekcal{background:var(--raised);border:1px solid var(--line);border-top:4px solid var(--cmc);border-radius:var(--r);padding:18px 20px;margin-top:6px}
+.weekcal .wc-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.weekcal .wc-head h3{font-size:18px;font-weight:800}
+.weekcal .wc-head span{color:var(--muted);font-size:14px}
+.weekcal ul{list-style:none;margin:0;padding:0}
+.weekcal li{display:grid;grid-template-columns:52px minmax(0,1fr) minmax(0,1fr);gap:10px;padding:10px 0;border-top:1px solid var(--line);align-items:baseline}
+.weekcal li b{color:var(--cmc)}
+.weekcal .wc-n{color:var(--muted);font-size:14.5px}
+.weekcal .wc-note{font-size:13px;color:var(--muted);margin-top:10px}
+@media (max-width:560px){.weekcal li{grid-template-columns:44px minmax(0,1fr)}.weekcal .wc-n{grid-column:2}}
+
+/* Foundation extras: green wayfinding */
+.phero.plain{background:linear-gradient(120deg,#1d3417 0%,#14233a 72%)}
+.phero.plain::before{display:none}
+.phero.plain .bigmark{position:absolute;right:max(24px,6vw);top:50%;transform:translateY(-50%);width:min(320px,28vw);z-index:1}
+@media (max-width:860px){.phero.plain .bigmark{display:none}}
+.phero .eyebrow.fd{color:#cfe6b9}
+.fd-accent{color:var(--fdn)}
+.btn-give{background:var(--fdn);color:#ffffff}
+.btn-give:hover{filter:brightness(1.08)}
+.impact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(24px,5vw,64px);align-items:start}
+.bignum{font-size:clamp(48px,6vw,76px);font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--fdn);font-variant-numeric:tabular-nums}
+.impact img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:12px;margin-top:20px}
+.timeline{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.timeline li{position:relative;padding:0 0 18px 24px}
+.timeline li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--fdn);border:2px solid var(--bg)}
+.timeline .yr{font-size:13px;font-weight:800;letter-spacing:.06em;color:var(--fdn)}
+.timeline p{margin-top:2px}
+.timeline p b{font-variant-numeric:tabular-nums}
+@media (max-width:860px){.impact{grid-template-columns:1fr}}
+.ways{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ways div{background:var(--raised);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.ways b{display:block;margin-bottom:4px}
+.ways span{color:var(--muted);font-size:15px}
+@media (max-width:860px){.ways{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.ways{grid-template-columns:1fr}}
+.schol{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.schol div{background:var(--raised);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:6px}
+.schol .amt{font-size:28px;font-weight:800;color:var(--fdn);font-variant-numeric:tabular-nums}
+.schol b{font-size:16px;line-height:1.3}
+@media (max-width:900px){.schol{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.story{display:flex;gap:16px;align-items:center;text-decoration:none;background:var(--raised);border:1px solid var(--line);border-radius:var(--r);padding:14px;max-width:560px}
+.story img{width:72px;height:90px;object-fit:cover;border-radius:8px;flex:none}
+.story b{display:block;font-size:17px}
+.story span{color:var(--muted);font-size:15px}
+.story:hover b{color:var(--action)}
+.board{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 16px}
+.board li{display:flex;flex-direction:column}
+.board img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;background:#2b3a48;margin-bottom:10px}
+.board b{display:block;font-size:17px}
+.board span{color:var(--muted);font-size:15px}
+@media (max-width:900px){.board{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.board{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.values{display:flex;flex-wrap:wrap;gap:8px}
+.values span{font-weight:700;padding:6px 14px;border-radius:999px;background:var(--good-soft);color:var(--good)}
+.giveband{background:var(--hero);color:#ffffff;border-radius:14px;padding:clamp(24px,3vw,40px);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.giveband h2{font-size:clamp(24px,2.6vw,34px);font-weight:800}
+.giveband p{color:#dbe4ee;margin-top:6px;max-width:40em}
+.giveband img{height:44px;width:auto;margin-bottom:14px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.steps li::before{content:counter(s);width:30px;height:30px;border-radius:50%;background:var(--fdn);color:#ffffff;font-weight:800;display:grid;place-items:center;font-size:15px}
+.steps b{display:block}
+.steps span{color:var(--muted);font-size:15px}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<div class="proto-bar"><div class="wrap"><span class="proto">Draft prototype, not public</span><span class="phone"><a class="pro-link" href="espanol.html" lang="es">Español</a><span class="sep" aria-hidden="true">·</span><a class="pro-link pro-only" href="professionals.html">For Healthcare Professionals</a><span class="sep pro-only" aria-hidden="true">·</span>Main line <b>(785) 462-7511</b></span></div></div>
+
+<header class="site" id="siteHeader">
+  <div class="wrap hdr">
+    <a class="brand" href="index.html" aria-label="Citizens Health home">
+      <img class="on-light" src="img/logo.png" alt="Citizens Health" width="165" height="44">
+      <img class="on-dark" src="img/logo-white.png" alt="Citizens Health" width="165" height="44">
+    </a>
+    <nav class="mainnav" id="mainnav" aria-label="Main">
+      <a class="top-link" href="providers.html">Find a Provider</a>
+      <a class="top-link" href="index.html#locations">Our Campus</a>
+      <div class="mm">
+        <button class="top-link mm-btn" type="button" aria-expanded="false">Services</button>
+        <div class="mm-panel">
+          <div class="wrap mm-grid">
+            <div class="mm-intro"><h3>Services</h3><p>Care for every stage of life, close to home in Colby.</p><a class="more" href="services.html">Browse all services A–Z →</a></div>
+            <div><h4>Featured care</h4><ul>
+              <li><a href="obstetrics.html">Obstetrics &amp; Maternity Suites</a></li>
+              <li><a href="emergency.html">Emergency &amp; Trauma Care</a></li>
+              <li><a href="surgery.html">General Surgery</a></li>
+              <li><a href="specialty-clinic.html">Specialty Clinic</a></li>
+              <li><a href="family-center.html">Family Medicine</a></li>
+              <li><a href="orthopedics.html">Orthopedics</a></li>
+            </ul></div>
+            <div><h4>Tests &amp; therapy</h4><ul>
+              <li><a href="imaging.html">Imaging &amp; Radiology</a></li>
+              <li><a href="laboratory.html">Laboratory</a></li>
+              <li><a href="rehabilitation.html">Rehabilitation</a></li>
+              <li><a href="respiratory-therapy.html">Respiratory Therapy</a></li>
+              <li><a href="medical-equipment.html">Home Medical Equipment</a></li>
+              <li><a href="sc-audiology.html">Audiology</a></li>
+            </ul></div>
+            <div><h4>Get care now</h4><ul>
+              <li><a href="emergency.html">Emergency Room, open 24/7</a></li>
+              <li><a href="family-center.html#hours">Urgent Care &amp; Walk-in</a></li>
+              <li><a href="providers.html#accepting">Providers accepting new patients</a></li>
+              <li><a href="providers.html#visiting">Visiting specialists</a></li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="mm">
+        <button class="top-link mm-btn" type="button" aria-expanded="false">Patients &amp; Visitors</button>
+        <div class="mm-panel">
+          <div class="wrap mm-grid">
+            <div class="mm-intro"><h3>Patients &amp; Visitors</h3><p>Everything you need before, during, and after your visit.</p><a class="more" href="patient-resources.html">Billing &amp; patient resources →</a></div>
+            <div><h4>Patient resources</h4><ul>
+              <li><a href="https://www.cmciks.com/patients-visitors/patient-portal/">MyChart</a></li>
+              <li><a href="https://mychart.ochin.org/cmciks/billing/guestpay">Pay a Bill</a></li>
+              <li><a href="patient-resources.html#plans">Payment Plans</a></li>
+              <li><a href="patient-resources.html#assistance">Financial Assistance</a></li>
+              <li><a href="patient-resources.html#prices">Price Transparency</a></li>
+              <li><a href="patient-resources.html#records">Medical Records</a></li>
+              <li><a href="patient-resources.html#forms">Forms</a></li>
+            </ul></div>
+            <div><h4>Visitor information</h4><ul>
+              <li><a href="medical-center.html#visiting">Visiting Hours &amp; Guidelines</a></li>
+              <li><a href="hospital-stay.html">Planning Your Hospital Stay</a></li>
+              <li><a href="obstetrics.html#visiting">Visiting the Maternity Suites</a></li>
+              <li><a href="index.html#locations">Our Campus &amp; Directions</a></li>
+              <li><a href="about.html#events">Classes &amp; Events</a></li>
+            </ul></div>
+            <div><h4>About us</h4><ul>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="https://www.cmciks.com/patients-visitors/community-health-assessment/">Community Health Needs Assessment</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+      <a class="top-link" href="careers.html">Careers</a>
+      <a class="top-link give" href="foundation.html" aria-current="page">Give</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="icon-btn" id="searchBtn" type="button" aria-label="Search" aria-expanded="false" aria-controls="hsearch"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+      <a class="mychart" href="https://www.cmciks.com/patients-visitors/patient-portal/">MyChart Login</a>
+      <a class="btn btn-sched" href="schedule.html">Schedule Now</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainnav">Menu</button>
+    </div>
+  </div>
+  <div class="hsearch" id="hsearch" hidden>
+    <div class="wrap">
+      <label for="hq">I'm looking for...</label>
+      <input id="hq" class="js-search" data-results="hresults" type="search" placeholder="A provider, a service, or a page" autocomplete="off">
+      <ul class="results" id="hresults" hidden></ul>
+    </div>
+  </div>
+</header>
+
+
+<main id="main">
+  <section class="phero plain">
+    <img class="bigmark" src="img/mark-foundation-lg.png" alt="">
+    <div class="wrap"><div class="in">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span>Give</span><span aria-hidden="true">/</span><span>Citizens Foundation</span></nav>
+      <p class="eyebrow fd">Citizens Foundation</p>
+      <h1>Gifts that keep care close to home</h1>
+      <p class="lead lede">Citizens Foundation raises funds to support Citizens Health and the people of northwest Kansas. Every gift goes to work for patients, families, and the future of rural health care.</p>
+      <div class="ctas"><a class="btn btn-give" href="#give">Make a gift</a><a class="btn btn-ghost" href="#memorials">Give in memory</a></div>
+      <dl class="keyfacts">
+        <div><dt>Invested since 2006</dt><dd>More than $11 million</dd></div>
+        <div><dt>Status</dt><dd>501(c)(3) nonprofit</dd></div>
+        <div><dt>Phone</dt><dd>(785) 460-1264</dd></div>
+      </dl>
+    </div></div>
+  </section>
+
+  <nav class="subnav" aria-label="On this page"><div class="wrap">
+    <a href="#impact">Our impact</a><a href="#give">Ways to give</a><a href="#memorials">Memorials</a><a href="#grateful">Grateful Patient Program</a><a href="#scholarships">Scholarships</a><a href="#volunteer">Volunteer</a><a href="#board">Board</a>
+  </div></nav>
+
+  <section class="block" id="impact">
+    <div class="wrap impact">
+      <div>
+        <p class="eyebrow fd-accent">Our impact</p>
+        <h2 style="font-size:clamp(28px,3vw,38px);font-weight:800;margin-top:8px">Your gifts are in the building</h2>
+        <p style="color:var(--muted);margin-top:12px">Since 2006, Citizens Foundation has invested more than</p>
+        <p class="bignum" style="margin-top:6px">$11 million</p>
+        <p style="color:var(--muted);margin-top:8px">in facilities, equipment, and programs at Citizens Health.</p>
+        <img src="img/photos/ct-scanner.jpg" alt="The CT scanner at Citizens Medical Center" loading="lazy">
+      </div>
+      <ol class="timeline" aria-label="Major Foundation investments">
+        <li><span class="yr">2019</span><p><b>$180,000</b> for the Citizens Clubhouse child care center, and <b>$200,000</b> for furnishings in the Citizens Medical Center renovation</p></li>
+        <li><span class="yr">2017</span><p><b>About $244,000</b> for 3D mammography</p></li>
+        <li><span class="yr">2016</span><p>A residence for additional community child care</p></li>
+        <li><span class="yr">2015</span><p><b>$525,000</b> for a Siemens Luminos Agile RF system in radiology</p></li>
+        <li><span class="yr">2013–2014</span><p><b>$1.9 million</b> for Family Center for Healthcare addition</p></li>
+        <li><span class="yr">2011</span><p><b>$250,000</b> for a mammography system</p></li>
+        <li><span class="yr">2009–2010</span><p><b>$3.6 million</b> for the Citizens Health Annex and Citizens Medical Center construction</p></li>
+        <li><span class="yr">2007–2008</span><p><b>$933,000</b> for a new MRI and building</p></li>
+        <li><span class="yr">2007</span><p><b>$720,000</b> for nuclear medicine, and <b>$500,000</b> for a 16-slice CT scanner upgrade</p></li>
+        <li><span class="yr">2006</span><p><b>$500,000</b> for an orthopedic surgery addition, and <b>$850,000</b> for a Family Center expansion</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block tint" id="give">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow fd-accent">Ways to give</p>
+        <h2>Make a gift</h2>
+        <dl class="meta">
+          <div><dt>Questions about giving</dt><dd>(785) 460-1264<small>jschoenfeld@cmciks.com</small></dd></div>
+          <div><dt>Mail a gift</dt><dd>Citizens Foundation<small>100 E. College Dr., Colby, KS 67701</small></dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <p class="lead">Give once or build a long-term giving plan. Your entire tax-deductible gift supports the Foundation's mission.</p>
+        <p><a class="btn btn-give" href="https://form-renderer-app.donorperfect.io/give/-citizens-foundation/website-online-giving" target="_blank" rel="noopener">Give online</a></p>
+        <div class="ways">
+          <div><b>Cash and accounts</b><span>Cash, CDs, checking, or savings</span></div>
+          <div><b>Securities</b><span>Stocks, bonds, and mutual funds</span></div>
+          <div><b>Will bequest</b><span>Include the Foundation in your will</span></div>
+          <div><b>Life insurance</b><span>Name the Foundation as a beneficiary</span></div>
+          <div><b>Retirement accounts</b><span>Give from an IRA or other account</span></div>
+          <div><b>Gift annuity</b><span>Give now and receive income</span></div>
+          <div><b>Trusts</b><span>Lead, living, and remainder trusts</span></div>
+          <div><b>Pooled income fund</b><span>Combine gifts for shared income</span></div>
+          <div><b>Property</b><span>Real estate, art, antiques, collections, or royalties</span></div>
+        </div>
+        <p>Planning a larger or deferred gift? Our staff will work with your attorney or financial advisor.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="memorials">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow fd-accent">Memorial Program</p>
+        <h2>Honor someone you love</h2>
+        <dl class="meta">
+          <div><dt>Phone</dt><dd>(785) 460-1264</dd></div>
+          <div><dt>Mail the form to</dt><dd>Citizens Foundation<small>100 E. College Dr., Colby, KS 67701</small></dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <p class="lead">A memorial gift keeps a loved one's legacy alive by supporting the care they valued. Memorials are tax deductible.</p>
+        <ol class="steps">
+          <li><div><b>Call us or fill out the memorial form</b><span>Setting up a memorial fund takes only a few minutes.</span></div></li>
+          <li><div><b>Decide together how the gifts are used</b><span>Our Executive Director works with your family.</span></div></li>
+          <li><div><b>See their name on the memorial board</b><span>Once a fund reaches $500, your loved one is recognized on our memorial board.</span></div></li>
+        </ol>
+        <p><a href="https://cmciks.com/wp-content/uploads/2018/11/CMC-Memorial-Program.pdf" style="color:var(--action);font-weight:700">Memorial Program form</a> <span class="pdf" style="font-size:11px;font-weight:800;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:1px 5px">PDF</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block tint" id="grateful">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow fd-accent">Grateful Patient Program</p>
+        <h2>Thank a caregiver</h2>
+        <dl class="meta">
+          <div><dt>Phone</dt><dd>(785) 460-1264</dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <p class="lead">Did a nurse, doctor, or team go the extra mile for you or your family? Honor them with a gift.</p>
+        <p>A Grateful Patient gift recognizes the caregiver who brightened your day while supporting care around the clock, every day of the year. You can direct your gift to a specific department, service, program, or facility. Gifts are tax deductible.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="scholarships">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow fd-accent">Scholarships</p>
+          <h2>Investing in future caregivers</h2>
+          <p>Each year the Foundation awards $6,000 in scholarships to northwest Kansas students pursuing health care careers. Applications are due April 1.</p>
+        </div>
+      </div>
+      <div class="schol">
+        <div><span class="amt">$2,000</span><b>Leonard P. and Twila M. Harrison Endowed Scholarship</b></div>
+        <div><span class="amt">$1,500</span><b>Citizens Medical Center Health Care Scholarship</b></div>
+        <div><span class="amt">$1,500</span><b>Dr. Floyd and Mary Smith Endowed Scholarship</b></div>
+        <div><span class="amt">$1,000</span><b>Dr. Jeff Jennings Memorial Scholarship</b></div>
+      </div>
+      <div class="dept" style="margin-top:32px">
+        <div>
+          <h3 style="font-size:20px;font-weight:800">Who can apply</h3>
+        </div>
+        <div class="body">
+          <ul class="cols">
+            <li>Students pursuing a health care career, at any stage of study and at any school</li>
+            <li>Residents of Cheyenne, Decatur, Gove, Logan, Norton, Rawlins, Sheridan, Sherman, Thomas, or Wallace county</li>
+            <li>Preference for students who plan to practice in a rural area</li>
+            <li>Board of Regents nursing scholarships are also available, with one year of service at Citizens Health</li>
+          </ul>
+          <p>Request an application from Jen Schoenfeld at jschoenfeld@cmciks.com or (785) 460-1264. <a href="#" data-soon style="color:var(--action);font-weight:700">Download the application</a></p>
+          <a class="story" href="providers.html#nichols-totten"><img src="img/people/dr-kysha.jpg" alt=""><span><b>A scholarship brought her home</b><span>Dr. Kysha Nichols-Totten received a Citizens Foundation scholarship and now practices at Family Center.</span></span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block tint" id="volunteer">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow fd-accent">Volunteer</p>
+        <h2>Give the gift of time</h2>
+      </div>
+      <div class="body">
+        <p class="lead">Volunteers share their talents, kindness, and concern with our patients, residents, and families every day. Anyone who can give the gift of time can volunteer.</p>
+        <p>Choose the location you're interested in, including <a href="prairie-senior.html" style="color:var(--action);font-weight:700">Prairie Senior</a>, and we'll be in touch.</p>
+        <p><a class="btn btn-dark" href="https://www.cmciks.com/patients-visitors/volunteer/">Sign up to volunteer</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="board">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow fd-accent">About the Foundation</p>
+        <h2>Mission, vision &amp; board</h2>
+      </div>
+      <div class="body">
+        <div><h3>Mission</h3><p style="color:var(--muted)">To nurture relationships that build community and philanthropic support for Citizens Health's ability to provide quality health care.</p></div>
+        <div><h3>Vision</h3><p style="color:var(--muted)">For Citizens Health to be recognized for exemplary health care, with a growing endowment, successful capital campaigns, and the Foundation as the beneficiary of choice.</p></div>
+        <div><h3>Values</h3><div class="values"><span>Ambassadors</span><span>Stewardship</span><span>Integrity</span><span>Compassion</span></div></div>
+        <div><h3>Board of Directors</h3>
+          <ul class="board">
+            <li><img src="img/people/board-mallory.jpg" alt="Portrait of Pat Mallory" loading="lazy"><b>Pat Mallory</b><span>Chair</span></li>
+            <li><img src="img/people/board-wilson.jpg" alt="Portrait of Randy Wilson" loading="lazy"><b>Randy Wilson</b><span>Vice Chair</span></li>
+            <li><img src="img/people/board-johnson.jpg" alt="Portrait of Lana Johnson" loading="lazy"><b>Lana Johnson</b><span>Secretary</span></li>
+            <li><img src="img/people/board-evins.jpg" alt="Portrait of J.L. Evins" loading="lazy"><b>J.L. Evins</b><span>Treasurer</span></li>
+            <li><img src="img/people/board-metcalf.jpg" alt="Portrait of Jody Metcalf" loading="lazy"><b>Jody Metcalf</b><span>Board member</span></li>
+            <li><img src="img/people/board-weishaar.jpg" alt="Portrait of Wendy Weishaar" loading="lazy"><b>Wendy Weishaar</b><span>Board member</span></li>
+            <li><img src="img/people/board-schoenfeld.jpg" alt="Portrait of Jen Schoenfeld" loading="lazy"><b>Jen Schoenfeld</b><span>Executive Director</span></li>
+          </ul>
+        </div>
+        <p>The Foundation hosts fundraising events throughout the year that are open to the public. <a href="about.html#events" style="color:var(--action);font-weight:700">See upcoming events</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:0">
+    <div class="wrap">
+      <div class="giveband">
+        <div><img src="img/foundation-logo-white.png" alt="Citizens Foundation"><h2>Every gift stays here at home</h2><p>Your gift supports patients, residents, and families across northwest Kansas.</p></div>
+        <a class="btn btn-give" href="#give">Make a gift</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ftop">
+      <div>
+        <img class="flogo" src="img/logo-white.png" alt="Citizens Health" width="150" height="40">
+        <p class="mission">Enhancing the lives of those we serve.</p>
+      </div>
+      <div class="fcall">
+        <span class="fphone">(785) 462-7511</span>
+        <div class="fbtns"><a class="btn btn-ghost" href="contact.html">Contact Us</a><a class="btn btn-primary" href="foundation.html#give">Make a Gift</a></div>
+      </div>
+    </div>
+    <div class="cols">
+      <div><h4>Locations</h4><ul class="contact">
+        <li><a href="medical-center.html"><b>Citizens Medical Center</b></a>(785) 462-7511</li>
+        <li><a href="family-center.html"><b>Family Center for Healthcare</b></a>(785) 462-6184</li>
+        <li><a href="prairie-senior.html"><b>Prairie Senior</b></a>(785) 462-8295</li>
+        <li><a href="palace-drug.html"><b>Palace Drug Store</b></a>(785) 460-7507</li>
+      </ul></div>
+      <div><h4>For Patients</h4><ul><li><a href="providers.html">Find a Provider</a></li><li><a href="https://mychart.ochin.org/cmciks/billing/guestpay">Pay a Bill</a></li><li><a href="patient-resources.html#assistance">Financial Assistance</a></li><li><a href="patient-resources.html#records">Medical Records</a></li><li><a href="patient-resources.html#forms">Forms</a></li><li><a href="medical-center.html#directory">Phone Directory</a></li></ul></div>
+      <div><h4>Visitors &amp; Community</h4><ul><li><a href="medical-center.html#visiting">Visiting Hours</a></li><li><a href="about.html#events">Classes &amp; Events</a></li><li><a href="careers.html">Careers</a></li><li><a href="foundation.html">Citizens Foundation</a></li><li><a href="foundation.html#volunteer">Volunteer</a></li><li><a href="https://www.cmciks.com/patients-visitors/community-health-assessment/">Community Health Needs Assessment</a></li></ul></div>
+      <div><h4>For Professionals</h4><ul><li><a href="professionals.html#refer">Refer a Patient</a></li><li><a href="professionals.html#staff">Medical Staff Services</a></li><li><a href="careers.html#education">Student Rotations</a></li><li><a href="careers.html#education">ACLS &amp; PALS Classes</a></li><li><a href="careers.html#providers">Physician Recruitment</a></li><li><a href="https://www.cmciks.com/request-for-bids/">Request for Bids</a></li></ul></div>
+      <div><h4>Stay Connected</h4><ul><li><a href="https://www.facebook.com/cmciks/">Facebook</a></li><li><a href="https://www.instagram.com/citizens_health">Instagram</a></li><li><a href="https://www.youtube.com/user/cmciks">YouTube</a></li><li><a href="https://www.linkedin.com/in/citizenshealth/">LinkedIn</a></li></ul></div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Citizens Health · Mailing address: 100 E. College Dr., Colby, KS 67701</span>
+      <a href="patient-resources.html#rights">Patient Rights</a><a href="patient-resources.html#rights">Notice of Privacy Practices</a><a href="patient-resources.html#rights">Nondiscrimination</a><a href="patient-resources.html#prices">Price Transparency</a><a href="patient-resources.html#prices">No Surprises Act</a><a href="accessibility.html">Accessibility</a>
+    </div>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="providers.js"></script>
+<script src="services-data.js"></script>
+<script src="site.js"></script>
+</body>
+</html>

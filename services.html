@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>All Services · Citizens Health</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="site.css">
+<style>
+
+:root{color-scheme:light}
+html,body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+
+.loc-hero{background:var(--hero);color:var(--hero-ink)}
+.loc-hero .wrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center;padding-block:clamp(32px,5vw,64px)}
+.crumbs{font-size:14px;color:var(--hero-muted);display:flex;gap:8px;flex-wrap:wrap}
+.crumbs a{text-decoration:none;font-weight:600}
+.crumbs a:hover{color:#ffffff}
+.idrow{display:flex;align-items:center;gap:16px;margin-top:22px}
+.idrow img{width:64px;height:64px}
+.idrow .eyebrow{color:var(--hero-muted)}
+.loc-hero h1{font-size:clamp(36px,4.8vw,58px);font-weight:800;letter-spacing:-.025em}
+.loc-hero p.lede{margin-top:16px;font-size:clamp(18px,1.6vw,20px);color:var(--hero-muted);max-width:34em}
+.keyfacts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.14);border-radius:var(--r);overflow:hidden;margin-top:28px}
+.keyfacts div{background:rgba(10,22,38,.72);padding:14px 16px;display:grid;gap:2px}
+.keyfacts dt{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--hero-muted)}
+.keyfacts dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums}
+.loc-hero .heroimg{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:14px}
+@media (max-width:860px){.loc-hero .wrap{grid-template-columns:1fr}.loc-hero .heroimg{aspect-ratio:16/10;object-position:50% 30%}.keyfacts{grid-template-columns:1fr}}
+
+.subnav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 73px);z-index:15;background:var(--bg);border-bottom:1px solid var(--line)}
+.subnav .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:none}
+.subnav a{flex:none;text-decoration:none;font-weight:700;font-size:15px;padding:8px 12px;border-radius:999px;color:var(--muted)}
+.subnav a:hover{background:var(--surface);color:var(--ink)}
+section[id]{scroll-margin-top:140px}
+
+/* department block: meta column + content column */
+.dept{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:clamp(24px,5vw,64px);align-items:start}
+.dept h2{font-size:clamp(28px,3vw,38px);font-weight:800;margin-top:8px}
+.meta{display:grid;gap:0;margin-top:20px;border-top:1px solid var(--line)}
+.meta div{padding:12px 0;border-bottom:1px solid var(--line);display:grid;gap:2px}
+.meta dt{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.meta dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums}
+.meta dd small{display:block;font-weight:500;color:var(--muted);font-size:14px}
+.body{display:grid;gap:22px;min-width:0}
+.body > p{color:var(--muted);max-width:62ch}
+.body p.lead{color:var(--ink);font-size:19px;max-width:58ch}
+.body h3{font-size:18px;font-weight:800;margin-bottom:10px}
+.body img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px}
+.body .cols{columns:2;column-gap:32px;margin:0;padding:0;list-style:none}
+.body .cols li{break-inside:avoid;padding:8px 0;border-bottom:1px solid var(--line);font-size:16px}
+.body .cols.three{columns:3}
+.chips2{display:flex;flex-wrap:wrap;gap:8px}
+.chips2 span{font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+.tint .chips2 span{background:var(--raised)}
+.note{background:var(--surface);border-radius:var(--r);padding:16px 18px;font-size:16px}
+.tint .note{background:var(--raised);border:1px solid var(--line)}
+.note.urgent{background:var(--urgent-soft)}
+.note.urgent b{color:var(--urgent)}
+.pricing{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.pricing div{background:var(--raised);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;display:grid;gap:4px}
+.pricing b{font-size:17px}
+.pricing span{color:var(--muted);font-size:15px}
+.pricing .price{color:var(--ink);font-weight:800;font-size:20px;font-variant-numeric:tabular-nums}
+.linkrow{display:flex;flex-wrap:wrap;gap:8px 20px}
+.linkrow a{color:var(--action);font-weight:700;text-decoration:none}
+.linkrow a:hover{text-decoration:underline}
+.mini-prov{display:flex;gap:16px;align-items:center;text-decoration:none;background:var(--raised);border:1px solid var(--line);border-radius:var(--r);padding:12px;max-width:420px}
+.mini-prov img{width:64px;height:80px;object-fit:cover;border-radius:8px;aspect-ratio:auto}
+.mini-prov b{display:block;font-size:17px}
+.mini-prov span{color:var(--muted);font-size:14px}
+.mini-prov:hover b{color:var(--action)}
+@media (max-width:860px){.dept{grid-template-columns:1fr}.body .cols.three{columns:2}.pricing{grid-template-columns:1fr}}
+@media (max-width:520px){.body .cols,.body .cols.three{columns:1}}
+
+.promo{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.promo img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:14px}
+.promo h2{font-size:clamp(28px,3vw,38px);font-weight:800;margin-top:8px}
+.promo p{color:var(--muted);margin-top:12px;max-width:34em}
+.promo .btn{margin-top:20px}
+.promo .eyebrow{color:var(--fchc-ink)}
+@media (max-width:820px){.promo{grid-template-columns:1fr}}
+
+.dir{width:100%;border-collapse:collapse;font-size:16px;font-variant-numeric:tabular-nums}
+.dir th,.dir td{text-align:left;padding:12px 0;border-bottom:1px solid var(--line)}
+.dir td{text-align:right;font-weight:700;white-space:nowrap}
+.dirwrap{columns:2;column-gap:48px}
+.dirwrap table{break-inside:avoid}
+@media (max-width:760px){.dirwrap{columns:1}}
+
+.weekcal{background:var(--raised);border:1px solid var(--line);border-top:4px solid var(--cmc);border-radius:var(--r);padding:18px 20px;margin-top:6px}
+.weekcal .wc-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.weekcal .wc-head h3{font-size:18px;font-weight:800}
+.weekcal .wc-head span{color:var(--muted);font-size:14px}
+.weekcal ul{list-style:none;margin:0;padding:0}
+.weekcal li{display:grid;grid-template-columns:52px minmax(0,1fr) minmax(0,1fr);gap:10px;padding:10px 0;border-top:1px solid var(--line);align-items:baseline}
+.weekcal li b{color:var(--cmc)}
+.weekcal .wc-n{color:var(--muted);font-size:14.5px}
+.weekcal .wc-note{font-size:13px;color:var(--muted);margin-top:10px}
+@media (max-width:560px){.weekcal li{grid-template-columns:44px minmax(0,1fr)}.weekcal .wc-n{grid-column:2}}
+
+.phero.plain{background:linear-gradient(120deg,#123456 0%,#14233a 70%)}
+.phero.plain::before{display:none}
+.aztools{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.aztools .wrap{padding-block:14px;display:flex;flex-direction:column;gap:12px}
+.aztools .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.aztools input{flex:1 1 300px;font:500 17px var(--font);padding:12px 16px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+.aztools input:focus{outline:none;border-color:var(--action);box-shadow:0 0 0 3px var(--action-soft)}
+.lchips{display:flex;flex-wrap:wrap;gap:8px}
+.lchips button{font:700 14px var(--font);padding:8px 13px;border-radius:999px;border:1.5px solid var(--line);background:var(--raised);color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.lchips button i{width:9px;height:9px;border-radius:50%;background:var(--c,var(--ink))}
+.lchips button[aria-pressed="true"]{background:var(--hero);border-color:var(--hero);color:#ffffff}
+.letters{display:flex;flex-wrap:wrap;gap:4px}
+.letters a,.letters span{width:32px;height:32px;display:grid;place-items:center;border-radius:8px;font-weight:800;font-size:15px;text-decoration:none}
+.letters a{color:var(--action);background:var(--action-soft)}
+.letters a:hover{background:var(--action);color:#ffffff}
+.letters span{color:var(--line)}
+.azlist .lgroup{display:grid;grid-template-columns:80px minmax(0,1fr);gap:20px;padding:22px 0;border-bottom:1px solid var(--line);scroll-margin-top:200px}
+.azlist .lgroup>h2{font-size:40px;font-weight:800;color:var(--action);line-height:1}
+.azlist ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 28px}
+.azlist a{display:block;padding:10px 12px 10px 14px;border-radius:10px;text-decoration:none;color:var(--ink);border-left:4px solid var(--c)}
+.azlist a:hover{background:var(--raised)}
+.azlist a b{display:block;font-size:17px}
+.azlist a span{display:block;color:var(--muted);font-size:14.5px}
+.azlist a em{font-style:normal;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ct,var(--c))}
+.c-cmc{--c:var(--cmc)}.c-fchc{--c:var(--fchc);--ct:var(--fchc-ink)}.c-ps{--c:var(--ps)}.c-pd{--c:var(--pd)}.c-fdn{--c:var(--fdn)}
+@media (max-width:760px){.azlist ul{grid-template-columns:1fr}.azlist .lgroup{grid-template-columns:1fr;gap:8px}.azlist .lgroup>h2{font-size:30px}.letters a,.letters span{width:28px;height:28px;font-size:14px}}
+.azempty{padding:30px 0;color:var(--muted)}
+.tour{background:var(--hero);color:#ffffff;border-radius:14px;padding:clamp(24px,3vw,36px);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.tour h2{font-size:clamp(24px,2.6vw,32px);font-weight:800}
+.tour p{color:#dbe4ee;margin-top:6px;max-width:40em}
+.tour b{font-size:clamp(26px,3vw,34px);font-variant-numeric:tabular-nums;white-space:nowrap}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<div class="proto-bar"><div class="wrap"><span class="proto">Draft prototype, not public</span><span class="phone"><a class="pro-link" href="espanol.html" lang="es">Español</a><span class="sep" aria-hidden="true">·</span><a class="pro-link pro-only" href="professionals.html">For Healthcare Professionals</a><span class="sep pro-only" aria-hidden="true">·</span>Main line <b>(785) 462-7511</b></span></div></div>
+
+<header class="site" id="siteHeader">
+  <div class="wrap hdr">
+    <a class="brand" href="index.html" aria-label="Citizens Health home">
+      <img class="on-light" src="img/logo.png" alt="Citizens Health" width="165" height="44">
+      <img class="on-dark" src="img/logo-white.png" alt="Citizens Health" width="165" height="44">
+    </a>
+    <nav class="mainnav" id="mainnav" aria-label="Main">
+      <a class="top-link" href="providers.html">Find a Provider</a>
+      <a class="top-link" href="index.html#locations">Our Campus</a>
+      <div class="mm">
+        <button class="top-link mm-btn" type="button" aria-expanded="false">Services</button>
+        <div class="mm-panel">
+          <div class="wrap mm-grid">
+            <div class="mm-intro"><h3>Services</h3><p>Care for every stage of life, close to home in Colby.</p><a class="more" href="services.html">Browse all services A–Z →</a></div>
+            <div><h4>Featured care</h4><ul>
+              <li><a href="obstetrics.html">Obstetrics &amp; Maternity Suites</a></li>
+              <li><a href="emergency.html">Emergency &amp; Trauma Care</a></li>
+              <li><a href="surgery.html">General Surgery</a></li>
+              <li><a href="specialty-clinic.html">Specialty Clinic</a></li>
+              <li><a href="family-center.html">Family Medicine</a></li>
+              <li><a href="orthopedics.html">Orthopedics</a></li>
+            </ul></div>
+            <div><h4>Tests &amp; therapy</h4><ul>
+              <li><a href="imaging.html">Imaging &amp; Radiology</a></li>
+              <li><a href="laboratory.html">Laboratory</a></li>
+              <li><a href="rehabilitation.html">Rehabilitation</a></li>
+              <li><a href="respiratory-therapy.html">Respiratory Therapy</a></li>
+              <li><a href="medical-equipment.html">Home Medical Equipment</a></li>
+              <li><a href="sc-audiology.html">Audiology</a></li>
+            </ul></div>
+            <div><h4>Get care now</h4><ul>
+              <li><a href="emergency.html">Emergency Room, open 24/7</a></li>
+              <li><a href="family-center.html#hours">Urgent Care &amp; Walk-in</a></li>
+              <li><a href="providers.html#accepting">Providers accepting new patients</a></li>
+              <li><a href="providers.html#visiting">Visiting specialists</a></li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="mm">
+        <button class="top-link mm-btn" type="button" aria-expanded="false">Patients &amp; Visitors</button>
+        <div class="mm-panel">
+          <div class="wrap mm-grid">
+            <div class="mm-intro"><h3>Patients &amp; Visitors</h3><p>Everything you need before, during, and after your visit.</p><a class="more" href="patient-resources.html">Billing &amp; patient resources →</a></div>
+            <div><h4>Patient resources</h4><ul>
+              <li><a href="https://www.cmciks.com/patients-visitors/patient-portal/">MyChart</a></li>
+              <li><a href="https://mychart.ochin.org/cmciks/billing/guestpay">Pay a Bill</a></li>
+              <li><a href="patient-resources.html#plans">Payment Plans</a></li>
+              <li><a href="patient-resources.html#assistance">Financial Assistance</a></li>
+              <li><a href="patient-resources.html#prices">Price Transparency</a></li>
+              <li><a href="patient-resources.html#records">Medical Records</a></li>
+              <li><a href="patient-resources.html#forms">Forms</a></li>
+            </ul></div>
+            <div><h4>Visitor information</h4><ul>
+              <li><a href="medical-center.html#visiting">Visiting Hours &amp; Guidelines</a></li>
+              <li><a href="hospital-stay.html">Planning Your Hospital Stay</a></li>
+              <li><a href="obstetrics.html#visiting">Visiting the Maternity Suites</a></li>
+              <li><a href="index.html#locations">Our Campus &amp; Directions</a></li>
+              <li><a href="about.html#events">Classes &amp; Events</a></li>
+            </ul></div>
+            <div><h4>About us</h4><ul>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="https://www.cmciks.com/patients-visitors/community-health-assessment/">Community Health Needs Assessment</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+      <a class="top-link" href="careers.html">Careers</a>
+      <a class="top-link give" href="foundation.html">Give</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="icon-btn" id="searchBtn" type="button" aria-label="Search" aria-expanded="false" aria-controls="hsearch"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+      <a class="mychart" href="https://www.cmciks.com/patients-visitors/patient-portal/">MyChart Login</a>
+      <a class="btn btn-sched" href="schedule.html">Schedule Now</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainnav">Menu</button>
+    </div>
+  </div>
+  <div class="hsearch" id="hsearch" hidden>
+    <div class="wrap">
+      <label for="hq">I'm looking for...</label>
+      <input id="hq" class="js-search" data-results="hresults" type="search" placeholder="A provider, a service, or a page" autocomplete="off">
+      <ul class="results" id="hresults" hidden></ul>
+    </div>
+  </div>
+</header>
+
+
+<main id="main">
+  <section class="phero plain">
+    <div class="wrap"><div class="in">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span>All services</span></nav>
+      <p class="eyebrow">Services A–Z</p>
+      <h1>All services</h1>
+      <p class="lede">Every service at Citizens Health in one list. Search, filter by location or type of care, or jump to a letter.</p>
+    </div></div>
+  </section>
+
+  <div class="aztools"><div class="wrap">
+    <div class="row">
+      <input id="azq" type="search" placeholder="Search services, for example MRI or physical therapy" autocomplete="off" aria-label="Search services">
+      <div class="lchips" role="group" aria-label="Filter by location">
+        <button type="button" data-l="all" aria-pressed="true">All</button>
+        <button type="button" data-l="cmc" aria-pressed="false" style="--c:var(--cmc)"><i></i>Medical Center</button>
+        <button type="button" data-l="fchc" aria-pressed="false" style="--c:var(--fchc)"><i></i>Family Center</button>
+        <button type="button" data-l="ps" aria-pressed="false" style="--c:var(--ps)"><i></i>Prairie Senior</button>
+        <button type="button" data-l="pd" aria-pressed="false" style="--c:var(--pd)"><i></i>Palace Drug</button>
+      </div>
+    </div>
+    <div class="lchips" role="group" aria-label="Filter by type" id="tchips">
+      <button type="button" data-t="all" aria-pressed="true">All types</button>
+      <button type="button" data-t="care" aria-pressed="false">Care &amp; specialties</button>
+      <button type="button" data-t="tests" aria-pressed="false">Tests &amp; imaging</button>
+      <button type="button" data-t="therapy" aria-pressed="false">Treatments &amp; therapy</button>
+      <button type="button" data-t="resources" aria-pressed="false">Patient resources</button>
+    </div>
+    <nav class="letters" id="letters" aria-label="Jump to letter"></nav>
+  </div></div>
+
+  <section class="block" style="padding-top:12px">
+    <div class="wrap azlist" id="azlist"></div>
+  </section>
+
+  <section class="block" style="padding-top:0">
+    <div class="wrap">
+      <div class="tour">
+        <div><h2>Can't find what you need?</h2><p>Call our main line and we'll connect you with the right department.</p></div>
+        <b>(785) 462-7511</b>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ftop">
+      <div>
+        <img class="flogo" src="img/logo-white.png" alt="Citizens Health" width="150" height="40">
+        <p class="mission">Enhancing the lives of those we serve.</p>
+      </div>
+      <div class="fcall">
+        <span class="fphone">(785) 462-7511</span>
+        <div class="fbtns"><a class="btn btn-ghost" href="contact.html">Contact Us</a><a class="btn btn-primary" href="foundation.html#give">Make a Gift</a></div>
+      </div>
+    </div>
+    <div class="cols">
+      <div><h4>Locations</h4><ul class="contact">
+        <li><a href="medical-center.html"><b>Citizens Medical Center</b></a>(785) 462-7511</li>
+        <li><a href="family-center.html"><b>Family Center for Healthcare</b></a>(785) 462-6184</li>
+        <li><a href="prairie-senior.html"><b>Prairie Senior</b></a>(785) 462-8295</li>
+        <li><a href="palace-drug.html"><b>Palace Drug Store</b></a>(785) 460-7507</li>
+      </ul></div>
+      <div><h4>For Patients</h4><ul><li><a href="providers.html">Find a Provider</a></li><li><a href="https://mychart.ochin.org/cmciks/billing/guestpay">Pay a Bill</a></li><li><a href="patient-resources.html#assistance">Financial Assistance</a></li><li><a href="patient-resources.html#records">Medical Records</a></li><li><a href="patient-resources.html#forms">Forms</a></li><li><a href="medical-center.html#directory">Phone Directory</a></li></ul></div>
+      <div><h4>Visitors &amp; Community</h4><ul><li><a href="medical-center.html#visiting">Visiting Hours</a></li><li><a href="about.html#events">Classes &amp; Events</a></li><li><a href="careers.html">Careers</a></li><li><a href="foundation.html">Citizens Foundation</a></li><li><a href="foundation.html#volunteer">Volunteer</a></li><li><a href="https://www.cmciks.com/patients-visitors/community-health-assessment/">Community Health Needs Assessment</a></li></ul></div>
+      <div><h4>For Professionals</h4><ul><li><a href="professionals.html#refer">Refer a Patient</a></li><li><a href="professionals.html#staff">Medical Staff Services</a></li><li><a href="careers.html#education">Student Rotations</a></li><li><a href="careers.html#education">ACLS &amp; PALS Classes</a></li><li><a href="careers.html#providers">Physician Recruitment</a></li><li><a href="https://www.cmciks.com/request-for-bids/">Request for Bids</a></li></ul></div>
+      <div><h4>Stay Connected</h4><ul><li><a href="https://www.facebook.com/cmciks/">Facebook</a></li><li><a href="https://www.instagram.com/citizens_health">Instagram</a></li><li><a href="https://www.youtube.com/user/cmciks">YouTube</a></li><li><a href="https://www.linkedin.com/in/citizenshealth/">LinkedIn</a></li></ul></div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Citizens Health · Mailing address: 100 E. College Dr., Colby, KS 67701</span>
+      <a href="patient-resources.html#rights">Patient Rights</a><a href="patient-resources.html#rights">Notice of Privacy Practices</a><a href="patient-resources.html#rights">Nondiscrimination</a><a href="patient-resources.html#prices">Price Transparency</a><a href="patient-resources.html#prices">No Surprises Act</a><a href="accessibility.html">Accessibility</a>
+    </div>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+(function(){
+  var S=[{"n": "Abdominal surgery", "d": "General surgery, including laparoscopic procedures", "l": "cmc", "u": "surgery.html", "t": "therapy"}, {"n": "Acute care (inpatient)", "d": "Hospital stays at Citizens Medical Center", "l": "cmc", "u": "hospital-stay.html", "t": "care"}, {"n": "Allergy & immunology", "d": "Visiting specialist in the Specialty Clinic", "l": "cmc", "u": "sc-allergy-immunology.html", "t": "care"}, {"n": "Annual exams & physicals", "d": "Checkups, screenings, and school, sports, and work physicals", "l": "fchc", "u": "family-center.html#services", "t": "care", "k": "physical sports physical"}, {"n": "Audiology", "d": "Hearing exams, hearing aids, and cochlear implant programming", "l": "cmc", "u": "sc-audiology.html", "t": "care", "k": "hearing aids ears"}, {"n": "Bone density (DEXA)", "d": "Screening for osteoporosis", "l": "cmc", "u": "imaging.html", "t": "tests"}, {"n": "Breast care & surgery", "d": "Breast exams, biopsies, and surgery", "l": "cmc", "u": "surgery.html", "t": "therapy"}, {"n": "Cardiac stress testing", "d": "Treadmill and nuclear stress tests", "l": "cmc", "u": "respiratory-therapy.html", "t": "tests"}, {"n": "Cardiology", "d": "Visiting cardiologists in the Specialty Clinic", "l": "cmc", "u": "sc-cardiology.html", "t": "care", "k": "heart"}, {"n": "Chemotherapy & infusion", "d": "IV medications, infusions, and injections", "l": "cmc", "u": "specialty-clinic.html#infusion", "t": "therapy", "k": "cancer iv infusion"}, {"n": "Children & teens", "d": "Well-child visits, immunizations, and sick visits", "l": "fchc", "u": "fc-childrens-health.html", "t": "care"}, {"n": "Chronic disease care", "d": "Diabetes, heart disease, COPD, asthma, and more", "l": "fchc", "u": "fc-chronic-care.html", "t": "care"}, {"n": "Colonoscopy & endoscopy", "d": "Screening and diagnostic scopes", "l": "cmc", "u": "surgery.html", "t": "therapy"}, {"n": "Counseling", "d": "Behavioral health and counseling services", "l": "fchc", "u": "sc-counseling.html", "t": "therapy", "k": "mental health therapy"}, {"n": "CT scans", "d": "Including CT coronary calcium scoring", "l": "cmc", "u": "imaging.html", "t": "tests"}, {"n": "Dietitian & nutrition", "d": "Nutrition counseling with a registered dietitian", "l": "cmc", "u": "sc-nutrition.html", "t": "care"}, {"n": "Drug & alcohol testing", "d": "DOT and non-DOT testing for employers", "l": "cmc", "u": "laboratory.html", "t": "tests"}, {"n": "Ear, nose & throat (ENT)", "d": "Visiting specialist in the Specialty Clinic", "l": "cmc", "u": "sc-ear-nose-throat.html", "t": "care"}, {"n": "Echocardiograms", "d": "Ultrasound images of the heart", "l": "cmc", "u": "imaging.html", "t": "tests"}, {"n": "EKG", "d": "Heart rhythm testing", "l": "cmc", "u": "respiratory-therapy.html", "t": "tests"}, {"n": "Emergency Room", "d": "Open 24/7, Level IV Trauma Center", "l": "cmc", "u": "emergency.html", "t": "care", "k": "er emergency room 911"}, {"n": "Employer services", "d": "Pre-employment testing and workplace health", "l": "fchc", "u": "fc-employer-services.html", "t": "resources"}, {"n": "Endocrinology", "d": "Visiting specialist in the Specialty Clinic", "l": "cmc", "u": "sc-endocrinology.html", "t": "care"}, {"n": "Family medicine", "d": "Primary care for every age with your own provider", "l": "fchc", "u": "family-center.html", "t": "care", "k": "doctor primary care pcp checkup"}, {"n": "Financial assistance", "d": "Help paying for care, in English and Spanish", "l": "cmc", "u": "patient-resources.html#assistance", "t": "resources"}, {"n": "Gallbladder surgery", "d": "Laparoscopic or open gallbladder removal", "l": "cmc", "u": "surgery.html", "t": "therapy"}, {"n": "General surgery", "d": "Northwest Kansas Surgical Associates", "l": "cmc", "u": "surgery.html", "t": "therapy"}, {"n": "Gynecology", "d": "Visiting gynecologist in the Specialty Clinic", "l": "cmc", "u": "sc-gynecology.html", "t": "care"}, {"n": "Hernia repair", "d": "Surgical repair of hernias", "l": "cmc", "u": "surgery.html", "t": "therapy"}, {"n": "Home medical equipment", "d": "Walkers, wheelchairs, oxygen, and CPAP", "l": "cmc", "u": "medical-equipment.html", "t": "therapy", "k": "dme oxygen wheelchair walker"}, {"n": "Immunizations", "d": "Vaccines for children and adults", "l": "fchc", "u": "fc-immunizations.html", "t": "therapy", "k": "flu shot shots vaccine vaccines vaccination"}, {"n": "Lab testing", "d": "Blood work and testing, with direct access options", "l": "cmc", "u": "laboratory.html", "t": "tests", "k": "blood work bloodwork test"}, {"n": "Lactation support", "d": "Breastfeeding help from our lactation counselors", "l": "cmc", "u": "obstetrics.html#after", "t": "therapy"}, {"n": "Long-term care", "d": "Skilled nursing and rehabilitation at Prairie Senior", "l": "ps", "u": "prairie-senior.html", "t": "care"}, {"n": "Mammography", "d": "Including 3D mammography", "l": "cmc", "u": "imaging.html", "t": "tests", "k": "mammogram breast"}, {"n": "Maternal-fetal medicine", "d": "High-risk pregnancy care by telehealth", "l": "cmc", "u": "sc-maternal-fetal-medicine.html", "t": "care"}, {"n": "Maternity Suites", "d": "Labor, delivery, and newborn care", "l": "cmc", "u": "obstetrics.html#suites", "t": "care", "k": "baby birth delivery labor"}, {"n": "Medical records", "d": "Request copies of your records", "l": "cmc", "u": "patient-resources.html#records", "t": "resources", "k": "records him"}, {"n": "Memory care", "d": "Special Care Unit for Alzheimer's and dementia", "l": "ps", "u": "prairie-senior.html#scu", "t": "care"}, {"n": "Men's health", "d": "Screenings and care for men", "l": "fchc", "u": "family-center.html#services", "t": "care"}, {"n": "Minor procedures", "d": "Skin, wound, and in-office procedures", "l": "fchc", "u": "family-center.html#services", "t": "therapy"}, {"n": "MRI", "d": "Magnetic resonance imaging", "l": "cmc", "u": "imaging.html", "t": "tests"}, {"n": "MyChart", "d": "Message your provider, see results, and pay bills", "l": "cmc", "u": "https://www.cmciks.com/patients-visitors/patient-portal/", "t": "resources"}, {"n": "Nephrology", "d": "Visiting kidney specialist in the Specialty Clinic", "l": "cmc", "u": "sc-nephrology.html", "t": "care", "k": "kidney"}, {"n": "Neurology", "d": "Visiting neurologists in the Specialty Clinic", "l": "cmc", "u": "sc-neurology.html", "t": "care"}, {"n": "Nuclear medicine", "d": "Including cardiac nuclear stress testing", "l": "cmc", "u": "imaging.html", "t": "tests"}, {"n": "Obstetrics", "d": "Prenatal care through delivery and beyond", "l": "cmc", "u": "obstetrics.html", "t": "care", "k": "baby pregnancy pregnant birth delivery"}, {"n": "Occupational therapy", "d": "Return to daily activities after injury or illness", "l": "cmc", "u": "rehabilitation.html", "t": "therapy"}, {"n": "Older adults", "d": "Medicare wellness visits and care for seniors", "l": "fchc", "u": "fc-older-adults.html", "t": "care"}, {"n": "Oncology & hematology", "d": "Cancer and blood disorder care in the Specialty Clinic", "l": "cmc", "u": "sc-oncology-hematology.html", "t": "care", "k": "cancer"}, {"n": "Ophthalmology", "d": "Visiting eye specialist in the Specialty Clinic", "l": "cmc", "u": "sc-ophthalmology.html", "t": "care", "k": "eye eyes vision"}, {"n": "Orthopedics", "d": "Joint pain, sports injuries, and joint replacement", "l": "cmc", "u": "orthopedics.html", "t": "care"}, {"n": "Pain management", "d": "Visiting specialist in the Specialty Clinic", "l": "cmc", "u": "sc-pain-management.html", "t": "care"}, {"n": "Pay a bill", "d": "Pay online as a guest or in MyChart", "l": "cmc", "u": "https://mychart.ochin.org/cmciks/billing/guestpay", "t": "resources", "k": "billing payment"}, {"n": "PET scans", "d": "Mobile PET-CT every other week", "l": "cmc", "u": "imaging.html", "t": "tests"}, {"n": "Pharmacy", "d": "Prescriptions and refills at Palace Drug Store", "l": "pd", "u": "palace-drug.html", "t": "therapy", "k": "prescription prescriptions rx medicine"}, {"n": "Physical therapy", "d": "No referral needed for an evaluation", "l": "cmc", "u": "rehabilitation.html", "t": "therapy", "k": "pt"}, {"n": "Podiatry", "d": "Visiting foot specialist in the Specialty Clinic", "l": "cmc", "u": "sc-podiatry.html", "t": "care", "k": "foot feet"}, {"n": "Prenatal care", "d": "Visits through your pregnancy with your provider", "l": "fchc", "u": "obstetrics.html#expect", "t": "care"}, {"n": "Price transparency", "d": "Cost estimates and standard charges", "l": "cmc", "u": "patient-resources.html#prices", "t": "resources"}, {"n": "Psychiatry", "d": "Mental health care by telehealth", "l": "cmc", "u": "sc-psychiatry.html", "t": "care", "k": "mental health"}, {"n": "Pulmonary function testing", "d": "Breathing and lung tests", "l": "cmc", "u": "respiratory-therapy.html", "t": "tests"}, {"n": "Pulmonology", "d": "Lung specialist in the Specialty Clinic", "l": "cmc", "u": "sc-pulmonology.html", "t": "care", "k": "lung lungs"}, {"n": "Radiology & imaging", "d": "X-ray, CT, MRI, ultrasound, and more", "l": "cmc", "u": "imaging.html", "t": "tests"}, {"n": "Rehabilitation", "d": "Physical, occupational, and speech therapy", "l": "cmc", "u": "rehabilitation.html", "t": "therapy"}, {"n": "Rejuvenation Aesthetics", "d": "Botox, fillers, peels, and skin care", "l": "fchc", "u": "family-center.html#aesthetics", "t": "therapy"}, {"n": "Respiratory therapy", "d": "Heart and lung testing and treatment", "l": "cmc", "u": "respiratory-therapy.html", "t": "therapy"}, {"n": "Rheumatology", "d": "Visiting specialist in the Specialty Clinic", "l": "cmc", "u": "sc-rheumatology.html", "t": "care"}, {"n": "Sleep medicine", "d": "Sleep studies and visiting specialist", "l": "cmc", "u": "sc-sleep-medicine.html", "t": "care", "k": "sleep apnea cpap"}, {"n": "Social work", "d": "Support and resources for patients and families", "l": "fchc", "u": "providers.html#sowers", "t": "resources"}, {"n": "Specialty Clinic", "d": "More than 30 visiting specialists in Colby", "l": "cmc", "u": "specialty-clinic.html", "t": "care"}, {"n": "Speech therapy", "d": "Speech, language, and swallowing therapy", "l": "cmc", "u": "rehabilitation.html", "t": "therapy"}, {"n": "Spine surgery", "d": "Visiting spine surgeon", "l": "cmc", "u": "sc-spine-surgery.html", "t": "care"}, {"n": "Ultrasound", "d": "Diagnostic ultrasound imaging", "l": "cmc", "u": "imaging.html", "t": "tests"}, {"n": "Urgent care", "d": "Same-day care for illness and minor injury", "l": "fchc", "u": "family-center.html#hours", "t": "care", "k": "sick same day"}, {"n": "Urology", "d": "Visiting urologists in the Specialty Clinic", "l": "cmc", "u": "specialty-clinic.html", "t": "care", "k": "bladder kidney stones"}, {"n": "Vascular surgery", "d": "Visiting vascular surgeon", "l": "cmc", "u": "sc-vascular-surgery.html", "t": "care"}, {"n": "Volunteering", "d": "Give your time at our hospital or Prairie Senior", "l": "fdn", "u": "foundation.html#volunteer", "t": "resources"}, {"n": "Walk-in clinic", "d": "Weekday mornings and Saturdays, no appointment", "l": "fchc", "u": "family-center.html#hours", "t": "care", "k": "sick walk in"}, {"n": "Weight loss program", "d": "Nutrition counseling with medical supervision", "l": "fchc", "u": "fc-chronic-care.html", "t": "therapy"}, {"n": "Women's health", "d": "Annual exams and care for women", "l": "fchc", "u": "fc-womens-health.html", "t": "care"}, {"n": "Wound care", "d": "Surgical and chronic wound care", "l": "cmc", "u": "surgery.html", "t": "therapy"}, {"n": "X-ray & fluoroscopy", "d": "Diagnostic X-ray and fluoroscopy", "l": "cmc", "u": "imaging.html", "t": "tests"}, {"n": "Trauma care", "d": "Level IV Trauma Center, open 24/7", "l": "cmc", "u": "emergency.html", "t": "care"}, {"n": "Joint replacement", "d": "Hip and knee replacement with our orthopedic surgeons", "l": "cmc", "u": "orthopedics.html", "t": "therapy"}, {"n": "Sports medicine", "d": "Sports injuries and return-to-play care", "l": "cmc", "u": "orthopedics.html", "t": "care"}, {"n": "Telehealth specialists in Emergency", "d": "Remote neurology, stroke, and psychiatry consults", "l": "cmc", "u": "emergency.html#care", "t": "care"}, {"n": "Planning your hospital stay", "d": "What to bring, visiting, and going home", "u": "hospital-stay.html", "l": "cmc", "t": "resources"}, {"n": "Outpatient infusion", "d": "IV medications, injections, and infusions", "u": "specialty-clinic.html#infusion", "l": "cmc", "t": "therapy"}, {"n": "Hand therapy", "d": "Hand therapy, tendon repair, and custom splinting", "u": "rehabilitation.html#treat", "l": "cmc", "t": "therapy"}, {"n": "Massage", "d": "Massage with our rehab team", "u": "rehabilitation.html#programs", "l": "cmc", "t": "therapy"}, {"n": "Fitness maintenance program", "d": "Gym access with a personal plan, open to the public", "u": "rehabilitation.html#programs", "l": "cmc", "t": "therapy"}, {"n": "Advance directives", "d": "Forms to record your health care wishes", "u": "hospital-stay.html#ahead", "l": "cmc", "t": "resources"}, {"n": "Sleep apnea testing", "d": "Home sleep testing", "u": "respiratory-therapy.html#testing", "l": "cmc", "t": "tests"}, {"n": "Holter and heart monitors", "d": "Track your heart rhythm at home", "u": "respiratory-therapy.html#testing", "l": "cmc", "t": "tests"}];
+  var L={cmc:'Medical Center',fchc:'Family Center',ps:'Prairie Senior',pd:'Palace Drug',fdn:'Foundation'};
+  var loc='all',typ='all',q='';
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function render(){
+    var list=S.filter(function(s){return (loc==='all'||s.l===loc)&&(typ==='all'||s.t===typ)&&(!q||(s.n+' '+s.d).toLowerCase().indexOf(q)>-1)}).sort(function(a,b){return a.n.localeCompare(b.n)});
+    var g={};list.forEach(function(s){var k=s.n[0].toUpperCase();(g[k]=g[k]||[]).push(s)});
+    var abc='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+    document.getElementById('letters').innerHTML=abc.map(function(k){return g[k]?'<a href="#l-'+k+'">'+k+'</a>':'<span aria-hidden="true">'+k+'</span>'}).join('');
+    document.getElementById('azlist').innerHTML=list.length?abc.filter(function(k){return g[k]}).map(function(k){
+      return '<div class="lgroup" id="l-'+k+'"><h2>'+k+'</h2><ul>'+g[k].map(function(s){var ext=/^https?:/.test(s.u);
+        return '<li><a class="c-'+s.l+'" href="'+s.u+'"><em>'+L[s.l]+'</em><b>'+esc(s.n)+'</b><span>'+esc(s.d)+'</span></a></li>'}).join('')+'</ul></div>'}).join('')
+      :'<p class="azempty">No services match. Try another word, or call (785) 462-7511.</p>';
+  }
+  document.getElementById('azq').addEventListener('input',function(e){q=e.target.value.trim().toLowerCase();render()});
+  document.querySelectorAll('.lchips button[data-l]').forEach(function(b){b.addEventListener('click',function(){loc=b.dataset.l;document.querySelectorAll('.lchips button[data-l]').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});render()})});
+  document.querySelectorAll('.lchips button[data-t]').forEach(function(b){b.addEventListener('click',function(){typ=b.dataset.t;document.querySelectorAll('.lchips button[data-t]').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});render()})});
+  render();
+})();
+</script>
+<script src="providers.js"></script>
+<script src="services-data.js"></script>
+<script src="site.js"></script>
+</body>
+</html>

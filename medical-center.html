@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Citizens Medical Center · Citizens Health</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="site.css">
+<style>
+:root{color-scheme:light}
+html,body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+
+.loc-hero{background:var(--hero);color:var(--hero-ink)}
+.loc-hero .wrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center;padding-block:clamp(32px,5vw,64px)}
+.crumbs{font-size:14px;color:var(--hero-muted);display:flex;gap:8px;flex-wrap:wrap}
+.crumbs a{text-decoration:none;font-weight:600}
+.crumbs a:hover{color:#ffffff}
+.idrow{display:flex;align-items:center;gap:16px;margin-top:22px}
+.idrow img{width:64px;height:64px}
+.idrow .eyebrow{color:var(--hero-muted)}
+.loc-hero h1{font-size:clamp(36px,4.8vw,58px);font-weight:800;letter-spacing:-.025em}
+.loc-hero p.lede{margin-top:16px;font-size:clamp(18px,1.6vw,20px);color:var(--hero-muted);max-width:34em}
+.keyfacts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.14);border-radius:var(--r);overflow:hidden;margin-top:28px}
+.keyfacts div{background:rgba(10,22,38,.72);padding:14px 16px;display:grid;gap:2px}
+.keyfacts dt{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--hero-muted)}
+.keyfacts dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums}
+.loc-hero .heroimg{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:14px}
+@media (max-width:860px){.loc-hero .wrap{grid-template-columns:1fr}.loc-hero .heroimg{aspect-ratio:16/10;object-position:50% 30%}.keyfacts{grid-template-columns:1fr}}
+
+.subnav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 73px);z-index:15;background:var(--bg);border-bottom:1px solid var(--line)}
+.subnav .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:none}
+.subnav a{flex:none;text-decoration:none;font-weight:700;font-size:15px;padding:8px 12px;border-radius:999px;color:var(--muted)}
+.subnav a:hover{background:var(--surface);color:var(--ink)}
+section[id]{scroll-margin-top:140px}
+
+/* department block: meta column + content column */
+.dept{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:clamp(24px,5vw,64px);align-items:start}
+.dept h2{font-size:clamp(28px,3vw,38px);font-weight:800;margin-top:8px}
+.meta{display:grid;gap:0;margin-top:20px;border-top:1px solid var(--line)}
+.meta div{padding:12px 0;border-bottom:1px solid var(--line);display:grid;gap:2px}
+.meta dt{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.meta dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums}
+.meta dd small{display:block;font-weight:500;color:var(--muted);font-size:14px}
+.body{display:grid;gap:22px;min-width:0}
+.body > p{color:var(--muted);max-width:62ch}
+.body p.lead{color:var(--ink);font-size:19px;max-width:58ch}
+.body h3{font-size:18px;font-weight:800;margin-bottom:10px}
+.body img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px}
+.cols{columns:2;column-gap:32px;margin:0;padding:0;list-style:none}
+.cols li{break-inside:avoid;padding:8px 0;border-bottom:1px solid var(--line);font-size:16px}
+.cols.three{columns:3}
+.chips2{display:flex;flex-wrap:wrap;gap:8px}
+.chips2 span{font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+.tint .chips2 span{background:var(--raised)}
+.note{background:var(--surface);border-radius:var(--r);padding:16px 18px;font-size:16px}
+.tint .note{background:var(--raised);border:1px solid var(--line)}
+.note.urgent{background:var(--urgent-soft)}
+.note.urgent b{color:var(--urgent)}
+.pricing{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.pricing div{background:var(--raised);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;display:grid;gap:4px}
+.pricing b{font-size:17px}
+.pricing span{color:var(--muted);font-size:15px}
+.pricing .price{color:var(--ink);font-weight:800;font-size:20px;font-variant-numeric:tabular-nums}
+.linkrow{display:flex;flex-wrap:wrap;gap:8px 20px}
+.linkrow a{color:var(--action);font-weight:700;text-decoration:none}
+.linkrow a:hover{text-decoration:underline}
+.mini-prov{display:flex;gap:16px;align-items:center;text-decoration:none;background:var(--raised);border:1px solid var(--line);border-radius:var(--r);padding:12px;max-width:420px}
+.mini-prov img{width:64px;height:80px;object-fit:cover;border-radius:8px;aspect-ratio:auto}
+.mini-prov b{display:block;font-size:17px}
+.mini-prov span{color:var(--muted);font-size:14px}
+.mini-prov:hover b{color:var(--action)}
+@media (max-width:860px){.dept{grid-template-columns:1fr}.cols.three{columns:2}.pricing{grid-template-columns:1fr}}
+@media (max-width:520px){.cols,.cols.three{columns:1}}
+
+.promo{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.promo img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:14px}
+.promo h2{font-size:clamp(28px,3vw,38px);font-weight:800;margin-top:8px}
+.promo p{color:var(--muted);margin-top:12px;max-width:34em}
+.promo .btn{margin-top:20px}
+.promo .eyebrow{color:var(--fchc-ink)}
+@media (max-width:820px){.promo{grid-template-columns:1fr}}
+
+.dir{width:100%;border-collapse:collapse;font-size:16px;font-variant-numeric:tabular-nums}
+.dir th,.dir td{text-align:left;padding:12px 0;border-bottom:1px solid var(--line)}
+.dir td{text-align:right;font-weight:700;white-space:nowrap}
+.dirwrap{columns:2;column-gap:48px}
+.dirwrap table{break-inside:avoid}
+@media (max-width:760px){.dirwrap{columns:1}}
+.weekcal{background:var(--raised);border:1px solid var(--line);border-top:4px solid var(--cmc);border-radius:var(--r);padding:18px 20px;margin-top:6px}
+.weekcal .wc-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.weekcal .wc-head h3{font-size:18px;font-weight:800}
+.weekcal .wc-head span{color:var(--muted);font-size:14px}
+.weekcal ul{list-style:none;margin:0;padding:0}
+.weekcal li{display:grid;grid-template-columns:52px minmax(0,1fr) minmax(0,1fr);gap:10px;padding:10px 0;border-top:1px solid var(--line);align-items:baseline}
+.weekcal li b{color:var(--cmc)}
+.weekcal .wc-n{color:var(--muted);font-size:14.5px}
+.weekcal .wc-note{font-size:13px;color:var(--muted);margin-top:10px}
+@media (max-width:560px){.weekcal li{grid-template-columns:44px minmax(0,1fr)}.weekcal .wc-n{grid-column:2}}
+
+.morelink-wrap{order:99}
+.morelink{display:inline-flex;align-items:center;gap:6px;font-weight:800;color:var(--action);text-decoration:none;font-size:17px}
+.morelink:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<div class="proto-bar"><div class="wrap"><span class="proto">Draft prototype, not public</span><span class="phone"><a class="pro-link" href="espanol.html" lang="es">Español</a><span class="sep" aria-hidden="true">·</span><a class="pro-link pro-only" href="professionals.html">For Healthcare Professionals</a><span class="sep pro-only" aria-hidden="true">·</span>Main line <b>(785) 462-7511</b></span></div></div>
+
+<header class="site" id="siteHeader">
+  <div class="wrap hdr">
+    <a class="brand" href="index.html" aria-label="Citizens Health home">
+      <img class="on-light" src="img/logo.png" alt="Citizens Health" width="165" height="44">
+      <img class="on-dark" src="img/logo-white.png" alt="Citizens Health" width="165" height="44">
+    </a>
+    <nav class="mainnav" id="mainnav" aria-label="Main">
+      <a class="top-link" href="providers.html">Find a Provider</a>
+      <a class="top-link" href="index.html#locations">Our Campus</a>
+      <div class="mm">
+        <button class="top-link mm-btn" type="button" aria-expanded="false">Services</button>
+        <div class="mm-panel">
+          <div class="wrap mm-grid">
+            <div class="mm-intro"><h3>Services</h3><p>Care for every stage of life, close to home in Colby.</p><a class="more" href="services.html">Browse all services A–Z →</a></div>
+            <div><h4>Featured care</h4><ul>
+              <li><a href="obstetrics.html">Obstetrics &amp; Maternity Suites</a></li>
+              <li><a href="emergency.html">Emergency &amp; Trauma Care</a></li>
+              <li><a href="surgery.html">General Surgery</a></li>
+              <li><a href="specialty-clinic.html">Specialty Clinic</a></li>
+              <li><a href="family-center.html">Family Medicine</a></li>
+              <li><a href="orthopedics.html">Orthopedics</a></li>
+            </ul></div>
+            <div><h4>Tests &amp; therapy</h4><ul>
+              <li><a href="imaging.html">Imaging &amp; Radiology</a></li>
+              <li><a href="laboratory.html">Laboratory</a></li>
+              <li><a href="rehabilitation.html">Rehabilitation</a></li>
+              <li><a href="respiratory-therapy.html">Respiratory Therapy</a></li>
+              <li><a href="medical-equipment.html">Home Medical Equipment</a></li>
+              <li><a href="sc-audiology.html">Audiology</a></li>
+            </ul></div>
+            <div><h4>Get care now</h4><ul>
+              <li><a href="emergency.html">Emergency Room, open 24/7</a></li>
+              <li><a href="family-center.html#hours">Urgent Care &amp; Walk-in</a></li>
+              <li><a href="providers.html#accepting">Providers accepting new patients</a></li>
+              <li><a href="providers.html#visiting">Visiting specialists</a></li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="mm">
+        <button class="top-link mm-btn" type="button" aria-expanded="false">Patients &amp; Visitors</button>
+        <div class="mm-panel">
+          <div class="wrap mm-grid">
+            <div class="mm-intro"><h3>Patients &amp; Visitors</h3><p>Everything you need before, during, and after your visit.</p><a class="more" href="patient-resources.html">Billing &amp; patient resources →</a></div>
+            <div><h4>Patient resources</h4><ul>
+              <li><a href="https://www.cmciks.com/patients-visitors/patient-portal/">MyChart</a></li>
+              <li><a href="https://mychart.ochin.org/cmciks/billing/guestpay">Pay a Bill</a></li>
+              <li><a href="patient-resources.html#plans">Payment Plans</a></li>
+              <li><a href="patient-resources.html#assistance">Financial Assistance</a></li>
+              <li><a href="patient-resources.html#prices">Price Transparency</a></li>
+              <li><a href="patient-resources.html#records">Medical Records</a></li>
+              <li><a href="patient-resources.html#forms">Forms</a></li>
+            </ul></div>
+            <div><h4>Visitor information</h4><ul>
+              <li><a href="medical-center.html#visiting">Visiting Hours &amp; Guidelines</a></li>
+              <li><a href="hospital-stay.html">Planning Your Hospital Stay</a></li>
+              <li><a href="obstetrics.html#visiting">Visiting the Maternity Suites</a></li>
+              <li><a href="index.html#locations">Our Campus &amp; Directions</a></li>
+              <li><a href="about.html#events">Classes &amp; Events</a></li>
+            </ul></div>
+            <div><h4>About us</h4><ul>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="https://www.cmciks.com/patients-visitors/community-health-assessment/">Community Health Needs Assessment</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+      <a class="top-link" href="careers.html">Careers</a>
+      <a class="top-link give" href="foundation.html">Give</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="icon-btn" id="searchBtn" type="button" aria-label="Search" aria-expanded="false" aria-controls="hsearch"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+      <a class="mychart" href="https://www.cmciks.com/patients-visitors/patient-portal/">MyChart Login</a>
+      <a class="btn btn-sched" href="schedule.html">Schedule Now</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainnav">Menu</button>
+    </div>
+  </div>
+  <div class="hsearch" id="hsearch" hidden>
+    <div class="wrap">
+      <label for="hq">I'm looking for...</label>
+      <input id="hq" class="js-search" data-results="hresults" type="search" placeholder="A provider, a service, or a page" autocomplete="off">
+      <ul class="results" id="hresults" hidden></ul>
+    </div>
+  </div>
+</header>
+
+
+<main id="main">
+  <section class="phero loc">
+    <img class="hero-bg" src="img/photos/waiting-blue.jpg" alt="">
+    <div class="wrap"><div class="in">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><a href="index.html#locations">Our Campus</a><span aria-hidden="true">/</span><span>Citizens Medical Center</span></nav>
+      <div class="idrow"><img src="img/mark-cmc.png" alt=""><span class="eyebrow" style="margin:0">Hospital · Critical access</span></div>
+      <h1>Citizens Medical Center</h1>
+      <p class="lede">Emergency care, surgery, imaging, lab, rehab, the Specialty Clinic, and the Maternity Suites, all on our campus in Colby.</p>
+      <dl class="keyfacts">
+        <div><dt>Address</dt><dd>1525 S. Franklin Ave.<br>Colby, KS 67701</dd></div>
+        <div><dt>Main line</dt><dd>(785) 462-7511</dd></div>
+        <div><dt>Emergency Room</dt><dd>Open 24 hours</dd></div>
+      </dl>
+    </div></div>
+  </section>
+
+  <nav class="subnav" aria-label="On this page"><div class="wrap">
+    <a href="#emergency">Emergency</a><a href="#surgery">Surgery</a><a href="#specialty">Specialty Clinic</a><a href="#imaging">Imaging</a><a href="#lab">Laboratory</a><a href="#rehab">Rehabilitation</a><a href="#respiratory">Respiratory Therapy</a><a href="#equipment">Medical Equipment</a><a href="#maternity">Maternity Suites</a><a href="#visiting">Visiting</a><a href="#directory">Phone Directory</a>
+  </div></nav>
+
+  <section class="block" id="emergency">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow">Emergency Room</p>
+        <h2>Emergency care, day and night</h2>
+        <dl class="meta">
+          <div><dt>Hours</dt><dd>Open 24 hours, every day</dd></div>
+          <div><dt>Phone</dt><dd>(785) 462-7511<small>ER staff can't give medical advice over the phone</small></dd></div>
+          <div><dt>Designation</dt><dd>Level IV Trauma Center</dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <p class="note urgent">For a life-threatening emergency, <b>call 911</b>.</p>
+        <img src="img/photos/er-room.jpg" alt="A treatment room in the Citizens Medical Center Emergency Room" loading="lazy">
+        <p class="lead">Our ER provides life-saving treatment for children and adults. Experienced medical professionals are here 24 hours a day for any illness or injury.</p>
+        <p>Surgery, nursing, pharmacy, respiratory therapy, radiology, and laboratory staff are ready to respond at any hour, and emergency surgery is available around the clock when a procedure can't wait.</p>
+        <div class="linkrow"><a href="emergency.html">More about emergency &amp; trauma care →</a></div>
+        <div>
+          <h3>Level IV Trauma Center</h3>
+          <p style="color:var(--muted)">Credentialed by the Kansas Department of Health and Environment and the American College of Surgeons, and endorsed by the Kansas Advisory Committee on Trauma. We stabilize seriously injured patients and transfer them to a higher-level trauma center when they need more extensive care.</p>
+        </div>
+        <div>
+          <h3>Specialists by telehealth</h3>
+          <p style="color:var(--muted)">Our telehealth robot connects ER patients with specialists by live video and audio, and can link to devices like otoscopes and ultrasound. It often lets patients be evaluated here instead of being transferred.</p>
+          <div class="chips2" style="margin-top:10px"><span>Tele-Neuro</span><span>Tele-Stroke</span><span>Tele-Psychiatry</span></div>
+        </div>
+        <div>
+          <h3>Helpful resources</h3>
+          <div class="linkrow">
+            <a href="https://www.poison.org/">Poison Control: (800) 222-1222</a>
+            <a href="https://www.safekidskansas.org/">Safe Kids Kansas</a>
+            <a href="https://kissnetwork.us/">Emergent Stroke Ready Hospital</a>
+            <a href="https://cpr.heart.org/en/cpr-courses-and-kits/hands-only-cpr">Hands-Only CPR</a>
+            <a href="https://www.stopthebleed.org/">Stop the Bleed</a>
+            <a href="https://www.kstrauma.org/">Kansas trauma centers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block tint" id="surgery">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow">Northwest Kansas Surgical Associates</p>
+        <h2>General surgery</h2>
+        <dl class="meta">
+          <div><dt>Admission hours</dt><dd>7:15am to 5pm</dd></div>
+          <div><dt>Emergency surgery</dt><dd>Available 24/7</dd></div>
+          <div><dt>Phone</dt><dd>(785) 462-7511</dd></div>
+          <div><dt>24-hour nurse line</dt><dd>(785) 460-1262</dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <p class="morelink-wrap"><a class="morelink" href="surgery.html">More about general surgery →</a></p>
+        <p class="lead">Board-certified surgeons at Northwest Kansas Surgical Associates, inside Citizens Medical Center, provide a full range of surgical services so you can stay close to home.</p>
+        <div>
+          <h3>Procedures for adults and children</h3>
+          <ul class="cols">
+            <li>Abdominal surgery</li><li>Appendectomy</li><li>Bowel resection</li><li>Breast care and surgery</li><li>Gallbladder removal (laparoscopic or open)</li><li>Colonoscopy</li><li>Upper endoscopy (EGD)</li><li>Hemorrhoidectomy</li><li>Hernia repair</li><li>Parathyroidectomy</li><li>Skin biopsies and excisions</li><li>Surgical wound care</li><li>Thyroidectomy</li><li>Vascular access</li>
+          </ul>
+        </div>
+        <a class="mini-prov" href="providers.html#kopriva"><img src="img/people/dr-kopriva.jpg" alt=""><span><b>Brenda Kopriva, M.D.</b><span>General Surgeon</span></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="specialty">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow">Specialty Clinic</p>
+        <h2>Specialists, without the drive</h2>
+        <dl class="meta">
+          <div><dt>Scheduling</dt><dd>(785) 460-1223</dd></div>
+          <div><dt>Nurse line</dt><dd>(785) 460-1215</dd></div>
+          <div><dt>Fax</dt><dd>(785) 460-1206</dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <p class="morelink-wrap"><a class="morelink" href="specialty-clinic.html">Explore the Specialty Clinic →</a></p>
+        <p class="lead">Physicians from across the region and beyond travel to Colby so you can see a specialist close to home.</p>
+        <div>
+          <h3>Specialties</h3>
+          <div class="chips2"><span>Allergy &amp; Immunology</span><span>Anesthesia</span><span>Cardiology</span><span>Counseling</span><span>Dietitian</span><span>Endocrinology</span><span>Gynecology</span><span>Maternal-Fetal Medicine</span><span>Nephrology</span><span>Neurology</span><span>Oncology &amp; Hematology</span><span>Ophthalmology</span><span>Orthopedics</span><span>Ear, Nose &amp; Throat</span><span>Pain Management</span><span>Podiatry</span><span>Psychiatry</span><span>Pulmonology</span><span>Rheumatology</span><span>Sleep Medicine</span><span>Spine Surgery</span><span>Urology</span><span>Vascular Surgery</span></div>
+          <p style="margin-top:12px"><a class="more" href="providers.html#visiting">See the visiting specialists →</a></p>
+        </div>
+        <div class="weekcal" id="thisweek">
+          <div class="wc-head"><h3>Who's here this week</h3><span>Specialty Clinic schedule</span></div>
+          <ul>
+            <li><b>Mon</b><span>Cardiology</span><span class="wc-n">Visiting cardiologist</span></li>
+            <li><b>Tue</b><span>Orthopedics</span><span class="wc-n">Orthopedic surgeon</span></li>
+            <li><b>Wed</b><span>Urology</span><span class="wc-n">Visiting urologist</span></li>
+            <li><b>Thu</b><span>Podiatry</span><span class="wc-n">Visiting podiatrist</span></li>
+            <li><b>Fri</b><span>Ear, Nose &amp; Throat</span><span class="wc-n">Visiting ENT</span></li>
+          </ul>
+          <p class="protonote">Sample schedule. On the live site, this list pulls from the Specialty Clinic's Google Calendar, so it updates whenever staff update the calendar.</p>
+        </div>
+        <img src="img/photos/infusion.jpg" alt="The outpatient infusion area at Citizens Medical Center" loading="lazy">
+        <div>
+          <h3>Outpatient services</h3>
+          <ul class="cols"><li>IV medications</li><li>Injections</li><li>Chemotherapy infusion</li><li>Catheter education and care</li><li>Antibiotic therapy</li><li>Therapeutic phlebotomy</li></ul>
+        </div>
+        <div>
+          <h3>Before your visit</h3>
+          <ul class="cols"><li>Arrive at least 15 minutes early</li><li>Ask your primary care provider to send your records ahead of time</li><li>Bring any x-rays, images, or records you have</li><li>Bring a list of your medicines, including over-the-counter medicines, inhalers, and eye drops</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block tint" id="imaging">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow">Radiology</p>
+        <h2>Imaging</h2>
+        <dl class="meta">
+          <div><dt>Hours</dt><dd>Mon–Fri, 8am to 4pm</dd></div>
+          <div><dt>Phone</dt><dd>(785) 460-1250</dd></div>
+          <div><dt>Fax orders to</dt><dd>(785) 460-1235</dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <p class="morelink-wrap"><a class="morelink" href="imaging.html">More about imaging →</a></p>
+        <img src="img/photos/ct-scanner.jpg" alt="The CT scanner at Citizens Medical Center" loading="lazy">
+        <p class="lead">When a blood test or exam doesn't tell the whole story, our imaging team helps your provider find answers with accurate, timely results.</p>
+        <div>
+          <h3>Services</h3>
+          <ul class="cols three"><li>X-ray</li><li>Fluoroscopy</li><li>CT scans</li><li>CT coronary calcium score</li><li>MRI</li><li>Ultrasound</li><li>Echocardiograms</li><li>Mammography</li><li>Bone density (DEXA)</li><li>Nuclear medicine, Mon–Fri</li><li>Cardiac nuclear stress testing</li><li>PET scans, mobile unit every other week</li></ul>
+        </div>
+        <div class="note"><b>Before your exam:</b> check in at Admissions 15 minutes before your appointment and remove jewelry and other metal. Insurance doesn't always cover imaging, so check with your insurer if you're unsure. <a href="https://www.cmciks.com/wp-content/uploads/2026/09/PET-CT-Request-Form_Colby.pdf" style="color:var(--action);font-weight:700">PET-CT request form</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="lab">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow">Laboratory</p>
+        <h2>Lab testing</h2>
+        <dl class="meta">
+          <div><dt>Hours</dt><dd>Mon–Fri, 7am to 5pm<small>On call 24 hours</small></dd></div>
+          <div><dt>Phone</dt><dd>(785) 460-1260</dd></div>
+          <div><dt>Fax</dt><dd>(785) 460-1261</dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <p class="morelink-wrap"><a class="morelink" href="laboratory.html">More about the laboratory →</a></p>
+        <img src="img/photos/lab.jpg" alt="A laboratory technologist at work in the Citizens Medical Center lab" loading="lazy">
+        <p class="lead">Our lab helps you and your provider monitor your health and diagnose illness, with accurate, timely results. We test for Citizens Health, outside and specialty providers, Family Center, and Prairie Senior.</p>
+        <div>
+          <h3>Testing</h3>
+          <ul class="cols three"><li>Basic and complete metabolic panels</li><li>Lipid panel</li><li>Complete blood count</li><li>Glucose</li><li>Pregnancy</li><li>Toxicology screening</li><li>Urinalysis</li><li>Blood type and crossmatch</li><li>Hormone levels</li><li>Serology and immunology</li><li>Drug level monitoring</li></ul>
+        </div>
+        <div>
+          <h3>Employment testing</h3>
+          <ul class="cols"><li>DOT and non-DOT drug tests</li><li>Breath alcohol testing</li><li>Post-accident screening</li></ul>
+        </div>
+        <div class="note"><b>Direct access testing:</b> you can order some health screenings yourself, without a provider's order. Fill out a Direct Access Testing form when you arrive.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block tint" id="rehab">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow">Rehabilitation</p>
+        <h2>Physical, occupational &amp; speech therapy</h2>
+        <dl class="meta">
+          <div><dt>Phone</dt><dd>(785) 460-4868</dd></div>
+          <div><dt>Fax</dt><dd>(785) 460-1265</dd></div>
+          <div><dt>Email</dt><dd>rehab@cmciks.com</dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <p class="morelink-wrap"><a class="morelink" href="rehabilitation.html">More about rehab and our team →</a></p>
+        <p class="lead">Our rehab team helps you keep, regain, or improve the skills you need for daily life.</p>
+        <div>
+          <h3>Physical therapy</h3>
+          <p style="color:var(--muted)">Exercise, stretching, and hands-on therapies like massage, heat, cold, and ultrasound to restore movement and function, plus training with walkers and other mobility devices. <b style="color:var(--ink)">No referral is needed for a physical therapy evaluation.</b></p>
+        </div>
+        <div>
+          <h3>Occupational therapy</h3>
+          <p style="color:var(--muted)">Help returning to everyday activities after an injury, illness, or disability, including home, work, and school evaluations, adaptive equipment, and caregiver training.</p>
+        </div>
+        <div>
+          <h3>Speech-language pathology</h3>
+          <p style="color:var(--muted)">For children and adults: speech sounds, language, voice, stuttering, thinking and communication, social communication, literacy, and feeding and swallowing.</p>
+        </div>
+        <div>
+          <h3>We also treat and offer</h3>
+          <ul class="cols three"><li>Pre- and post-surgery care</li><li>Joint replacement recovery</li><li>Sports injuries</li><li>Hand therapy</li><li>Tendon repair</li><li>Custom splinting</li><li>Manual therapy</li><li>McKenzie Method</li><li>Postural Restoration (PRI)</li><li>Spine and joint manipulation</li><li>Neurological conditions</li><li>Workers' comp and auto injuries</li></ul>
+        </div>
+        <div>
+          <h3>Programs open to the community</h3>
+          <div class="pricing">
+            <div><b>Maintenance program</b><span>Fitness assessment, a personal plan, and weight and cardio equipment, Mon–Fri</span><span class="price">$30/month</span><span>$20/month, ages 65+</span></div>
+            <div><b>Massage</b><span>Book by calling (785) 460-4868</span><span class="price">$15 · 15 min</span><span>$25 · 30 min</span></div>
+            <div><b>Sports program</b><span>Injury prevention and education in partnership with the Colby High School Athletic Department</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="respiratory">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow">Respiratory Therapy</p>
+        <h2>Heart and lung testing &amp; therapy</h2>
+        <dl class="meta">
+          <div><dt>Hours</dt><dd>Mon–Fri, 7am to 9pm<small>On call 24 hours</small></dd></div>
+          <div><dt>Phone</dt><dd>(785) 460-1263</dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <p class="morelink-wrap"><a class="morelink" href="respiratory-therapy.html">More about respiratory therapy →</a></p>
+        <p class="lead">Our cardiopulmonary team assesses, treats, and educates patients with breathing and heart conditions, working alongside your provider.</p>
+        <div>
+          <h3>Testing</h3>
+          <ul class="cols three"><li>Pulmonary function testing</li><li>Diffusion studies</li><li>Plethysmography</li><li>Arterial blood gas</li><li>EKG</li><li>Cardiac stress testing (GXT)</li><li>Holter and event monitors</li><li>Six-minute walk test</li><li>Home sleep testing</li><li>Overnight oximetry</li><li>Carbon monoxide monitoring</li></ul>
+        </div>
+        <div>
+          <h3>Treatment</h3>
+          <ul class="cols three"><li>Inhaled medications</li><li>Oxygen and heliox therapy</li><li>Intrapulmonary percussion</li><li>BiPAP and CPAP</li><li>Non-invasive ventilation</li><li>Ventilator support</li><li>Chest physical therapy</li><li>Bronchiolitis clinic</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block tint" id="equipment">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow">Citizens Medical Equipment</p>
+        <h2>Home medical equipment</h2>
+        <dl class="meta">
+          <div><dt>Location</dt><dd>The Annex, south side<small>1525 S. Franklin Ave. campus</small></dd></div>
+          <div><dt>Hours</dt><dd>Mon–Thu, 8am to 5pm<small>Fri, 8am to 4pm</small></dd></div>
+          <div><dt>Phone</dt><dd>(785) 460-1269</dd></div>
+          <div><dt>Fax</dt><dd>(785) 460-1274</dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <p class="morelink-wrap"><a class="morelink" href="medical-equipment.html">More about medical equipment →</a></p>
+        <p class="lead">We help you get the equipment you need at home, based on your provider's orders, whether you're a patient in our hospital or already home.</p>
+        <div class="chips2"><span>Walkers</span><span>Wheelchairs</span><span>Crutches</span><span>Home oxygen</span><span>CPAP machines</span></div>
+        <p>We work with you, your provider, and your insurance company. If insurance doesn't cover an item, you are responsible for the cost.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="maternity">
+    <div class="wrap promo">
+      <img src="img/photos/maternity-lounge.jpg" alt="The family lounge in the Maternity Suites" loading="lazy">
+      <div>
+        <p class="eyebrow">Maternity Suites</p>
+        <h2>Welcome your baby close to home</h2>
+        <p>Deliver in our Maternity Suites with a team that includes your provider, a nurse for you, and a nurse for your baby. We're a designated Baby-Friendly hospital.</p>
+        <a class="btn btn-dark" href="obstetrics.html">Obstetrics &amp; Maternity Suites</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block tint" id="visiting">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow">Patients &amp; visitors</p>
+        <h2>Visiting a patient</h2>
+        <dl class="meta">
+          <div><dt>Visiting hours</dt><dd>10am to 8:30pm daily</dd></div>
+          <div><dt>Patient Guest Lounge</dt><dd>(785) 460-4841</dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <p class="morelink-wrap"><a class="morelink" href="hospital-stay.html">Planning your hospital stay →</a></p>
+        <img src="img/photos/waiting-blue.jpg" alt="A waiting area at Citizens Medical Center with seating and large windows" loading="lazy">
+        <ul class="cols">
+          <li>If the patient is in isolation, check in at the nurses' station first</li>
+          <li>Clean your hands when you enter and leave a patient's room</li>
+          <li>Please stay home if you are sick</li>
+          <li>Children under 12 must be with an adult</li>
+          <li>Cough or sneeze into your elbow</li>
+          <li>Cell phones are welcome</li>
+          <li>Our campus and buildings are tobacco-free, including e-cigarettes and vaping</li>
+        </ul>
+        <p>Visiting the Maternity Suites? <a href="obstetrics.html#visiting" style="color:var(--action);font-weight:700">See their visiting guidelines</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="directory">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Phone directory</p>
+          <h2>Reach a department directly</h2>
+          <p>Not sure who to call? Our main line is (785) 462-7511.</p>
+        </div>
+      </div>
+      <div class="dirwrap">
+        <table class="dir"><tbody>
+          <tr><th scope="row">Admissions</th><td>(785) 462-7511</td></tr>
+          <tr><th scope="row">Business Office (billing)</th><td>(785) 460-4853</td></tr>
+          <tr><th scope="row">Cardiopulmonary / Respiratory Therapy</th><td>(785) 460-1263</td></tr>
+          <tr><th scope="row">Citizens Foundation</th><td>(785) 460-1264</td></tr>
+          <tr><th scope="row">Citizens Medical Equipment</th><td>(785) 460-1269</td></tr>
+          <tr><th scope="row">Education</th><td>(785) 460-1286</td></tr>
+          <tr><th scope="row">Food &amp; Nutrition</th><td>(785) 460-1237</td></tr>
+          <tr><th scope="row">Human Resources</th><td>(785) 460-4842</td></tr>
+          <tr><th scope="row">Laboratory</th><td>(785) 460-1260</td></tr>
+          <tr><th scope="row">Medical Records, Medical Center</th><td>(785) 460-4851</td></tr>
+          <tr><th scope="row">Medical Records, Family Center</th><td>(785) 460-1710</td></tr>
+          <tr><th scope="row">Medical Staff Services</th><td>(785) 460-1713</td></tr>
+          <tr><th scope="row">Nurses' Station, Acute Care</th><td>(785) 460-9300</td></tr>
+          <tr><th scope="row">Patient Guest Lounge</th><td>(785) 460-4841</td></tr>
+          <tr><th scope="row">Radiology</th><td>(785) 460-1250</td></tr>
+          <tr><th scope="row">Rehabilitation</th><td>(785) 460-4868</td></tr>
+          <tr><th scope="row">Social Services</th><td>(785) 460-4858</td></tr>
+          <tr><th scope="row">Specialty Clinic, scheduling</th><td>(785) 460-1223</td></tr>
+          <tr><th scope="row">Specialty Clinic, nursing</th><td>(785) 460-1215</td></tr>
+          <tr><th scope="row">Surgery, 24-hour nurse line</th><td>(785) 460-1262</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ftop">
+      <div>
+        <img class="flogo" src="img/logo-white.png" alt="Citizens Health" width="150" height="40">
+        <p class="mission">Enhancing the lives of those we serve.</p>
+      </div>
+      <div class="fcall">
+        <span class="fphone">(785) 462-7511</span>
+        <div class="fbtns"><a class="btn btn-ghost" href="contact.html">Contact Us</a><a class="btn btn-primary" href="foundation.html#give">Make a Gift</a></div>
+      </div>
+    </div>
+    <div class="cols">
+      <div><h4>Locations</h4><ul class="contact">
+        <li><a href="medical-center.html"><b>Citizens Medical Center</b></a>(785) 462-7511</li>
+        <li><a href="family-center.html"><b>Family Center for Healthcare</b></a>(785) 462-6184</li>
+        <li><a href="prairie-senior.html"><b>Prairie Senior</b></a>(785) 462-8295</li>
+        <li><a href="palace-drug.html"><b>Palace Drug Store</b></a>(785) 460-7507</li>
+      </ul></div>
+      <div><h4>For Patients</h4><ul><li><a href="providers.html">Find a Provider</a></li><li><a href="https://mychart.ochin.org/cmciks/billing/guestpay">Pay a Bill</a></li><li><a href="patient-resources.html#assistance">Financial Assistance</a></li><li><a href="patient-resources.html#records">Medical Records</a></li><li><a href="patient-resources.html#forms">Forms</a></li><li><a href="medical-center.html#directory">Phone Directory</a></li></ul></div>
+      <div><h4>Visitors &amp; Community</h4><ul><li><a href="medical-center.html#visiting">Visiting Hours</a></li><li><a href="about.html#events">Classes &amp; Events</a></li><li><a href="careers.html">Careers</a></li><li><a href="foundation.html">Citizens Foundation</a></li><li><a href="foundation.html#volunteer">Volunteer</a></li><li><a href="https://www.cmciks.com/patients-visitors/community-health-assessment/">Community Health Needs Assessment</a></li></ul></div>
+      <div><h4>For Professionals</h4><ul><li><a href="professionals.html#refer">Refer a Patient</a></li><li><a href="professionals.html#staff">Medical Staff Services</a></li><li><a href="careers.html#education">Student Rotations</a></li><li><a href="careers.html#education">ACLS &amp; PALS Classes</a></li><li><a href="careers.html#providers">Physician Recruitment</a></li><li><a href="https://www.cmciks.com/request-for-bids/">Request for Bids</a></li></ul></div>
+      <div><h4>Stay Connected</h4><ul><li><a href="https://www.facebook.com/cmciks/">Facebook</a></li><li><a href="https://www.instagram.com/citizens_health">Instagram</a></li><li><a href="https://www.youtube.com/user/cmciks">YouTube</a></li><li><a href="https://www.linkedin.com/in/citizenshealth/">LinkedIn</a></li></ul></div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Citizens Health · Mailing address: 100 E. College Dr., Colby, KS 67701</span>
+      <a href="patient-resources.html#rights">Patient Rights</a><a href="patient-resources.html#rights">Notice of Privacy Practices</a><a href="patient-resources.html#rights">Nondiscrimination</a><a href="patient-resources.html#prices">Price Transparency</a><a href="patient-resources.html#prices">No Surprises Act</a><a href="accessibility.html">Accessibility</a>
+    </div>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+(function(){
+})();
+</script>
+<script src="providers.js"></script>
+<script src="services-data.js"></script>
+<script src="site.js"></script>
+</body>
+</html>

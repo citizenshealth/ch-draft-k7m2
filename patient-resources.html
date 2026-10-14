@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Billing &amp; Patient Resources · Citizens Health</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="site.css">
+<style>
+
+:root{color-scheme:light}
+html,body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+
+.loc-hero{background:var(--hero);color:var(--hero-ink)}
+.loc-hero .wrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center;padding-block:clamp(32px,5vw,64px)}
+.crumbs{font-size:14px;color:var(--hero-muted);display:flex;gap:8px;flex-wrap:wrap}
+.crumbs a{text-decoration:none;font-weight:600}
+.crumbs a:hover{color:#ffffff}
+.idrow{display:flex;align-items:center;gap:16px;margin-top:22px}
+.idrow img{width:64px;height:64px}
+.idrow .eyebrow{color:var(--hero-muted)}
+.loc-hero h1{font-size:clamp(36px,4.8vw,58px);font-weight:800;letter-spacing:-.025em}
+.loc-hero p.lede{margin-top:16px;font-size:clamp(18px,1.6vw,20px);color:var(--hero-muted);max-width:34em}
+.keyfacts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.14);border-radius:var(--r);overflow:hidden;margin-top:28px}
+.keyfacts div{background:rgba(10,22,38,.72);padding:14px 16px;display:grid;gap:2px}
+.keyfacts dt{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--hero-muted)}
+.keyfacts dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums}
+.loc-hero .heroimg{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:14px}
+@media (max-width:860px){.loc-hero .wrap{grid-template-columns:1fr}.loc-hero .heroimg{aspect-ratio:16/10;object-position:50% 30%}.keyfacts{grid-template-columns:1fr}}
+
+.subnav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 73px);z-index:15;background:var(--bg);border-bottom:1px solid var(--line)}
+.subnav .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:none}
+.subnav a{flex:none;text-decoration:none;font-weight:700;font-size:15px;padding:8px 12px;border-radius:999px;color:var(--muted)}
+.subnav a:hover{background:var(--surface);color:var(--ink)}
+section[id]{scroll-margin-top:140px}
+
+/* department block: meta column + content column */
+.dept{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:clamp(24px,5vw,64px);align-items:start}
+.dept h2{font-size:clamp(28px,3vw,38px);font-weight:800;margin-top:8px}
+.meta{display:grid;gap:0;margin-top:20px;border-top:1px solid var(--line)}
+.meta div{padding:12px 0;border-bottom:1px solid var(--line);display:grid;gap:2px}
+.meta dt{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.meta dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums}
+.meta dd small{display:block;font-weight:500;color:var(--muted);font-size:14px}
+.body{display:grid;gap:22px;min-width:0}
+.body > p{color:var(--muted);max-width:62ch}
+.body p.lead{color:var(--ink);font-size:19px;max-width:58ch}
+.body h3{font-size:18px;font-weight:800;margin-bottom:10px}
+.body img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px}
+.body .cols{columns:2;column-gap:32px;margin:0;padding:0;list-style:none}
+.body .cols li{break-inside:avoid;padding:8px 0;border-bottom:1px solid var(--line);font-size:16px}
+.body .cols.three{columns:3}
+.chips2{display:flex;flex-wrap:wrap;gap:8px}
+.chips2 span{font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+.tint .chips2 span{background:var(--raised)}
+.note{background:var(--surface);border-radius:var(--r);padding:16px 18px;font-size:16px}
+.tint .note{background:var(--raised);border:1px solid var(--line)}
+.note.urgent{background:var(--urgent-soft)}
+.note.urgent b{color:var(--urgent)}
+.pricing{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.pricing div{background:var(--raised);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;display:grid;gap:4px}
+.pricing b{font-size:17px}
+.pricing span{color:var(--muted);font-size:15px}
+.pricing .price{color:var(--ink);font-weight:800;font-size:20px;font-variant-numeric:tabular-nums}
+.linkrow{display:flex;flex-wrap:wrap;gap:8px 20px}
+.linkrow a{color:var(--action);font-weight:700;text-decoration:none}
+.linkrow a:hover{text-decoration:underline}
+.mini-prov{display:flex;gap:16px;align-items:center;text-decoration:none;background:var(--raised);border:1px solid var(--line);border-radius:var(--r);padding:12px;max-width:420px}
+.mini-prov img{width:64px;height:80px;object-fit:cover;border-radius:8px;aspect-ratio:auto}
+.mini-prov b{display:block;font-size:17px}
+.mini-prov span{color:var(--muted);font-size:14px}
+.mini-prov:hover b{color:var(--action)}
+@media (max-width:860px){.dept{grid-template-columns:1fr}.body .cols.three{columns:2}.pricing{grid-template-columns:1fr}}
+@media (max-width:520px){.body .cols,.body .cols.three{columns:1}}
+
+.promo{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.promo img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:14px}
+.promo h2{font-size:clamp(28px,3vw,38px);font-weight:800;margin-top:8px}
+.promo p{color:var(--muted);margin-top:12px;max-width:34em}
+.promo .btn{margin-top:20px}
+.promo .eyebrow{color:var(--fchc-ink)}
+@media (max-width:820px){.promo{grid-template-columns:1fr}}
+
+.dir{width:100%;border-collapse:collapse;font-size:16px;font-variant-numeric:tabular-nums}
+.dir th,.dir td{text-align:left;padding:12px 0;border-bottom:1px solid var(--line)}
+.dir td{text-align:right;font-weight:700;white-space:nowrap}
+.dirwrap{columns:2;column-gap:48px}
+.dirwrap table{break-inside:avoid}
+@media (max-width:760px){.dirwrap{columns:1}}
+
+.weekcal{background:var(--raised);border:1px solid var(--line);border-top:4px solid var(--cmc);border-radius:var(--r);padding:18px 20px;margin-top:6px}
+.weekcal .wc-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.weekcal .wc-head h3{font-size:18px;font-weight:800}
+.weekcal .wc-head span{color:var(--muted);font-size:14px}
+.weekcal ul{list-style:none;margin:0;padding:0}
+.weekcal li{display:grid;grid-template-columns:52px minmax(0,1fr) minmax(0,1fr);gap:10px;padding:10px 0;border-top:1px solid var(--line);align-items:baseline}
+.weekcal li b{color:var(--cmc)}
+.weekcal .wc-n{color:var(--muted);font-size:14.5px}
+.weekcal .wc-note{font-size:13px;color:var(--muted);margin-top:10px}
+@media (max-width:560px){.weekcal li{grid-template-columns:44px minmax(0,1fr)}.weekcal .wc-n{grid-column:2}}
+
+/* resources extras */
+.tasks{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:-40px;position:relative;z-index:3}
+.task{background:var(--raised);border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:8px;text-decoration:none;box-shadow:0 10px 26px rgba(20,35,58,.10)}
+.task svg{width:26px;height:26px;stroke:var(--action);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.task b{font-size:16px}
+.task span{color:var(--muted);font-size:14px}
+.task:hover{border-color:var(--action)}
+.task:hover b{color:var(--action)}
+@media (max-width:1000px){.tasks{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.tasks{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.plan{width:100%;border-collapse:collapse;background:var(--raised);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;font-variant-numeric:tabular-nums}
+.plan th,.plan td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line)}
+.plan thead th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--surface)}
+.plan tr:last-child td{border-bottom:0}
+.docs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}
+.docs li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.docs a{font-weight:600;text-decoration:none;color:var(--ink)}
+.docs a:hover{color:var(--action);text-decoration:underline}
+.docs .alt{font-size:14px;white-space:nowrap}
+.docs .alt a{color:var(--action);font-weight:700}
+.pdf{font-size:11px;font-weight:800;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:1px 5px;margin-left:6px;vertical-align:2px}
+@media (max-width:760px){.docs{grid-template-columns:1fr}}
+.formgroups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.formgroups h3{font-size:18px;font-weight:800;margin-bottom:8px}
+.formgroups .docs{grid-template-columns:1fr}
+@media (max-width:960px){.formgroups{grid-template-columns:1fr}}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.steps li::before{content:counter(s);width:30px;height:30px;border-radius:50%;background:var(--action);color:var(--action-ink);font-weight:800;display:grid;place-items:center;font-size:15px}
+.steps b{display:block}
+.steps span{color:var(--muted);font-size:15px}
+.fine{font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<div class="proto-bar"><div class="wrap"><span class="proto">Draft prototype, not public</span><span class="phone"><a class="pro-link" href="es-patient-resources.html" lang="es">Español</a><span class="sep" aria-hidden="true">·</span><a class="pro-link pro-only" href="professionals.html">For Healthcare Professionals</a><span class="sep pro-only" aria-hidden="true">·</span>Main line <b>(785) 462-7511</b></span></div></div>
+
+<header class="site" id="siteHeader">
+  <div class="wrap hdr">
+    <a class="brand" href="index.html" aria-label="Citizens Health home">
+      <img class="on-light" src="img/logo.png" alt="Citizens Health" width="165" height="44">
+      <img class="on-dark" src="img/logo-white.png" alt="Citizens Health" width="165" height="44">
+    </a>
+    <nav class="mainnav" id="mainnav" aria-label="Main">
+      <a class="top-link" href="providers.html">Find a Provider</a>
+      <a class="top-link" href="index.html#locations">Our Campus</a>
+      <div class="mm">
+        <button class="top-link mm-btn" type="button" aria-expanded="false">Services</button>
+        <div class="mm-panel">
+          <div class="wrap mm-grid">
+            <div class="mm-intro"><h3>Services</h3><p>Care for every stage of life, close to home in Colby.</p><a class="more" href="services.html">Browse all services A–Z →</a></div>
+            <div><h4>Featured care</h4><ul>
+              <li><a href="obstetrics.html">Obstetrics &amp; Maternity Suites</a></li>
+              <li><a href="emergency.html">Emergency &amp; Trauma Care</a></li>
+              <li><a href="surgery.html">General Surgery</a></li>
+              <li><a href="specialty-clinic.html">Specialty Clinic</a></li>
+              <li><a href="family-center.html">Family Medicine</a></li>
+              <li><a href="orthopedics.html">Orthopedics</a></li>
+            </ul></div>
+            <div><h4>Tests &amp; therapy</h4><ul>
+              <li><a href="imaging.html">Imaging &amp; Radiology</a></li>
+              <li><a href="laboratory.html">Laboratory</a></li>
+              <li><a href="rehabilitation.html">Rehabilitation</a></li>
+              <li><a href="respiratory-therapy.html">Respiratory Therapy</a></li>
+              <li><a href="medical-equipment.html">Home Medical Equipment</a></li>
+              <li><a href="sc-audiology.html">Audiology</a></li>
+            </ul></div>
+            <div><h4>Get care now</h4><ul>
+              <li><a href="emergency.html">Emergency Room, open 24/7</a></li>
+              <li><a href="family-center.html#hours">Urgent Care &amp; Walk-in</a></li>
+              <li><a href="providers.html#accepting">Providers accepting new patients</a></li>
+              <li><a href="providers.html#visiting">Visiting specialists</a></li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="mm">
+        <button class="top-link mm-btn" type="button" aria-expanded="false">Patients &amp; Visitors</button>
+        <div class="mm-panel">
+          <div class="wrap mm-grid">
+            <div class="mm-intro"><h3>Patients &amp; Visitors</h3><p>Everything you need before, during, and after your visit.</p><a class="more" href="patient-resources.html">Billing &amp; patient resources →</a></div>
+            <div><h4>Patient resources</h4><ul>
+              <li><a href="https://www.cmciks.com/patients-visitors/patient-portal/">MyChart</a></li>
+              <li><a href="https://mychart.ochin.org/cmciks/billing/guestpay">Pay a Bill</a></li>
+              <li><a href="patient-resources.html#plans">Payment Plans</a></li>
+              <li><a href="patient-resources.html#assistance">Financial Assistance</a></li>
+              <li><a href="patient-resources.html#prices">Price Transparency</a></li>
+              <li><a href="patient-resources.html#records">Medical Records</a></li>
+              <li><a href="patient-resources.html#forms">Forms</a></li>
+            </ul></div>
+            <div><h4>Visitor information</h4><ul>
+              <li><a href="medical-center.html#visiting">Visiting Hours &amp; Guidelines</a></li>
+              <li><a href="hospital-stay.html">Planning Your Hospital Stay</a></li>
+              <li><a href="obstetrics.html#visiting">Visiting the Maternity Suites</a></li>
+              <li><a href="index.html#locations">Our Campus &amp; Directions</a></li>
+              <li><a href="about.html#events">Classes &amp; Events</a></li>
+            </ul></div>
+            <div><h4>About us</h4><ul>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="https://www.cmciks.com/patients-visitors/community-health-assessment/">Community Health Needs Assessment</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+      <a class="top-link" href="careers.html">Careers</a>
+      <a class="top-link give" href="foundation.html">Give</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="icon-btn" id="searchBtn" type="button" aria-label="Search" aria-expanded="false" aria-controls="hsearch"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+      <a class="mychart" href="https://www.cmciks.com/patients-visitors/patient-portal/">MyChart Login</a>
+      <a class="btn btn-sched" href="schedule.html">Schedule Now</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainnav">Menu</button>
+    </div>
+  </div>
+  <div class="hsearch" id="hsearch" hidden>
+    <div class="wrap">
+      <label for="hq">I'm looking for...</label>
+      <input id="hq" class="js-search" data-results="hresults" type="search" placeholder="A provider, a service, or a page" autocomplete="off">
+      <ul class="results" id="hresults" hidden></ul>
+    </div>
+  </div>
+</header>
+
+
+<main id="main">
+  <section class="phero">
+    <img class="hero-bg" src="img/photos/exterior.jpg" alt="">
+    <div class="wrap" style="padding-bottom:clamp(64px,8vw,104px)"><div class="in">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span>Patients &amp; Visitors</span><span aria-hidden="true">/</span><span>Billing &amp; Patient Resources</span></nav>
+      <p class="eyebrow">Patients &amp; Visitors</p>
+      <h1>Billing &amp; patient resources</h1>
+      <p class="lede">Pay a bill, set up a payment plan, apply for financial assistance, estimate costs, and request your records, all in one place.</p>
+    </div></div>
+  </section>
+
+  <div class="wrap">
+    <nav class="tasks" aria-label="Common tasks">
+      <a class="task" href="https://mychart.ochin.org/cmciks/billing/guestpay"><svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 10h19M6.5 15h4"/></svg><b>Pay a bill</b><span>Online, no login needed</span></a>
+      <a class="task" href="#assistance"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg><b>Financial assistance</b><span>See if you qualify</span></a>
+      <a class="task" href="#prices"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/><circle cx="18" cy="17" r="2.5"/></svg><b>Estimate costs</b><span>Prices and estimates</span></a>
+      <a class="task" href="#records"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg><b>Medical records</b><span>Request your records</span></a>
+      <a class="task" href="#forms"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg><b>Forms</b><span>Download and print</span></a>
+    </nav>
+  </div>
+
+  <nav class="subnav" aria-label="On this page" style="margin-top:32px"><div class="wrap">
+    <a href="#pay">Paying your bill</a><a href="#plans">Payment plans</a><a href="#assistance">Financial assistance</a><a href="#prices">Prices &amp; estimates</a><a href="#records">Medical records</a><a href="#forms">Forms</a><a href="#rights">Patient rights</a>
+  </div></nav>
+
+  <section class="block" id="pay">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow">Paying your bill</p>
+        <h2>Pay your bill</h2>
+        <dl class="meta">
+          <div><dt>Billing office hours</dt><dd>Mon–Thu, 8am to 5pm<small>Fri, 8am to 4pm</small></dd></div>
+          <div><dt>Business Office</dt><dd>(785) 460-4853</dd></div>
+          <div><dt>Patient Financial Services</dt><dd>(785) 460-5640<small>billing@cmciks.com</small></dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <p class="lead">Pay online in a few minutes, with or without a MyChart account.</p>
+        <p><a class="btn btn-dark" href="https://mychart.ochin.org/cmciks/billing/guestpay">Pay a bill online</a></p>
+        <div>
+          <h3>Other ways to pay</h3>
+          <ul class="cols"><li>One-time bank withdrawal</li><li>Automatic recurring bank withdrawals</li><li>Online through MyChart</li><li>Debit or credit card by phone</li><li>In person or by mail</li></ul>
+        </div>
+        <div>
+          <h3>How billing works</h3>
+          <ul class="cols"><li>Bring your insurance card to every visit</li><li>We file claims with your insurance for you</li><li>After your insurance pays, we bill you for any remaining balance</li><li>Co-payments are due at the time of service</li></ul>
+        </div>
+        <p class="fine">Charges from physicians, anesthesia, pathology, or outside labs may be billed separately by those providers. <a href="family-center.html#billing" style="color:var(--action);font-weight:700">See the insurance plans we work with.</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block tint" id="plans">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow">Payment plans</p>
+        <h2>Pay over time</h2>
+        <dl class="meta">
+          <div><dt>Questions</dt><dd>(785) 460-5640</dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <p class="lead">If you can't pay in full at your visit, we'll set up monthly payments based on your total balance.</p>
+        <table class="plan">
+          <thead><tr><th scope="col">Your balance</th><th scope="col">Paid in full within</th></tr></thead>
+          <tbody>
+            <tr><td>$50 or less</td><td>Due in full</td></tr>
+            <tr><td>$51 to $249</td><td>3 months</td></tr>
+            <tr><td>$250 to $500</td><td>6 months</td></tr>
+            <tr><td>$501 to $750</td><td>9 months</td></tr>
+            <tr><td>$751 to $1,000</td><td>12 months</td></tr>
+            <tr><td>$1,001 or more</td><td>16 months, after meeting with a Patient Financial Advisor</td></tr>
+          </tbody>
+        </table>
+        <ul class="cols">
+          <li>Self-pay patients who can't pay in full pay at least $50 at the visit</li>
+          <li>Uninsured patients receive a 20% discount, excluding aesthetic, cosmetic, and elective procedures</li>
+          <li>Regular monthly payments keep your account current and out of collections</li>
+          <li>Fill out a Payment Arrangement Agreement to get started</li>
+        </ul>
+        <p><a href="https://cmciks.com/wp-content/uploads/2019/01/payment-arrangement.pdf" style="color:var(--action);font-weight:700">Payment Arrangement Agreement</a> <span class="pdf">PDF</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="assistance">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow">Financial assistance</p>
+        <h2>Help paying for care</h2>
+        <dl class="meta">
+          <div><dt>Patient Financial Advisor</dt><dd>(785) 460-5640</dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <p class="lead">As a non-profit, Citizens Health offers financial assistance to patients who are uninsured, underinsured, not eligible for a government program, or otherwise unable to pay for emergency or other medically necessary care.</p>
+        <p>Eligibility is based on your financial situation. We never turn away patients who need emergency care, including those who qualify for financial or government assistance.</p>
+        <div>
+          <h3>How to apply</h3>
+          <ol class="steps">
+            <li><div><b>Read the plain language summary</b><span>A short overview of the program and who qualifies.</span></div></li>
+            <li><div><b>Fill out the application</b><span>Available in English and Spanish.</span></div></li>
+            <li><div><b>Return it to Patient Financial Services</b><span>Call (785) 460-5640 with any questions.</span></div></li>
+          </ol>
+        </div>
+        <ul class="docs">
+          <li><span><a href="https://www.cmciks.com/wp-content/uploads/2026/09/Financial-Assistance-App-Jan2026.pdf">Financial Assistance Application</a><span class="pdf">PDF</span></span><span class="alt"><a href="https://www.cmciks.com/wp-content/uploads/2026/09/Financial-Assistance-App-Spanish-Jan2026.pdf-6.pdf">Español</a></span></li>
+          <li><span><a href="https://www.cmciks.com/wp-content/uploads/2024/11/Addendum-D-Plain-Language-Summary-updated_110824.pdf">Plain Language Summary</a><span class="pdf">PDF</span></span><span class="alt"><a href="https://www.cmciks.com/wp-content/uploads/2024/11/Addendum-D-Plain-Language-Summary-Spanish-updated_110824.pdf">Español</a></span></li>
+          <li><span><a href="https://cmciks.com/wp-content/uploads/2020/10/Full-Policy.pdf">Financial Assistance Policy</a><span class="pdf">PDF</span></span><span class="alt"><a href="https://cmciks.com/wp-content/uploads/2021/01/Spanish-Financial-Assistance-Policy.pdf">Español</a></span></li>
+          <li><span><a href="https://www.cmciks.com/wp-content/uploads/2026/09/FINANCIAL-ASSISTANCE-ADDENDUM-COVERED-PROVIDERS.pdf">Covered and non-covered providers</a><span class="pdf">PDF</span></span></li>
+          <li><span><a href="https://www.cmciks.com/wp-content/uploads/2026/09/2026-AGB-CALCULATION.pdf">Amounts Generally Billed calculation</a><span class="pdf">PDF</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block tint" id="prices">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow">Prices &amp; estimates</p>
+        <h2>Know your costs</h2>
+      </div>
+      <div class="body">
+        <p class="lead">Look up our standard prices or request an estimate before your visit.</p>
+        <ul class="docs">
+          <li><span><a href="https://www.cdmpricing.com/a32c8afa973a70a6aeeae3e176f9f387">Price estimator and shoppable services</a></span></li>
+          <li><span><a href="https://www.cmciks.com/wp-content/uploads/2026/06/480892178_Citizens-Medical-Center_standardcharges.csv">Standard charges file</a><span class="pdf">CSV</span></span></li>
+          <li><span><a href="https://www.cmciks.com/wp-content/uploads/2023/11/Updated-Good-Faith-Estimate-Form.pdf">Good Faith Estimate</a><span class="pdf">PDF</span></span></li>
+          <li><span><a href="https://www.cmciks.com/wp-content/uploads/2023/11/No_Surprise_Disclosure_Form-Citizens-Health.pdf">No Surprises Act disclosure</a><span class="pdf">PDF</span></span></li>
+        </ul>
+        <div class="note"><b>Uninsured or paying yourself?</b> You have the right to a Good Faith Estimate of the expected charges for your care before you receive it.</div>
+        <p class="fine">Charges can change and the standard charges list is not a contract. Your actual cost depends on your insurance plan and the care you receive.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="records">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow">Medical records</p>
+        <h2>Get your records</h2>
+        <dl class="meta">
+          <div><dt>Health Information Management</dt><dd>(785) 460-4851<small>Fax (785) 460-9319 · him-staff@cmciks.com</small></dd></div>
+          <div><dt>Hours</dt><dd>Mon–Fri, 8am to 5pm<small>May vary on holidays</small></dd></div>
+          <div><dt>Family Center records</dt><dd>(785) 460-1710</dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <div>
+          <h3>The fastest way: MyChart</h3>
+          <p style="color:var(--muted)">Download, save, print, or request copies of your test results, medication list, after-visit summaries, and clinical notes.</p>
+          <p style="margin-top:12px"><a class="btn btn-dark" href="https://www.cmciks.com/patients-visitors/patient-portal/">Open MyChart</a></p>
+        </div>
+        <div>
+          <h3>Without MyChart</h3>
+          <p style="color:var(--muted)">Fill out an Authorization for Release of Health Information and return it to Health Information Management.</p>
+          <ul class="docs" style="margin-top:8px">
+            <li><span><a href="https://www.cmciks.com/wp-content/uploads/2026/02/Release-of-Health-Information-Updated-2.24.26.pdf">Authorization for Release of Health Information</a><span class="pdf">PDF</span></span><span class="alt"><a href="https://www.cmciks.com/wp-content/uploads/2026/02/Health-Release-Spanish_Updated-2.24.26.pdf">Español</a></span></li>
+            <li><span><a href="https://myvaccinerecord.ks.gov/">Kansas immunization records</a></span></li>
+          </ul>
+        </div>
+        <ul class="cols">
+          <li>Records sent directly to another provider or facility are free</li>
+          <li>Records for legal, insurance, or other purposes have fees set within Kansas law (KSA 65-4971(b))</li>
+          <li>Current records usually take 7 to 14 days</li>
+          <li>Older records may take longer</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block tint" id="forms">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Forms</p>
+          <h2>Forms you can print ahead of time</h2>
+          <p>Fill these out before your visit to save time at check-in.</p>
+        </div>
+      </div>
+      <div class="formgroups">
+        <div>
+          <h3>Citizens Medical Center</h3>
+          <ul class="docs">
+            <li><span><a href="https://cmciks.com/wp-content/uploads/2018/11/Advanced-Directive.pdf">Advance Directive</a><span class="pdf">PDF</span></span><span class="alt"><a href="https://www.cmciks.com/wp-content/uploads/2023/10/Spanish-Advanced-Directives.pdf">Español</a></span></li>
+            <li><span><a href="https://cmciks.com/wp-content/uploads/2018/11/DNR.pdf">Do Not Resuscitate (DNR) Directive</a><span class="pdf">PDF</span></span></li>
+            <li><span><a href="https://www.cmciks.com/wp-content/uploads/2026/02/Release-of-Health-Information-Updated-2.24.26.pdf">Release of Health Information</a><span class="pdf">PDF</span></span><span class="alt"><a href="https://www.cmciks.com/wp-content/uploads/2026/02/Health-Release-Spanish_Updated-2.24.26.pdf">Español</a></span></li>
+            <li><span><a href="https://www.cmciks.com/wp-content/uploads/2026/09/Financial-Assistance-App-Jan2026.pdf">Financial Assistance Application</a><span class="pdf">PDF</span></span><span class="alt"><a href="https://www.cmciks.com/wp-content/uploads/2026/09/Financial-Assistance-App-Spanish-Jan2026.pdf-6.pdf">Español</a></span></li>
+            <li><span><a href="https://www.cmciks.com/wp-content/uploads/2024/08/Grievance_Form.pdf">Grievance Form</a><span class="pdf">PDF</span></span></li>
+            <li><span><a href="https://www.cmciks.com/wp-content/uploads/2026/06/Direct-Access-Form_6.2026.pdf">Laboratory Direct Access Form</a><span class="pdf">PDF</span></span></li>
+            <li><span><a href="https://www.cmciks.com/wp-content/uploads/2026/09/PET-CT-Request-Form_Colby.pdf">PET/CT Request</a><span class="pdf">PDF</span></span></li>
+            <li><span><a href="https://www.cmciks.com/wp-content/uploads/2026/10/2026-Citizens-Health-Expo-REGISTRATION-FORM-with-date.pdf">Health Expo Registration</a><span class="pdf">PDF</span></span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Family Center for Healthcare</h3>
+          <ul class="docs">
+            <li><span><a href="https://cmciks.com/wp-content/uploads/2019/01/health-history-questionnaire.pdf">Health History Questionnaire</a><span class="pdf">PDF</span></span></li>
+            <li><span><a href="https://www.cmciks.com/wp-content/uploads/2024/05/Pre-Participation-Physical-Evaluation-2024.pdf">Sports Pre-Participation Physical</a><span class="pdf">PDF</span></span><span class="alt"><a href="https://www.cmciks.com/wp-content/uploads/2024/05/Spanish-Pre-Participation-Physical-Evaluation.pdf">Español</a></span></li>
+            <li><span><a href="https://cmciks.com/wp-content/uploads/2019/01/HIPPA-revised-122617.pdf">Privacy Notice Acknowledgement</a><span class="pdf">PDF</span></span></li>
+            <li><span><a href="https://cmciks.com/wp-content/uploads/2019/01/payment-arrangement.pdf">Payment Arrangement Agreement</a><span class="pdf">PDF</span></span></li>
+            <li><span><a href="https://cmciks.com/wp-content/uploads/2019/01/Work-com-auth-form.pdf">Workers' Compensation Authorization</a><span class="pdf">PDF</span></span></li>
+            <li><span><a href="https://cmciks.com/wp-content/uploads/2019/01/Injury-form.pdf">Injury Form</a><span class="pdf">PDF</span></span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Planning ahead</h3>
+          <ul class="docs">
+            <li><span><a href="https://cmciks.com/wp-content/uploads/2018/11/Choosing-an-Agent.pdf">Choosing a Health Care Agent</a><span class="pdf">PDF</span></span></li>
+            <li><span><a href="https://cmciks.com/wp-content/uploads/2018/11/Life-Sustaining-Treatments-flier.pdf">Life-Sustaining Treatments</a><span class="pdf">PDF</span></span></li>
+            <li><span><a href="https://cmciks.com/wp-content/uploads/2018/11/Medically-Assisted-Nutrition-flier.pdf">Medically Assisted Nutrition</a><span class="pdf">PDF</span></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="rights">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow">Patient rights</p>
+        <h2>Your rights and our policies</h2>
+      </div>
+      <div class="body">
+        <ul class="docs">
+          <li><span><a href="https://www.cmciks.com/wp-content/uploads/2025/08/R.074.001-Att-2-Patient-Bill-of-Rights-02.2024.pdf">Patient Bill of Rights</a><span class="pdf">PDF</span></span></li>
+          <li><span><a href="https://www.cmciks.com/wp-content/uploads/2023/09/HIPAA-Notice-of-Privacy-Practices.pdf">Notice of Privacy Practices</a><span class="pdf">PDF</span></span></li>
+          <li><span><a href="https://cmciks.com/wp-content/uploads/2023/03/Notice_of_Nondiscrimination.docx-1.pdf">Nondiscrimination Notice</a><span class="pdf">PDF</span></span></li>
+          <li><span><a href="https://www.cmciks.com/wp-content/uploads/2024/08/Grievance_Form.pdf">Share a concern (Grievance Form)</a><span class="pdf">PDF</span></span></li>
+          <li><span><a href="https://www.cmciks.com/patients-visitors/community-health-assessment/">Community Health Needs Assessment</a></span></li>
+          <li><span><a href="https://cmciks.com/wp-content/uploads/2018/11/Social-Media-Guidelines.pdf">Social Media Policy</a><span class="pdf">PDF</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ftop">
+      <div>
+        <img class="flogo" src="img/logo-white.png" alt="Citizens Health" width="150" height="40">
+        <p class="mission">Enhancing the lives of those we serve.</p>
+      </div>
+      <div class="fcall">
+        <span class="fphone">(785) 462-7511</span>
+        <div class="fbtns"><a class="btn btn-ghost" href="contact.html">Contact Us</a><a class="btn btn-primary" href="foundation.html#give">Make a Gift</a></div>
+      </div>
+    </div>
+    <div class="cols">
+      <div><h4>Locations</h4><ul class="contact">
+        <li><a href="medical-center.html"><b>Citizens Medical Center</b></a>(785) 462-7511</li>
+        <li><a href="family-center.html"><b>Family Center for Healthcare</b></a>(785) 462-6184</li>
+        <li><a href="prairie-senior.html"><b>Prairie Senior</b></a>(785) 462-8295</li>
+        <li><a href="palace-drug.html"><b>Palace Drug Store</b></a>(785) 460-7507</li>
+      </ul></div>
+      <div><h4>For Patients</h4><ul><li><a href="providers.html">Find a Provider</a></li><li><a href="https://mychart.ochin.org/cmciks/billing/guestpay">Pay a Bill</a></li><li><a href="patient-resources.html#assistance">Financial Assistance</a></li><li><a href="patient-resources.html#records">Medical Records</a></li><li><a href="patient-resources.html#forms">Forms</a></li><li><a href="medical-center.html#directory">Phone Directory</a></li></ul></div>
+      <div><h4>Visitors &amp; Community</h4><ul><li><a href="medical-center.html#visiting">Visiting Hours</a></li><li><a href="about.html#events">Classes &amp; Events</a></li><li><a href="careers.html">Careers</a></li><li><a href="foundation.html">Citizens Foundation</a></li><li><a href="foundation.html#volunteer">Volunteer</a></li><li><a href="https://www.cmciks.com/patients-visitors/community-health-assessment/">Community Health Needs Assessment</a></li></ul></div>
+      <div><h4>For Professionals</h4><ul><li><a href="professionals.html#refer">Refer a Patient</a></li><li><a href="professionals.html#staff">Medical Staff Services</a></li><li><a href="careers.html#education">Student Rotations</a></li><li><a href="careers.html#education">ACLS &amp; PALS Classes</a></li><li><a href="careers.html#providers">Physician Recruitment</a></li><li><a href="https://www.cmciks.com/request-for-bids/">Request for Bids</a></li></ul></div>
+      <div><h4>Stay Connected</h4><ul><li><a href="https://www.facebook.com/cmciks/">Facebook</a></li><li><a href="https://www.instagram.com/citizens_health">Instagram</a></li><li><a href="https://www.youtube.com/user/cmciks">YouTube</a></li><li><a href="https://www.linkedin.com/in/citizenshealth/">LinkedIn</a></li></ul></div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Citizens Health · Mailing address: 100 E. College Dr., Colby, KS 67701</span>
+      <a href="patient-resources.html#rights">Patient Rights</a><a href="patient-resources.html#rights">Notice of Privacy Practices</a><a href="patient-resources.html#rights">Nondiscrimination</a><a href="patient-resources.html#prices">Price Transparency</a><a href="patient-resources.html#prices">No Surprises Act</a><a href="accessibility.html">Accessibility</a>
+    </div>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="providers.js"></script>
+<script src="services-data.js"></script>
+<script src="site.js"></script>
+</body>
+</html>

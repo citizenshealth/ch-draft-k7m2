@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Facturación y recursos para pacientes · Citizens Health</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="site.css">
+<style>
+
+:root{color-scheme:light}
+html,body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+
+.loc-hero{background:var(--hero);color:var(--hero-ink)}
+.loc-hero .wrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center;padding-block:clamp(32px,5vw,64px)}
+.crumbs{font-size:14px;color:var(--hero-muted);display:flex;gap:8px;flex-wrap:wrap}
+.crumbs a{text-decoration:none;font-weight:600}
+.crumbs a:hover{color:#ffffff}
+.idrow{display:flex;align-items:center;gap:16px;margin-top:22px}
+.idrow img{width:64px;height:64px}
+.idrow .eyebrow{color:var(--hero-muted)}
+.loc-hero h1{font-size:clamp(36px,4.8vw,58px);font-weight:800;letter-spacing:-.025em}
+.loc-hero p.lede{margin-top:16px;font-size:clamp(18px,1.6vw,20px);color:var(--hero-muted);max-width:34em}
+.keyfacts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.14);border-radius:var(--r);overflow:hidden;margin-top:28px}
+.keyfacts div{background:rgba(10,22,38,.72);padding:14px 16px;display:grid;gap:2px}
+.keyfacts dt{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--hero-muted)}
+.keyfacts dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums}
+.loc-hero .heroimg{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:14px}
+@media (max-width:860px){.loc-hero .wrap{grid-template-columns:1fr}.loc-hero .heroimg{aspect-ratio:16/10;object-position:50% 30%}.keyfacts{grid-template-columns:1fr}}
+
+.subnav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 73px);z-index:15;background:var(--bg);border-bottom:1px solid var(--line)}
+.subnav .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:none}
+.subnav a{flex:none;text-decoration:none;font-weight:700;font-size:15px;padding:8px 12px;border-radius:999px;color:var(--muted)}
+.subnav a:hover{background:var(--surface);color:var(--ink)}
+section[id]{scroll-margin-top:140px}
+
+/* department block: meta column + content column */
+.dept{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:clamp(24px,5vw,64px);align-items:start}
+.dept h2{font-size:clamp(28px,3vw,38px);font-weight:800;margin-top:8px}
+.meta{display:grid;gap:0;margin-top:20px;border-top:1px solid var(--line)}
+.meta div{padding:12px 0;border-bottom:1px solid var(--line);display:grid;gap:2px}
+.meta dt{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.meta dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums}
+.meta dd small{display:block;font-weight:500;color:var(--muted);font-size:14px}
+.body{display:grid;gap:22px;min-width:0}
+.body > p{color:var(--muted);max-width:62ch}
+.body p.lead{color:var(--ink);font-size:19px;max-width:58ch}
+.body h3{font-size:18px;font-weight:800;margin-bottom:10px}
+.body img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px}
+.body .cols{columns:2;column-gap:32px;margin:0;padding:0;list-style:none}
+.body .cols li{break-inside:avoid;padding:8px 0;border-bottom:1px solid var(--line);font-size:16px}
+.body .cols.three{columns:3}
+.chips2{display:flex;flex-wrap:wrap;gap:8px}
+.chips2 span{font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+.tint .chips2 span{background:var(--raised)}
+.note{background:var(--surface);border-radius:var(--r);padding:16px 18px;font-size:16px}
+.tint .note{background:var(--raised);border:1px solid var(--line)}
+.note.urgent{background:var(--urgent-soft)}
+.note.urgent b{color:var(--urgent)}
+.pricing{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.pricing div{background:var(--raised);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;display:grid;gap:4px}
+.pricing b{font-size:17px}
+.pricing span{color:var(--muted);font-size:15px}
+.pricing .price{color:var(--ink);font-weight:800;font-size:20px;font-variant-numeric:tabular-nums}
+.linkrow{display:flex;flex-wrap:wrap;gap:8px 20px}
+.linkrow a{color:var(--action);font-weight:700;text-decoration:none}
+.linkrow a:hover{text-decoration:underline}
+.mini-prov{display:flex;gap:16px;align-items:center;text-decoration:none;background:var(--raised);border:1px solid var(--line);border-radius:var(--r);padding:12px;max-width:420px}
+.mini-prov img{width:64px;height:80px;object-fit:cover;border-radius:8px;aspect-ratio:auto}
+.mini-prov b{display:block;font-size:17px}
+.mini-prov span{color:var(--muted);font-size:14px}
+.mini-prov:hover b{color:var(--action)}
+@media (max-width:860px){.dept{grid-template-columns:1fr}.body .cols.three{columns:2}.pricing{grid-template-columns:1fr}}
+@media (max-width:520px){.body .cols,.body .cols.three{columns:1}}
+
+.promo{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.promo img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:14px}
+.promo h2{font-size:clamp(28px,3vw,38px);font-weight:800;margin-top:8px}
+.promo p{color:var(--muted);margin-top:12px;max-width:34em}
+.promo .btn{margin-top:20px}
+.promo .eyebrow{color:var(--fchc-ink)}
+@media (max-width:820px){.promo{grid-template-columns:1fr}}
+
+.dir{width:100%;border-collapse:collapse;font-size:16px;font-variant-numeric:tabular-nums}
+.dir th,.dir td{text-align:left;padding:12px 0;border-bottom:1px solid var(--line)}
+.dir td{text-align:right;font-weight:700;white-space:nowrap}
+.dirwrap{columns:2;column-gap:48px}
+.dirwrap table{break-inside:avoid}
+@media (max-width:760px){.dirwrap{columns:1}}
+
+.weekcal{background:var(--raised);border:1px solid var(--line);border-top:4px solid var(--cmc);border-radius:var(--r);padding:18px 20px;margin-top:6px}
+.weekcal .wc-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.weekcal .wc-head h3{font-size:18px;font-weight:800}
+.weekcal .wc-head span{color:var(--muted);font-size:14px}
+.weekcal ul{list-style:none;margin:0;padding:0}
+.weekcal li{display:grid;grid-template-columns:52px minmax(0,1fr) minmax(0,1fr);gap:10px;padding:10px 0;border-top:1px solid var(--line);align-items:baseline}
+.weekcal li b{color:var(--cmc)}
+.weekcal .wc-n{color:var(--muted);font-size:14.5px}
+.weekcal .wc-note{font-size:13px;color:var(--muted);margin-top:10px}
+@media (max-width:560px){.weekcal li{grid-template-columns:44px minmax(0,1fr)}.weekcal .wc-n{grid-column:2}}
+
+/* resources extras */
+.tasks{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:-40px;position:relative;z-index:3}
+.task{background:var(--raised);border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:8px;text-decoration:none;box-shadow:0 10px 26px rgba(20,35,58,.10)}
+.task svg{width:26px;height:26px;stroke:var(--action);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.task b{font-size:16px}
+.task span{color:var(--muted);font-size:14px}
+.task:hover{border-color:var(--action)}
+.task:hover b{color:var(--action)}
+@media (max-width:1000px){.tasks{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.tasks{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.plan{width:100%;border-collapse:collapse;background:var(--raised);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;font-variant-numeric:tabular-nums}
+.plan th,.plan td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line)}
+.plan thead th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--surface)}
+.plan tr:last-child td{border-bottom:0}
+.docs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}
+.docs li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.docs a{font-weight:600;text-decoration:none;color:var(--ink)}
+.docs a:hover{color:var(--action);text-decoration:underline}
+.docs .alt{font-size:14px;white-space:nowrap}
+.docs .alt a{color:var(--action);font-weight:700}
+.pdf{font-size:11px;font-weight:800;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:1px 5px;margin-left:6px;vertical-align:2px}
+@media (max-width:760px){.docs{grid-template-columns:1fr}}
+.formgroups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.formgroups h3{font-size:18px;font-weight:800;margin-bottom:8px}
+.formgroups .docs{grid-template-columns:1fr}
+@media (max-width:960px){.formgroups{grid-template-columns:1fr}}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.steps li::before{content:counter(s);width:30px;height:30px;border-radius:50%;background:var(--action);color:var(--action-ink);font-weight:800;display:grid;place-items:center;font-size:15px}
+.steps b{display:block}
+.steps span{color:var(--muted);font-size:15px}
+.fine{font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Ir al contenido principal</a>
+<div class="proto-bar"><div class="wrap"><span class="proto">Prototipo, no es público</span><span class="phone"><a class="pro-link lang-sw" href="patient-resources.html" lang="en">English</a><span class="sep" aria-hidden="true">·</span>Teléfono principal <b>(785) 462-7511</b></span></div></div>
+
+<header class="site" id="siteHeader">
+  <div class="wrap hdr">
+    <a class="brand" href="index.html" aria-label="Inicio de Citizens Health">
+      <img class="on-light" src="img/logo.png" alt="Citizens Health" width="165" height="44">
+      <img class="on-dark" src="img/logo-white.png" alt="Citizens Health" width="165" height="44">
+    </a>
+    <nav class="mainnav" id="mainnav" aria-label="Principal">
+      <a class="top-link" href="providers.html">Proveedores</a>
+      <a class="top-link" href="espanol.html#ubicaciones">Nuestro campus</a>
+      <div class="mm">
+        <button class="top-link mm-btn" type="button" aria-expanded="false">Servicios</button>
+        <div class="mm-panel">
+          <div class="wrap mm-grid">
+            <div class="mm-intro"><h3>Servicios</h3><p>Atención para cada etapa de la vida, cerca de casa en Colby.</p><a class="more" href="services.html">Todos los servicios (en inglés) →</a></div>
+            <div><h4>Atención destacada</h4><ul>
+              <li><a href="es-obstetricia.html">Obstetricia y Maternity Suites</a></li>
+              <li><a href="espanol.html#ahora">Emergencias</a></li>
+              <li><a href="surgery.html">Cirugía general</a></li>
+              <li><a href="specialty-clinic.html">Clínica de especialidades</a></li>
+              <li><a href="es-family-center.html">Medicina familiar</a></li>
+              <li><a href="orthopedics.html">Ortopedia</a></li>
+            </ul></div>
+            <div><h4>Exámenes y terapias</h4><ul>
+              <li><a href="imaging.html">Radiología e imágenes</a></li>
+              <li><a href="laboratory.html">Laboratorio</a></li>
+              <li><a href="rehabilitation.html">Rehabilitación</a></li>
+              <li><a href="respiratory-therapy.html">Terapia respiratoria</a></li>
+              <li><a href="medical-equipment.html">Equipo médico para el hogar</a></li>
+              <li><a href="providers.html#larson">Audiología</a></li>
+            </ul></div>
+            <div><h4>Atención ahora</h4><ul>
+              <li><a href="espanol.html#ahora">Sala de Emergencias, abierta 24/7</a></li>
+              <li><a href="es-family-center.html#hours">Atención urgente y sin cita</a></li>
+              <li><a href="providers.html#accepting">Proveedores que aceptan pacientes nuevos</a></li>
+              <li><a href="providers.html#visiting">Especialistas visitantes</a></li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="mm">
+        <button class="top-link mm-btn" type="button" aria-expanded="false">Pacientes</button>
+        <div class="mm-panel">
+          <div class="wrap mm-grid">
+            <div class="mm-intro"><h3>Pacientes y visitantes</h3><p>Todo lo que necesita antes, durante y después de su visita.</p><a class="more" href="es-patient-resources.html">Facturación y recursos →</a></div>
+            <div><h4>Recursos para pacientes</h4><ul>
+              <li><a href="https://www.cmciks.com/patients-visitors/patient-portal/">MyChart</a></li>
+              <li><a href="https://mychart.ochin.org/cmciks/billing/guestpay">Pagar una factura</a></li>
+              <li><a href="es-patient-resources.html#plans">Planes de pago</a></li>
+              <li><a href="es-patient-resources.html#assistance">Ayuda financiera</a></li>
+              <li><a href="es-patient-resources.html#prices">Precios</a></li>
+              <li><a href="es-patient-resources.html#records">Expedientes médicos</a></li>
+              <li><a href="es-patient-resources.html#forms">Formularios</a></li>
+            </ul></div>
+            <div><h4>Información para visitantes</h4><ul>
+              <li><a href="espanol.html#visitas">Horario de visitas</a></li>
+              <li><a href="hospital-stay.html">Su estadía en el hospital</a></li>
+              <li><a href="es-obstetricia.html#visiting">Visitas a las Maternity Suites</a></li>
+              <li><a href="espanol.html#ubicaciones">Ubicaciones</a></li>
+              <li><a href="about.html#events">Clases y eventos</a></li>
+            </ul></div>
+            <div><h4>Acerca de nosotros</h4><ul>
+              <li><a href="about.html">Acerca de nosotros</a></li>
+              <li><a href="https://www.cmciks.com/patients-visitors/community-health-assessment/">Evaluación de necesidades de salud</a></li>
+              <li><a href="contact.html">Contáctenos</a></li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+      <a class="top-link" href="careers.html">Empleos</a>
+      <a class="top-link give" href="foundation.html">Donar</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="icon-btn" id="searchBtn" type="button" aria-label="Buscar" aria-expanded="false" aria-controls="hsearch"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+      <a class="mychart" href="https://www.cmciks.com/patients-visitors/patient-portal/">MyChart</a>
+      <a class="btn btn-sched" href="espanol.html#citas">Hacer una cita</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainnav">Menú</button>
+    </div>
+  </div>
+  <div class="hsearch" id="hsearch" hidden>
+    <div class="wrap">
+      <label for="hq">Estoy buscando...</label>
+      <input id="hq" class="js-search" data-results="hresults" type="search" placeholder="Un proveedor, un servicio o una página" autocomplete="off">
+      <ul class="results" id="hresults" hidden></ul>
+    </div>
+  </div>
+</header>
+
+
+<main id="main">
+<p class="protonote bar" lang="en">Draft translation. A native Spanish speaker on staff will review this page before launch.</p>
+  <section class="phero">
+    <img class="hero-bg" src="img/photos/exterior.jpg" alt="">
+    <div class="wrap" style="padding-bottom:clamp(64px,8vw,104px)"><div class="in">
+      <nav class="crumbs" aria-label="Ruta de navegación"><a href="espanol.html">Español</a><span aria-hidden="true">/</span><span>Pacientes y visitantes</span><span aria-hidden="true">/</span><span>Facturación y recursos</span></nav>
+      <p class="eyebrow">Pacientes y visitantes</p>
+      <h1>Facturación y recursos para pacientes</h1>
+      <p class="lede">Pague una factura, haga un plan de pagos, solicite ayuda financiera, calcule costos y pida su expediente médico, todo en un solo lugar.</p>
+    </div></div>
+  </section>
+
+  <div class="wrap">
+    <nav class="tasks" aria-label="Tareas comunes">
+      <a class="task" href="https://mychart.ochin.org/cmciks/billing/guestpay"><svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 10h19M6.5 15h4"/></svg><b>Pagar una factura</b><span>En línea, sin iniciar sesión</span></a>
+      <a class="task" href="#assistance"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg><b>Ayuda financiera</b><span>Vea si califica</span></a>
+      <a class="task" href="#prices"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/><circle cx="18" cy="17" r="2.5"/></svg><b>Calcular costos</b><span>Precios y estimados</span></a>
+      <a class="task" href="#records"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg><b>Expedientes médicos</b><span>Pida su expediente</span></a>
+      <a class="task" href="#forms"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg><b>Formularios</b><span>Descargue e imprima</span></a>
+    </nav>
+  </div>
+
+  <nav class="subnav" aria-label="En esta página" style="margin-top:32px"><div class="wrap">
+    <a href="#pay">Pagar su factura</a><a href="#plans">Planes de pago</a><a href="#assistance">Ayuda financiera</a><a href="#prices">Precios y estimados</a><a href="#records">Expedientes médicos</a><a href="#forms">Formularios</a><a href="#rights">Derechos del paciente</a>
+  </div></nav>
+
+  <section class="block" id="pay">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow">Pagar su factura</p>
+        <h2>Pague su factura</h2>
+        <dl class="meta">
+          <div><dt>Horario de la oficina de facturación</dt><dd>Lunes a jueves, 8am a 5pm<small>Viernes, 8am a 4pm</small></dd></div>
+          <div><dt>Oficina de facturación</dt><dd>(785) 460-4853</dd></div>
+          <div><dt>Servicios Financieros al Paciente</dt><dd>(785) 460-5640<small>billing@cmciks.com</small></dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <p class="lead">Pague en línea en pocos minutos, con o sin una cuenta de MyChart.</p>
+        <p><a class="btn btn-dark" href="https://mychart.ochin.org/cmciks/billing/guestpay">Pagar en línea</a></p>
+        <div>
+          <h3>Otras formas de pagar</h3>
+          <ul class="cols"><li>Un retiro bancario único</li><li>Retiros bancarios automáticos</li><li>En línea a través de MyChart</li><li>Con tarjeta de débito o crédito por teléfono</li><li>En persona o por correo</li></ul>
+        </div>
+        <div>
+          <h3>Cómo funciona la facturación</h3>
+          <ul class="cols"><li>Traiga su tarjeta de seguro a cada visita</li><li>Nosotros enviamos los reclamos a su seguro</li><li>Después de que pague su seguro, le enviamos la factura del saldo restante</li><li>Los copagos se pagan en el momento de la visita</li></ul>
+        </div>
+        <p class="fine">Los cargos de médicos, anestesia, patología o laboratorios externos pueden facturarse por separado. <a href="es-family-center.html#billing" style="color:var(--action);font-weight:700">Vea los seguros con los que trabajamos.</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block tint" id="plans">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow">Planes de pago</p>
+        <h2>Pague a plazos</h2>
+        <dl class="meta">
+          <div><dt>Preguntas</dt><dd>(785) 460-5640</dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <p class="lead">Si no puede pagar el total en su visita, le ofrecemos pagos mensuales según su saldo total.</p>
+        <table class="plan">
+          <thead><tr><th scope="col">Su saldo</th><th scope="col">Pagado en su totalidad en</th></tr></thead>
+          <tbody>
+            <tr><td>$50 o menos</td><td>Se paga completo</td></tr>
+            <tr><td>$51 a $249</td><td>3 meses</td></tr>
+            <tr><td>$250 a $500</td><td>6 meses</td></tr>
+            <tr><td>$501 a $750</td><td>9 meses</td></tr>
+            <tr><td>$751 a $1,000</td><td>12 meses</td></tr>
+            <tr><td>$1,001 o más</td><td>16 meses, después de reunirse con un asesor financiero</td></tr>
+          </tbody>
+        </table>
+        <ul class="cols">
+          <li>Los pacientes sin seguro que no puedan pagar el total pagan al menos $50 en la visita</li>
+          <li>Los pacientes sin seguro reciben un descuento del 20%, excepto en procedimientos estéticos, cosméticos y electivos</li>
+          <li>Los pagos mensuales puntuales mantienen su cuenta al día y fuera de cobranza</li>
+          <li>Para empezar, llene un Acuerdo de plan de pagos</li>
+        </ul>
+        <p><a href="https://cmciks.com/wp-content/uploads/2019/01/payment-arrangement.pdf" style="color:var(--action);font-weight:700">Acuerdo de plan de pagos</a> <span class="pdf">PDF</span> <small class="eninfo">en inglés</small></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="assistance">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow">Ayuda financiera</p>
+        <h2>Ayuda para pagar su atención</h2>
+        <dl class="meta">
+          <div><dt>Asesor financiero</dt><dd>(785) 460-5640</dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <p class="lead">Como organización sin fines de lucro, Citizens Health ofrece ayuda financiera a pacientes sin seguro, con seguro insuficiente, que no califican para un programa del gobierno o que de otra forma no pueden pagar atención de emergencia u otra atención médicamente necesaria.</p>
+        <p>La elegibilidad depende de su situación económica. Nunca negamos atención de emergencia a ningún paciente, incluidos quienes califican para ayuda financiera o del gobierno.</p>
+        <div>
+          <h3>Cómo solicitarla</h3>
+          <ol class="steps">
+            <li><div><b>Lea el resumen en lenguaje sencillo</b><span>Una explicación breve del programa y de quién califica.</span></div></li>
+            <li><div><b>Llene la solicitud</b><span>Disponible en español y en inglés.</span></div></li>
+            <li><div><b>Entréguela a Servicios Financieros al Paciente</b><span>Si tiene preguntas, llame al (785) 460-5640.</span></div></li>
+          </ol>
+        </div>
+        <ul class="docs">
+          <li><span><a href="https://www.cmciks.com/wp-content/uploads/2026/09/Financial-Assistance-App-Spanish-Jan2026.pdf-6.pdf">Solicitud de ayuda financiera</a><span class="pdf">PDF</span></span><span class="alt"><a href="https://www.cmciks.com/wp-content/uploads/2026/09/Financial-Assistance-App-Jan2026.pdf" lang="en">English</a></span></li>
+          <li><span><a href="https://www.cmciks.com/wp-content/uploads/2024/11/Addendum-D-Plain-Language-Summary-Spanish-updated_110824.pdf">Resumen en lenguaje sencillo</a><span class="pdf">PDF</span></span><span class="alt"><a href="https://www.cmciks.com/wp-content/uploads/2024/11/Addendum-D-Plain-Language-Summary-updated_110824.pdf" lang="en">English</a></span></li>
+          <li><span><a href="https://cmciks.com/wp-content/uploads/2021/01/Spanish-Financial-Assistance-Policy.pdf">Política de ayuda financiera</a><span class="pdf">PDF</span></span><span class="alt"><a href="https://cmciks.com/wp-content/uploads/2020/10/Full-Policy.pdf" lang="en">English</a></span></li>
+          <li><span><a href="https://www.cmciks.com/wp-content/uploads/2026/09/FINANCIAL-ASSISTANCE-ADDENDUM-COVERED-PROVIDERS.pdf">Proveedores cubiertos y no cubiertos</a><span class="pdf">PDF</span><small class="eninfo">en inglés</small></span></li>
+          <li><span><a href="https://www.cmciks.com/wp-content/uploads/2026/09/2026-AGB-CALCULATION.pdf">Cálculo de los montos generalmente facturados</a><span class="pdf">PDF</span><small class="eninfo">en inglés</small></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block tint" id="prices">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow">Precios y estimados</p>
+        <h2>Conozca sus costos</h2>
+      </div>
+      <div class="body">
+        <p class="lead">Consulte nuestros precios estándar o pida un estimado antes de su visita.</p>
+        <ul class="docs">
+          <li><span><a href="https://www.cdmpricing.com/a32c8afa973a70a6aeeae3e176f9f387">Calculadora de precios y servicios</a><small class="eninfo">en inglés</small></span></li>
+          <li><span><a href="https://www.cmciks.com/wp-content/uploads/2026/06/480892178_Citizens-Medical-Center_standardcharges.csv">Archivo de cargos estándar</a><span class="pdf">CSV</span><small class="eninfo">en inglés</small></span></li>
+          <li><span><a href="https://www.cmciks.com/wp-content/uploads/2023/11/Updated-Good-Faith-Estimate-Form.pdf">Estimado de buena fe</a><span class="pdf">PDF</span><small class="eninfo">en inglés</small></span></li>
+          <li><span><a href="https://www.cmciks.com/wp-content/uploads/2023/11/No_Surprise_Disclosure_Form-Citizens-Health.pdf">Aviso de la Ley Sin Sorpresas</a><span class="pdf">PDF</span><small class="eninfo">en inglés</small></span></li>
+        </ul>
+        <div class="note"><b>¿No tiene seguro o paga por su cuenta?</b> Tiene derecho a recibir un Estimado de buena fe de los cargos esperados antes de recibir la atención.</div>
+        <p class="fine">Los cargos pueden cambiar y la lista de cargos estándar no es un contrato. Su costo real depende de su seguro y de la atención que reciba.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="records">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow">Expedientes médicos</p>
+        <h2>Obtenga su expediente</h2>
+        <dl class="meta">
+          <div><dt>Departamento de información médica</dt><dd>(785) 460-4851<small>Fax (785) 460-9319 · him-staff@cmciks.com</small></dd></div>
+          <div><dt>Horario</dt><dd>Lunes a viernes, 8am a 5pm<small>Puede variar en días festivos</small></dd></div>
+          <div><dt>Expedientes de Family Center</dt><dd>(785) 460-1710</dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <div>
+          <h3>La forma más rápida: MyChart</h3>
+          <p style="color:var(--muted)">Descargue, guarde, imprima o pida copias de sus resultados, su lista de medicamentos, resúmenes de visitas y notas clínicas.</p>
+          <p style="margin-top:12px"><a class="btn btn-dark" href="https://www.cmciks.com/patients-visitors/patient-portal/">Abrir MyChart</a></p>
+        </div>
+        <div>
+          <h3>Sin MyChart</h3>
+          <p style="color:var(--muted)">Llene una Autorización para divulgar información médica y entréguela al departamento de información médica.</p>
+          <ul class="docs" style="margin-top:8px">
+            <li><span><a href="https://www.cmciks.com/wp-content/uploads/2026/02/Health-Release-Spanish_Updated-2.24.26.pdf">Autorización para divulgar información médica</a><span class="pdf">PDF</span></span><span class="alt"><a href="https://www.cmciks.com/wp-content/uploads/2026/02/Release-of-Health-Information-Updated-2.24.26.pdf" lang="en">English</a></span></li>
+            <li><span><a href="https://myvaccinerecord.ks.gov/">Registros de vacunas de Kansas</a><small class="eninfo">en inglés</small></span></li>
+          </ul>
+        </div>
+        <ul class="cols">
+          <li>Los expedientes enviados directamente a otro proveedor o centro médico son gratis</li>
+          <li>Los expedientes para fines legales, de seguros u otros tienen cargos según la ley de Kansas (KSA 65-4971(b))</li>
+          <li>Los expedientes recientes suelen tardar de 7 a 14 días</li>
+          <li>Los expedientes antiguos pueden tardar más</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block tint" id="forms">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Formularios</p>
+          <h2>Formularios para imprimir</h2>
+          <p>Llénelos antes de su visita para ahorrar tiempo al registrarse. Los formularios marcados "en inglés" solo están disponibles en inglés.</p>
+        </div>
+      </div>
+      <div class="formgroups">
+        <div>
+          <h3>Citizens Medical Center</h3>
+          <ul class="docs">
+            <li><span><a href="https://www.cmciks.com/wp-content/uploads/2023/10/Spanish-Advanced-Directives.pdf">Directivas anticipadas</a><span class="pdf">PDF</span></span><span class="alt"><a href="https://cmciks.com/wp-content/uploads/2018/11/Advanced-Directive.pdf" lang="en">English</a></span></li>
+            <li><span><a href="https://cmciks.com/wp-content/uploads/2018/11/DNR.pdf">Orden de no resucitar (DNR)</a><span class="pdf">PDF</span><small class="eninfo">en inglés</small></span></li>
+            <li><span><a href="https://www.cmciks.com/wp-content/uploads/2026/02/Health-Release-Spanish_Updated-2.24.26.pdf">Divulgación de información médica</a><span class="pdf">PDF</span></span><span class="alt"><a href="https://www.cmciks.com/wp-content/uploads/2026/02/Release-of-Health-Information-Updated-2.24.26.pdf" lang="en">English</a></span></li>
+            <li><span><a href="https://www.cmciks.com/wp-content/uploads/2026/09/Financial-Assistance-App-Spanish-Jan2026.pdf-6.pdf">Solicitud de ayuda financiera</a><span class="pdf">PDF</span></span><span class="alt"><a href="https://www.cmciks.com/wp-content/uploads/2026/09/Financial-Assistance-App-Jan2026.pdf" lang="en">English</a></span></li>
+            <li><span><a href="https://www.cmciks.com/wp-content/uploads/2024/08/Grievance_Form.pdf">Formulario de quejas</a><span class="pdf">PDF</span><small class="eninfo">en inglés</small></span></li>
+            <li><span><a href="https://www.cmciks.com/wp-content/uploads/2026/06/Direct-Access-Form_6.2026.pdf">Formulario de acceso directo al laboratorio</a><span class="pdf">PDF</span><small class="eninfo">en inglés</small></span></li>
+            <li><span><a href="https://www.cmciks.com/wp-content/uploads/2026/09/PET-CT-Request-Form_Colby.pdf">Solicitud de PET/CT</a><span class="pdf">PDF</span><small class="eninfo">en inglés</small></span></li>
+            <li><span><a href="https://www.cmciks.com/wp-content/uploads/2026/10/2026-Citizens-Health-Expo-REGISTRATION-FORM-with-date.pdf">Inscripción a la Feria de Salud</a><span class="pdf">PDF</span><small class="eninfo">en inglés</small></span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Family Center for Healthcare</h3>
+          <ul class="docs">
+            <li><span><a href="https://cmciks.com/wp-content/uploads/2019/01/health-history-questionnaire.pdf">Cuestionario de historial médico</a><span class="pdf">PDF</span><small class="eninfo">en inglés</small></span></li>
+            <li><span><a href="https://www.cmciks.com/wp-content/uploads/2024/05/Spanish-Pre-Participation-Physical-Evaluation.pdf">Examen físico deportivo</a><span class="pdf">PDF</span></span><span class="alt"><a href="https://www.cmciks.com/wp-content/uploads/2024/05/Pre-Participation-Physical-Evaluation-2024.pdf" lang="en">English</a></span></li>
+            <li><span><a href="https://cmciks.com/wp-content/uploads/2019/01/HIPPA-revised-122617.pdf">Acuse de recibo del aviso de privacidad</a><span class="pdf">PDF</span><small class="eninfo">en inglés</small></span></li>
+            <li><span><a href="https://cmciks.com/wp-content/uploads/2019/01/payment-arrangement.pdf">Acuerdo de plan de pagos</a><span class="pdf">PDF</span><small class="eninfo">en inglés</small></span></li>
+            <li><span><a href="https://cmciks.com/wp-content/uploads/2019/01/Work-com-auth-form.pdf">Autorización de compensación laboral</a><span class="pdf">PDF</span><small class="eninfo">en inglés</small></span></li>
+            <li><span><a href="https://cmciks.com/wp-content/uploads/2019/01/Injury-form.pdf">Formulario de lesiones</a><span class="pdf">PDF</span><small class="eninfo">en inglés</small></span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Planificación anticipada</h3>
+          <ul class="docs">
+            <li><span><a href="https://cmciks.com/wp-content/uploads/2018/11/Choosing-an-Agent.pdf">Cómo elegir un representante para decisiones médicas</a><span class="pdf">PDF</span><small class="eninfo">en inglés</small></span></li>
+            <li><span><a href="https://cmciks.com/wp-content/uploads/2018/11/Life-Sustaining-Treatments-flier.pdf">Tratamientos para mantener la vida</a><span class="pdf">PDF</span><small class="eninfo">en inglés</small></span></li>
+            <li><span><a href="https://cmciks.com/wp-content/uploads/2018/11/Medically-Assisted-Nutrition-flier.pdf">Nutrición asistida médicamente</a><span class="pdf">PDF</span><small class="eninfo">en inglés</small></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="rights">
+    <div class="wrap dept">
+      <div>
+        <p class="eyebrow">Derechos del paciente</p>
+        <h2>Sus derechos y nuestras políticas</h2>
+      </div>
+      <div class="body">
+        <ul class="docs">
+          <li><span><a href="https://www.cmciks.com/wp-content/uploads/2025/08/R.074.001-Att-2-Patient-Bill-of-Rights-02.2024.pdf">Carta de derechos del paciente</a><span class="pdf">PDF</span><small class="eninfo">en inglés</small></span></li>
+          <li><span><a href="https://www.cmciks.com/wp-content/uploads/2023/09/HIPAA-Notice-of-Privacy-Practices.pdf">Aviso de prácticas de privacidad</a><span class="pdf">PDF</span><small class="eninfo">en inglés</small></span></li>
+          <li><span><a href="https://cmciks.com/wp-content/uploads/2023/03/Notice_of_Nondiscrimination.docx-1.pdf">Aviso de no discriminación</a><span class="pdf">PDF</span><small class="eninfo">en inglés</small></span></li>
+          <li><span><a href="https://www.cmciks.com/wp-content/uploads/2024/08/Grievance_Form.pdf">Compartir una inquietud (formulario de quejas)</a><span class="pdf">PDF</span><small class="eninfo">en inglés</small></span></li>
+          <li><span><a href="https://www.cmciks.com/patients-visitors/community-health-assessment/">Evaluación de necesidades de salud de la comunidad</a><small class="eninfo">en inglés</small></span></li>
+          <li><span><a href="https://cmciks.com/wp-content/uploads/2018/11/Social-Media-Guidelines.pdf">Política de redes sociales</a><span class="pdf">PDF</span><small class="eninfo">en inglés</small></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ftop">
+      <div>
+        <img class="flogo" src="img/logo-white.png" alt="Citizens Health" width="150" height="40">
+        <p class="mission">Mejorando la vida de quienes servimos.</p>
+      </div>
+      <div class="fcall">
+        <span class="fphone">(785) 462-7511</span>
+        <div class="fbtns"><a class="btn btn-ghost" href="contact.html">Contáctenos</a><a class="btn btn-primary" href="foundation.html#give">Donar</a></div>
+      </div>
+    </div>
+    <div class="cols">
+      <div><h4>Ubicaciones</h4><ul class="contact">
+        <li><a href="medical-center.html"><b>Citizens Medical Center</b></a>(785) 462-7511</li>
+        <li><a href="es-family-center.html"><b>Family Center for Healthcare</b></a>(785) 462-6184</li>
+        <li><a href="prairie-senior.html"><b>Prairie Senior</b></a>(785) 462-8295</li>
+        <li><a href="palace-drug.html"><b>Palace Drug Store</b></a>(785) 460-7507</li>
+      </ul></div>
+      <div><h4>Para pacientes</h4><ul><li><a href="providers.html">Buscar proveedor</a></li><li><a href="https://mychart.ochin.org/cmciks/billing/guestpay">Pagar una factura</a></li><li><a href="es-patient-resources.html#assistance">Ayuda financiera</a></li><li><a href="es-patient-resources.html#records">Expedientes médicos</a></li><li><a href="es-patient-resources.html#forms">Formularios</a></li><li><a href="espanol.html#ubicaciones">Teléfonos</a></li></ul></div>
+      <div><h4>Visitantes y comunidad</h4><ul><li><a href="espanol.html#visitas">Horario de visitas</a></li><li><a href="about.html#events">Clases y eventos</a></li><li><a href="careers.html">Empleos</a></li><li><a href="foundation.html">Citizens Foundation</a></li><li><a href="foundation.html#volunteer">Voluntariado</a></li><li><a href="https://www.cmciks.com/patients-visitors/community-health-assessment/">Evaluación de necesidades de salud</a></li></ul></div>
+      <div><h4>Para profesionales</h4><ul><li><a href="professionals.html#refer">Referir a un paciente</a></li><li><a href="professionals.html#staff">Servicios al personal médico</a></li><li><a href="careers.html#education">Rotaciones de estudiantes</a></li><li><a href="careers.html#education">Clases de ACLS y PALS</a></li><li><a href="careers.html#providers">Reclutamiento de médicos</a></li><li><a href="https://www.cmciks.com/request-for-bids/">Solicitud de ofertas</a></li></ul></div>
+      <div><h4>Manténgase en contacto</h4><ul><li><a href="https://www.facebook.com/cmciks/">Facebook</a></li><li><a href="https://www.instagram.com/citizens_health">Instagram</a></li><li><a href="https://www.youtube.com/user/cmciks">YouTube</a></li><li><a href="https://www.linkedin.com/in/citizenshealth/">LinkedIn</a></li></ul></div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Citizens Health · Dirección postal: 100 E. College Dr., Colby, KS 67701</span>
+      <a href="es-patient-resources.html#rights">Derechos del paciente</a><a href="es-patient-resources.html#rights">Aviso de prácticas de privacidad</a><a href="es-patient-resources.html#rights">No discriminación</a><a href="es-patient-resources.html#prices">Precios</a><a href="es-patient-resources.html#prices">Ley Sin Sorpresas</a><a href="accessibility.html">Accesibilidad</a>
+    </div>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="providers.js"></script>
+<script src="services-data.js"></script>
+<script src="site.js"></script>
+</body>
+</html>
