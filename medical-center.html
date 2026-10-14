@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Citizens Medical Center · Citizens Health</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +16,7 @@ img{max-width:100%}
 
 .loc-hero{background:var(--hero);color:var(--hero-ink)}
 .loc-hero .wrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center;padding-block:clamp(32px,5vw,64px)}
-.crumbs{font-size:14px;color:var(--hero-muted);display:flex;gap:8px;flex-wrap:wrap}
+.crumbs{font-size:15px;color:var(--hero-muted);display:flex;gap:8px;flex-wrap:wrap}
 .crumbs a{text-decoration:none;font-weight:600}
 .crumbs a:hover{color:#ffffff}
 .idrow{display:flex;align-items:center;gap:16px;margin-top:22px}
@@ -27,14 +26,14 @@ img{max-width:100%}
 .loc-hero p.lede{margin-top:16px;font-size:clamp(18px,1.6vw,20px);color:var(--hero-muted);max-width:34em}
 .keyfacts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.14);border-radius:var(--r);overflow:hidden;margin-top:28px}
 .keyfacts div{background:rgba(10,22,38,.72);padding:14px 16px;display:grid;gap:2px}
-.keyfacts dt{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--hero-muted)}
+.keyfacts dt{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--hero-muted)}
 .keyfacts dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums}
 .loc-hero .heroimg{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:14px}
 @media (max-width:860px){.loc-hero .wrap{grid-template-columns:1fr}.loc-hero .heroimg{aspect-ratio:16/10;object-position:50% 30%}.keyfacts{grid-template-columns:1fr}}
 
 .subnav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 73px);z-index:15;background:var(--bg);border-bottom:1px solid var(--line)}
 .subnav .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:none}
-.subnav a{flex:none;text-decoration:none;font-weight:700;font-size:15px;padding:8px 12px;border-radius:999px;color:var(--muted)}
+.subnav a{flex:none;text-decoration:none;font-weight:700;font-size:16px;padding:8px 11px;border-radius:999px;color:var(--muted)}
 .subnav a:hover{background:var(--surface);color:var(--ink)}
 section[id]{scroll-margin-top:140px}
 
@@ -43,9 +42,9 @@ section[id]{scroll-margin-top:140px}
 .dept h2{font-size:clamp(28px,3vw,38px);font-weight:800;margin-top:8px}
 .meta{display:grid;gap:0;margin-top:20px;border-top:1px solid var(--line)}
 .meta div{padding:12px 0;border-bottom:1px solid var(--line);display:grid;gap:2px}
-.meta dt{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.meta dt{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .meta dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums}
-.meta dd small{display:block;font-weight:500;color:var(--muted);font-size:14px}
+.meta dd small{display:block;font-weight:500;color:var(--muted);font-size:15px}
 .body{display:grid;gap:22px;min-width:0}
 .body > p{color:var(--muted);max-width:62ch}
 .body p.lead{color:var(--ink);font-size:19px;max-width:58ch}
@@ -55,8 +54,10 @@ section[id]{scroll-margin-top:140px}
 .cols li{break-inside:avoid;padding:8px 0;border-bottom:1px solid var(--line);font-size:16px}
 .cols.three{columns:3}
 .chips2{display:flex;flex-wrap:wrap;gap:8px}
-.chips2 span{font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+.chips2 span{font-size:15px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
 .tint .chips2 span{background:var(--raised)}
+.chiplinks a{font-size:15px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:var(--ink);text-decoration:none}
+.chiplinks a:hover{background:var(--action);border-color:var(--action);color:#fff}
 .note{background:var(--surface);border-radius:var(--r);padding:16px 18px;font-size:16px}
 .tint .note{background:var(--raised);border:1px solid var(--line)}
 .note.urgent{background:var(--urgent-soft)}
@@ -64,7 +65,7 @@ section[id]{scroll-margin-top:140px}
 .pricing{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .pricing div{background:var(--raised);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;display:grid;gap:4px}
 .pricing b{font-size:17px}
-.pricing span{color:var(--muted);font-size:15px}
+.pricing span{color:var(--muted);font-size:16px}
 .pricing .price{color:var(--ink);font-weight:800;font-size:20px;font-variant-numeric:tabular-nums}
 .linkrow{display:flex;flex-wrap:wrap;gap:8px 20px}
 .linkrow a{color:var(--action);font-weight:700;text-decoration:none}
@@ -72,7 +73,7 @@ section[id]{scroll-margin-top:140px}
 .mini-prov{display:flex;gap:16px;align-items:center;text-decoration:none;background:var(--raised);border:1px solid var(--line);border-radius:var(--r);padding:12px;max-width:420px}
 .mini-prov img{width:64px;height:80px;object-fit:cover;border-radius:8px;aspect-ratio:auto}
 .mini-prov b{display:block;font-size:17px}
-.mini-prov span{color:var(--muted);font-size:14px}
+.mini-prov span{color:var(--muted);font-size:15px}
 .mini-prov:hover b{color:var(--action)}
 @media (max-width:860px){.dept{grid-template-columns:1fr}.cols.three{columns:2}.pricing{grid-template-columns:1fr}}
 @media (max-width:520px){.cols,.cols.three{columns:1}}
@@ -94,12 +95,12 @@ section[id]{scroll-margin-top:140px}
 .weekcal{background:var(--raised);border:1px solid var(--line);border-top:4px solid var(--cmc);border-radius:var(--r);padding:18px 20px;margin-top:6px}
 .weekcal .wc-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px}
 .weekcal .wc-head h3{font-size:18px;font-weight:800}
-.weekcal .wc-head span{color:var(--muted);font-size:14px}
+.weekcal .wc-head span{color:var(--muted);font-size:15px}
 .weekcal ul{list-style:none;margin:0;padding:0}
 .weekcal li{display:grid;grid-template-columns:52px minmax(0,1fr) minmax(0,1fr);gap:10px;padding:10px 0;border-top:1px solid var(--line);align-items:baseline}
 .weekcal li b{color:var(--cmc)}
-.weekcal .wc-n{color:var(--muted);font-size:14.5px}
-.weekcal .wc-note{font-size:13px;color:var(--muted);margin-top:10px}
+.weekcal .wc-n{color:var(--muted);font-size:15.5px}
+.weekcal .wc-note{font-size:14px;color:var(--muted);margin-top:10px}
 @media (max-width:560px){.weekcal li{grid-template-columns:44px minmax(0,1fr)}.weekcal .wc-n{grid-column:2}}
 
 .morelink-wrap{order:99}
@@ -109,7 +110,7 @@ section[id]{scroll-margin-top:140px}
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
-<div class="proto-bar"><div class="wrap"><span class="proto">Draft prototype, not public</span><span class="phone"><a class="pro-link" href="espanol.html" lang="es">Español</a><span class="sep" aria-hidden="true">·</span><a class="pro-link pro-only" href="professionals.html">For Healthcare Professionals</a><span class="sep pro-only" aria-hidden="true">·</span>Main line <b>(785) 462-7511</b></span></div></div>
+<div class="proto-bar"><div class="wrap"><span class="proto">Draft prototype, not public</span><span class="phone"><a class="pro-link" href="espanol.html" lang="es">Español</a><span class="sep" aria-hidden="true">·</span><a class="pro-link pro-only" href="professionals.html">For Health Care Professionals</a><span class="sep pro-only" aria-hidden="true">·</span>Main line <b>(785) 462-7511</b></span></div></div>
 
 <header class="site" id="siteHeader">
   <div class="wrap hdr">
@@ -216,7 +217,7 @@ section[id]{scroll-margin-top:140px}
   </section>
 
   <nav class="subnav" aria-label="On this page"><div class="wrap">
-    <a href="#emergency">Emergency</a><a href="#surgery">Surgery</a><a href="#specialty">Specialty Clinic</a><a href="#imaging">Imaging</a><a href="#lab">Laboratory</a><a href="#rehab">Rehabilitation</a><a href="#respiratory">Respiratory Therapy</a><a href="#equipment">Medical Equipment</a><a href="#maternity">Maternity Suites</a><a href="#visiting">Visiting</a><a href="#directory">Phone Directory</a>
+    <a href="#emergency">Emergency</a><a href="#surgery">Surgery</a><a href="#specialty">Specialty Clinic</a><a href="#imaging">Imaging</a><a href="#lab">Laboratory</a><a href="#rehab">Rehabilitation</a><a href="#respiratory">Respiratory</a><a href="#equipment">Equipment</a><a href="#maternity">Maternity</a><a href="#visiting">Visiting</a><a href="#directory">Phone Directory</a>
   </div></nav>
 
   <section class="block" id="emergency">
@@ -302,7 +303,7 @@ section[id]{scroll-margin-top:140px}
         <p class="lead">Physicians from across the region and beyond travel to Colby so you can see a specialist close to home.</p>
         <div>
           <h3>Specialties</h3>
-          <div class="chips2"><span>Allergy &amp; Immunology</span><span>Anesthesia</span><span>Cardiology</span><span>Counseling</span><span>Dietitian</span><span>Endocrinology</span><span>Gynecology</span><span>Maternal-Fetal Medicine</span><span>Nephrology</span><span>Neurology</span><span>Oncology &amp; Hematology</span><span>Ophthalmology</span><span>Orthopedics</span><span>Ear, Nose &amp; Throat</span><span>Pain Management</span><span>Podiatry</span><span>Psychiatry</span><span>Pulmonology</span><span>Rheumatology</span><span>Sleep Medicine</span><span>Spine Surgery</span><span>Urology</span><span>Vascular Surgery</span></div>
+          <div class="chips2 chiplinks"><a href="sc-allergy-immunology.html">Allergy &amp; Immunology</a><a href="surgery.html">Anesthesia</a><a href="sc-cardiology.html">Cardiology</a><a href="sc-counseling.html">Counseling</a><a href="sc-nutrition.html">Dietitian</a><a href="sc-endocrinology.html">Endocrinology</a><a href="sc-gynecology.html">Gynecology</a><a href="sc-maternal-fetal-medicine.html">Maternal-Fetal Medicine</a><a href="sc-nephrology.html">Nephrology</a><a href="sc-neurology.html">Neurology</a><a href="sc-oncology-hematology.html">Oncology &amp; Hematology</a><a href="sc-ophthalmology.html">Ophthalmology</a><a href="orthopedics.html">Orthopedics</a><a href="sc-ear-nose-throat.html">Ear, Nose &amp; Throat</a><a href="sc-pain-management.html">Pain Management</a><a href="sc-podiatry.html">Podiatry</a><a href="sc-psychiatry.html">Psychiatry</a><a href="sc-pulmonology.html">Pulmonology</a><a href="sc-rheumatology.html">Rheumatology</a><a href="sc-sleep-medicine.html">Sleep Medicine</a><a href="sc-spine-surgery.html">Spine Surgery</a><a href="sc-urology.html">Urology</a><a href="sc-vascular-surgery.html">Vascular Surgery</a></div>
           <p style="margin-top:12px"><a class="more" href="providers.html#visiting">See the visiting specialists →</a></p>
         </div>
         <div class="weekcal" id="thisweek">
@@ -560,7 +561,7 @@ section[id]{scroll-margin-top:140px}
     <div class="cols">
       <div><h4>Locations</h4><ul class="contact">
         <li><a href="medical-center.html"><b>Citizens Medical Center</b></a>(785) 462-7511</li>
-        <li><a href="family-center.html"><b>Family Center for Healthcare</b></a>(785) 462-6184</li>
+        <li><a href="family-center.html"><b>Family Center for Health Care</b></a>(785) 462-6184</li>
         <li><a href="prairie-senior.html"><b>Prairie Senior</b></a>(785) 462-8295</li>
         <li><a href="palace-drug.html"><b>Palace Drug Store</b></a>(785) 460-7507</li>
       </ul></div>
