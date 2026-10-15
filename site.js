@@ -246,3 +246,17 @@ if(!document.documentElement.lang)document.documentElement.lang="en";
     e.preventDefault(); open(a.getAttribute('data-to')||'',a.getAttribute('data-topic')||'');
   });
 })();
+
+/* Links that leave the site (and PDFs) open in a new tab so visitors keep their place */
+(function(){
+  function mark(a){
+    if(a.dataset.ext) return; var h=a.getAttribute('href')||'';
+    if(!/^https?:\/\//i.test(h)&&!/\.pdf(\?|#|$)/i.test(h)) return;
+    try{ if(/^https?:/i.test(h) && new URL(h).host===location.host) return; }catch(e){ return; }
+    a.dataset.ext='1'; a.target='_blank'; a.rel='noopener';
+    if(!a.querySelector('.sr-only')){var s=document.createElement('span');s.className='sr-only';s.textContent=' (opens in a new tab)';a.appendChild(s)}
+  }
+  function scan(root){(root.querySelectorAll?root:document).querySelectorAll('a[href]').forEach(mark)}
+  scan(document);
+  new MutationObserver(function(m){m.forEach(function(r){r.addedNodes.forEach(function(n){if(n.nodeType===1){if(n.matches&&n.matches('a[href]'))mark(n);scan(n)}})})}).observe(document.body,{childList:true,subtree:true});
+})();
