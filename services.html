@@ -317,9 +317,15 @@ section[id]{scroll-margin-top:140px}
   document.getElementById('azq').addEventListener('input',function(e){q=e.target.value.trim().toLowerCase();render()});
   document.querySelectorAll('.lchips button[data-t]').forEach(function(b){b.addEventListener('click',function(){typ=b.dataset.t;document.querySelectorAll('.lchips button[data-t]').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});render()})});
   function jump(el){
-    var bar=document.querySelector('.aztools');
-    function fix(){var off=bar.getBoundingClientRect().bottom+12;var d=el.getBoundingClientRect().top-off;if(Math.abs(d)>2)window.scrollBy(0,d)}
-    fix();fix();setTimeout(fix,120);setTimeout(fix,420);
+    /* Aim below the header and letter bar as they sit once pinned, so the first jump lands right even before the bar has stuck. */
+    var hdr=document.querySelector('header.site'),bar=document.querySelector('.aztools');
+    function go(){var off=(hdr?hdr.offsetHeight:0)+bar.offsetHeight+12;var y=el.getBoundingClientRect().top+window.pageYOffset-off;window.scrollTo(0,Math.max(0,Math.round(y)))}
+    go();
+    /* If the page reflows right after the jump (for example when the web font finishes loading on first visit), re-align for a moment. */
+    var until=Date.now()+2000;
+    if(window.ResizeObserver){var ro=new ResizeObserver(function(){if(Date.now()<until)go();else ro.disconnect()});ro.observe(document.getElementById('azlist'));setTimeout(function(){ro.disconnect()},2100)}
+    if(document.fonts&&document.fonts.status!=='loaded')document.fonts.ready.then(function(){if(Date.now()<until)go()});
+    setTimeout(go,150);
   }
   document.getElementById('letters').addEventListener('click',function(e){
     var a=e.target.closest('a');if(!a)return;var el=document.querySelector(a.getAttribute('href'));if(!el)return;
