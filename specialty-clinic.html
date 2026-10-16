@@ -329,36 +329,21 @@ dialog.profile::backdrop{background:rgba(10,19,29,.55)}
       <p class="eyebrow">Specialty Clinic</p>
       <h1>Specialists, without the drive</h1>
       <p class="lede">Physicians from across the region and beyond travel to Colby so you can see a specialist close to home.</p>
-      <div class="ctas"><a class="btn btn-primary" href="#specialties">Find a specialty</a><a class="btn btn-ghost" href="#thisweek">Who&#39;s here this week</a></div>
+      <div class="ctas"><a class="btn btn-primary" href="#specialties">Find a specialty</a><a class="btn btn-ghost" href="#calendar">See the calendar</a></div>
       <dl class="keyfacts"><div><dt>Scheduling</dt><dd>(785) 460-1223</dd></div><div><dt>Nurse line</dt><dd>(785) 460-1215</dd></div><div><dt>Fax</dt><dd>(785) 460-1206</dd></div></dl>
     </div></div>
   </section>
-  <nav class="subnav" aria-label="On this page"><div class="wrap"><a href="#specialties">Specialties</a><a href="#thisweek">This week</a><a href="#infusion">Oncology &amp; infusion</a><a href="#visit">Before your visit</a></div></nav>
+  <nav class="subnav" aria-label="On this page"><div class="wrap"><a href="#specialties">Specialties</a><a href="#calendar">Calendar</a><a href="#infusion">Oncology &amp; infusion</a><a href="#visit">Before your visit</a></div></nav>
   <section class="block tint" id="specialties">
     <div class="wrap">
       <div class="head"><div><p class="eyebrow">Specialties</p><h2>Choose a specialty</h2></div></div>
 <div class="splist"><a href="sc-allergy-immunology.html">Allergy &amp; Immunology<span aria-hidden="true">→</span></a><a href="sc-audiology.html">Audiology<span aria-hidden="true">→</span></a><a href="sc-cardiology.html">Cardiology<span aria-hidden="true">→</span></a><a href="sc-counseling.html">Counseling<span aria-hidden="true">→</span></a><a href="sc-ear-nose-throat.html">Ear, Nose &amp; Throat<span aria-hidden="true">→</span></a><a href="sc-endocrinology.html">Endocrinology<span aria-hidden="true">→</span></a><a href="sc-gynecology.html">Gynecology<span aria-hidden="true">→</span></a><a href="sc-maternal-fetal-medicine.html">Maternal-Fetal Medicine<span aria-hidden="true">→</span></a><a href="sc-nephrology.html">Nephrology<span aria-hidden="true">→</span></a><a href="sc-neurology.html">Neurology<span aria-hidden="true">→</span></a><a href="sc-nutrition.html">Nutrition<span aria-hidden="true">→</span></a><a href="oncology-infusion.html">Oncology &amp; Infusion<span aria-hidden="true">→</span></a><a href="sc-ophthalmology.html">Ophthalmology<span aria-hidden="true">→</span></a><a href="orthopedics.html">Orthopedics<span aria-hidden="true">→</span></a><a href="sc-pain-management.html">Pain Management<span aria-hidden="true">→</span></a><a href="sc-podiatry.html">Podiatry<span aria-hidden="true">→</span></a><a href="sc-psychiatry.html">Psychiatry<span aria-hidden="true">→</span></a><a href="sc-pulmonology.html">Pulmonology<span aria-hidden="true">→</span></a><a href="sc-rheumatology.html">Rheumatology<span aria-hidden="true">→</span></a><a href="sc-sleep-medicine.html">Sleep Medicine<span aria-hidden="true">→</span></a><a href="sc-spine-surgery.html">Spine Surgery<span aria-hidden="true">→</span></a><a href="sc-urology.html">Urology<span aria-hidden="true">→</span></a><a href="sc-vascular-surgery.html">Vascular Surgery<span aria-hidden="true">→</span></a></div>
     </div>
   </section>
-  <section class="block" id="thisweek">
-    <div class="wrap dept">
-      <div>
-        <p class="eyebrow">This week</p>
-        <h2>Who&#39;s here this week</h2>
-        
-      </div>
-      <div class="body">
-<div class="weekcal" style="margin-top:0">
-          <ul>
-            <li><b>Mon</b><span>Cardiology</span><span class="wc-n">Visiting cardiologist</span></li>
-            <li><b>Tue</b><span>Orthopedics</span><span class="wc-n">Orthopedic surgeon</span></li>
-            <li><b>Wed</b><span>Urology</span><span class="wc-n">Visiting urologist</span></li>
-            <li><b>Thu</b><span>Podiatry</span><span class="wc-n">Visiting podiatrist</span></li>
-            <li><b>Fri</b><span>Ear, Nose &amp; Throat</span><span class="wc-n">Visiting ENT</span></li>
-          </ul>
-          <p class="protonote">Sample schedule. On the live site, this list pulls from the Specialty Clinic&#39;s Google Calendar.</p>
-        </div>
-      </div>
+  <section class="block" id="calendar">
+    <div class="wrap">
+      <div class="head"><div><p class="eyebrow">Calendar</p><h2>Who&#39;s here this month</h2><p>Call the Specialty Clinic at (785) 460-1223 to schedule, unless your specialist&#39;s page says to call their office.</p></div></div>
+<div class="sccal" id="sccal"></div><p class="protonote">Copied from the Specialty Clinic&#39;s Google Calendar for October. On the live site it updates on its own whenever staff change the Google Calendar.</p><script src="sc-calendar.js"></script><script>chScMonth("sccal")</script>
     </div>
   </section>
   <section class="block tint" id="infusion">

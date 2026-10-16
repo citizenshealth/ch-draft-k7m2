@@ -307,14 +307,9 @@ section[id]{scroll-margin-top:140px}
         </div>
         <div class="weekcal" id="thisweek">
           <div class="wc-head"><h3>Who's here this week</h3><span>Specialty Clinic schedule</span></div>
-          <ul>
-            <li><b>Mon</b><span>Cardiology</span><span class="wc-n">Visiting cardiologist</span></li>
-            <li><b>Tue</b><span>Orthopedics</span><span class="wc-n">Orthopedic surgeon</span></li>
-            <li><b>Wed</b><span>Urology</span><span class="wc-n">Visiting urologist</span></li>
-            <li><b>Thu</b><span>Podiatry</span><span class="wc-n">Visiting podiatrist</span></li>
-            <li><b>Fri</b><span>Ear, Nose &amp; Throat</span><span class="wc-n">Visiting ENT</span></li>
-          </ul>
-          <p class="protonote">Sample schedule. On the live site, this list pulls from the Specialty Clinic's Google Calendar, so it updates whenever staff update the calendar.</p>
+          <div id="scweek"></div>
+          <p class="wc-note"><a class="more" href="specialty-clinic.html#calendar">See the full calendar →</a></p>
+          <p class="protonote">From the Specialty Clinic's Google Calendar. On the live site it updates on its own.</p>
         </div>
         <img src="img/photos/infusion.jpg" alt="The outpatient infusion area at Citizens Medical Center" loading="lazy">
         <div>
@@ -582,6 +577,7 @@ section[id]{scroll-margin-top:140px}
 (function(){
 })();
 </script>
+<script src="sc-calendar.js"></script><script>chScWeek("scweek")</script>
 <script src="providers.js"></script>
 <script src="services-data.js"></script>
 <script src="site.js"></script>
