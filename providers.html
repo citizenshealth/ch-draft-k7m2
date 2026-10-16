@@ -259,7 +259,7 @@ dialog.profile::backdrop{background:rgba(10,19,29,.55)}
 
 <dialog class="profile" id="profile" aria-labelledby="pf-name"><div class="pf" id="pf"></div></dialog>
 
-<script src="providers.js"></script>
+<script src="providers.js?v=20261016"></script>
 <script>
 (function(){
   var P=window.CH_PROVIDERS, V=window.CH_VISITING;
@@ -310,7 +310,7 @@ dialog.profile::backdrop{background:rgba(10,19,29,.55)}
       html='<div class="vnote"><span>Most visiting specialists are scheduled through our Specialty Clinic. Some are scheduled through their home office, as noted.</span><span>Specialty Clinic <b>(785) 460-1223</b></span></div>';
       html+=n?Object.keys(vg).sort().map(function(g){
         return '<section class="vgroup"><h3>'+(SPL[g]?'<a href="'+SPL[g]+'" style="color:inherit;text-decoration:none">'+esc(g)+' <span style="color:var(--action);font-size:.8em">→</span></a>':esc(g))+'</h3><div class="vrows">'+vg[g].map(function(v){
-          return '<div class="vrow">'+(v.photo?'<img class="vph" src="'+(/^https?:/.test(v.photo)?v.photo:'img/people/'+v.photo+'.jpg')+'" referrerpolicy="no-referrer" alt="" loading="lazy">':'<span class="vph" aria-hidden="true">'+initials(v.name.split(',')[0])+'</span>')+'<span><b>'+esc(v.name)+'</b>'+(v.role?' <span class="vrole">'+esc(v.role)+'</span>':'')+(v.tele?'<span class="tele">Telehealth</span>':'')+'</span><span class="call">'+(v.call?esc(v.call):'')+'<small>'+esc(v.note||'Specialty Clinic scheduling')+'</small></span></div>'}).join('')+'</div></section>'}).join('')
+          return '<div class="vrow">'+(v.photo?'<img class="vph" src="'+(/^https?:/.test(v.photo)?v.photo:'img/people/'+v.photo+'.jpg')+'" referrerpolicy="no-referrer" alt="" loading="lazy">':'<span class="vph" aria-hidden="true">'+(function(w){w=w.split(' ');return w[0][0]+w[w.length-1][0]})(v.name.split(',')[0])+'</span>')+'<span><b>'+esc(v.name)+'</b>'+(v.role?' <span class="vrole">'+esc(v.role)+'</span>':'')+(v.tele?'<span class="tele">Telehealth</span>':'')+'</span><span class="call">'+(v.call?esc(v.call):'')+'<small>'+esc(v.note||'Specialty Clinic scheduling')+'</small></span></div>'}).join('')+'</div></section>'}).join('')
         :'<p class="empty">No specialists match. Try a different specialty.</p>';
       $('count').innerHTML=(state.q||state.spec)?'Showing <b>'+n+'</b> of '+V.length+' visiting specialists':'';
     }
