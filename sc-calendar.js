@@ -32,10 +32,17 @@
     'TANGEL':['Dr. Tangel','Pulmonology','sc-pulmonology.html'],
     'EBY':['Dr. Eby','Spine Surgery','sc-spine-surgery.html'],
     'KORMAN':['Dr. Korman','Rheumatology','sc-rheumatology.html'],
-    'LEUNG':['Dr. Leung','Vascular Surgery','sc-vascular-surgery.html']
+    'LEUNG':['Dr. Leung','Vascular Surgery','sc-vascular-surgery.html'],
+    'DEIBERT':['Dr. Deibert','Retina','sc-ophthalmology.html'],
+    'GABEL':['Dr. Gabel','Surgery','surgery.html'],
+    'SMITH':['Dr. Smith','Urology','sc-urology.html'],
+    'DAVIS':['Dr. Davis','Neurology','sc-neurology.html'],
+    'M. GUBITOSO':['Mary Jo Gubitoso, APRN','Cardiology','sc-cardiology.html'],
+    'GUBITOSO':['Mary Jo Gubitoso, APRN','Cardiology','sc-cardiology.html'],
+    'CHASNOW':['Nicole Chasnow, PA-C','Spine Surgery','sc-spine-surgery.html']
   };
   function parse(raw){
-    var s=raw.replace(/\*/g,'').trim().toUpperCase();
+    var own=/\*/.test(raw); var s=raw.replace(/\*/g,'').trim().toUpperCase();
     if(/CONFERENCE|CLOSED|HOLIDAY/.test(s)) return null;
     var note='';
     var m=s.match(/^([^/]+)\/\s*OUT AT ([0-9:]+)/); if(m){s=m[1].trim();note='Until '+m[2].toLowerCase()+'am'}
@@ -43,7 +50,7 @@
     var tele=/-T$/.test(s); s=s.replace(/-(T|CLINIC)$/,'');
     var label=''; m=s.match(/-SKIN CARE$/); if(m){s=s.replace(/-SKIN CARE$/,'');label='Skin care'}
     var w=WHO[s.trim()]; if(!w) return {unknown:s.trim()};
-    return {name:w[0],spec:label||w[1],url:w[2],tele:tele,note:note};
+    return {name:w[0],spec:label||w[1],url:w[2],tele:tele,note:note,own:own};
   }
   var DAYS={},UNKNOWN={};
   Object.keys(RAW).forEach(function(d){var seen={};DAYS[d]=RAW[d].map(parse).filter(function(e){
@@ -55,12 +62,12 @@
   var MN=['January','February','March','April','May','June','July','August','September','October','November','December'];
   var WD=['Mon','Tue','Wed','Thu','Fri'];
   function today(){var n=new Date();return (n.getFullYear()===YEAR&&n.getMonth()+1===MONTH)?n.getDate():0}
-  function entry(e){return '<li><a href="'+e.url+'"><b>'+esc(e.spec)+'</b><span>'+esc(e.name)+(e.tele?' <em class="sc-tele">Video visit</em>':'')+(e.note?' · '+esc(e.note):'')+'</span></a></li>'}
+  function entry(e){return '<li><a href="'+e.url+'"><b>'+esc(e.spec)+'</b><span>'+esc(e.name)+(e.tele?' <em class="sc-tele">Video visit</em>':'')+(e.note?' · '+esc(e.note):'')+(e.own?' <em class="sc-own">Call their office</em>':'')+'</span></a></li>'}
   window.chScMonth=function(id){
     var box=document.getElementById(id); if(!box) return;
     var specs={}; Object.keys(DAYS).forEach(function(d){DAYS[d].forEach(function(e){specs[e.spec]=1})});
     var opts=Object.keys(specs).sort();
-    box.innerHTML='<div class="sc-tools"><h3>'+MN[MONTH-1]+' '+YEAR+'</h3><label class="sc-filter">Show <select>'+'<option value="">All specialties</option>'+opts.map(function(o){return '<option>'+esc(o)+'</option>'}).join('')+'</select></label></div><div class="sc-body"></div>';
+    box.innerHTML='<div class="sc-tools"><h3>'+MN[MONTH-1]+' '+YEAR+'</h3><label class="sc-filter">Show <select>'+'<option value="">All specialties</option>'+opts.map(function(o){return '<option>'+esc(o)+'</option>'}).join('')+'</select></label></div><div class="sc-body"></div><p class="sc-legend"><em class="sc-own">Call their office</em> These providers schedule their own appointments. Their office number is on the specialty page.</p>';
     var sel=box.querySelector('select'), body=box.querySelector('.sc-body');
     function render(){
       var f=sel.value, first=new Date(YEAR,MONTH-1,1), last=new Date(YEAR,MONTH,0).getDate(), t=today();
