@@ -216,7 +216,7 @@ dialog.profile::backdrop{background:rgba(10,19,29,.55)}
   <div class="wrap">
     <form class="filters" id="filters" role="search">
       <div class="f-name"><label for="fq">Name or keyword</label><input id="fq" type="search" placeholder="For example, Younger or obstetrics" autocomplete="off"></div>
-      <div><label for="fspec">Specialty</label><select id="fspec"></select></div>
+      <div><label for="fspec" id="fspecl">Type of care</label><select id="fspec"></select></div>
       <label class="toggle" id="accwrap"><input type="checkbox" id="facc"> Family providers accepting new patients</label>
     </form>
     <div class="status"><span id="count"></span><button class="clear" type="button" id="clear" hidden>Clear filters</button></div>
@@ -279,7 +279,7 @@ dialog.profile::backdrop{background:rgba(10,19,29,.55)}
       ? Array.from(new Set([].concat.apply([],P.map(function(p){return p.spec})))).filter(function(s){return s!=='Leadership'})
       : Array.from(new Set(V.map(function(v){return v.spec})));
     list.sort();
-    $('fspec').innerHTML='<option value="">All specialties</option>'+list.map(function(s){return '<option'+(s===state.spec?' selected':'')+'>'+esc(s)+'</option>'}).join('');
+    $('fspec').innerHTML='<option value="">'+(state.tab==='local'?'All types of care':'All specialties')+'</option>'+list.map(function(s){return '<option'+(s===state.spec?' selected':'')+'>'+esc(s)+'</option>'}).join('');
     if(list.indexOf(state.spec)<0) state.spec='';
   }
 
@@ -310,7 +310,7 @@ dialog.profile::backdrop{background:rgba(10,19,29,.55)}
       html='<div class="vnote"><span>Most visiting specialists are scheduled through our Specialty Clinic. Some are scheduled through their home office, as noted.</span><span>Specialty Clinic <b>(785) 460-1223</b></span></div>';
       html+=n?Object.keys(vg).sort().map(function(g){
         return '<section class="vgroup"><h3>'+(SPL[g]?'<a href="'+SPL[g]+'" style="color:inherit;text-decoration:none">'+esc(g)+' <span style="color:var(--action);font-size:.8em">→</span></a>':esc(g))+'</h3><div class="vrows">'+vg[g].map(function(v){
-          return '<div class="vrow">'+(v.photo?'<img class="vph" src="img/people/'+v.photo+'.jpg" alt="" loading="lazy">':'<span class="vph" aria-hidden="true">'+initials(v.name.split(',')[0])+'</span>')+'<span><b>'+esc(v.name)+'</b>'+(v.role?' <span class="vrole">'+esc(v.role)+'</span>':'')+(v.tele?'<span class="tele">Telehealth</span>':'')+'</span><span class="call">'+(v.call?esc(v.call):'')+'<small>'+esc(v.note||'Specialty Clinic scheduling')+'</small></span></div>'}).join('')+'</div></section>'}).join('')
+          return '<div class="vrow">'+(v.photo?'<img class="vph" src="'+(/^https?:/.test(v.photo)?v.photo:'img/people/'+v.photo+'.jpg')+'" referrerpolicy="no-referrer" alt="" loading="lazy">':'<span class="vph" aria-hidden="true">'+initials(v.name.split(',')[0])+'</span>')+'<span><b>'+esc(v.name)+'</b>'+(v.role?' <span class="vrole">'+esc(v.role)+'</span>':'')+(v.tele?'<span class="tele">Telehealth</span>':'')+'</span><span class="call">'+(v.call?esc(v.call):'')+'<small>'+esc(v.note||'Specialty Clinic scheduling')+'</small></span></div>'}).join('')+'</div></section>'}).join('')
         :'<p class="empty">No specialists match. Try a different specialty.</p>';
       $('count').innerHTML=(state.q||state.spec)?'Showing <b>'+n+'</b> of '+V.length+' visiting specialists':'';
     }
@@ -358,7 +358,7 @@ var SPL={'Cardiology':'sc-cardiology.html','Orthopedics':'orthopedics.html','Spi
   $('fspec').addEventListener('change',function(){state.spec=this.value;render()});
   $('facc').addEventListener('change',function(){state.acc=this.checked;render()});
   $('clear').addEventListener('click',function(){state.q=state.spec='';state.acc=false;$('fq').value='';$('facc').checked=false;specOptions();render()});
-  function setTab(t){state.tab=t;state.spec='';$('tab-local').setAttribute('aria-selected',t==='local');$('tab-visit').setAttribute('aria-selected',t!=='local');specOptions();render()}
+  function setTab(t){state.tab=t;state.spec='';$('fq').placeholder=t==='local'?'For example, Younger or obstetrics':'For example, cardiology or a name';$('fspecl').textContent=t==='local'?'Type of care':'Specialty';$('tab-local').setAttribute('aria-selected',t==='local');$('tab-visit').setAttribute('aria-selected',t!=='local');specOptions();render()}
   $('tab-local').addEventListener('click',function(){setTab('local')});
   $('tab-visit').addEventListener('click',function(){setTab('visit')});
 
