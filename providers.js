@@ -102,7 +102,7 @@ window.CH_PROVIDERS = [
 
 /* Visiting specialists: see patients at the Specialty Clinic (or by telehealth). Specialty tags corrected where the current site had them wrong. */
 window.CH_VISITING = [
-  {name:"Patricia D. Crawley, M.D.", spec:"Cardiology", from:"Hays", call:"(888) 625-4699", note:"Call the Hays office", photo:"v-crawley"},
+  {name:"Patricia D. Crawley, M.D.", spec:"Cardiology", from:"Hays", call:"(888) 625-4699", note:"Call the Hays office", photo:"https://www.haysmed.com/wp-content/uploads/2023/02/Crawley-Patricia-MD-Cardiology.jpg"},
   {name:"Mohammed Janif, M.D.", spec:"Cardiology", from:"Hays", call:"(785) 625-4699", note:"Call the Hays office", photo:"https://www.haysmed.com/wp-content/uploads/2023/02/Janif-Mohammed-MD-Cardiology.jpg"},
   {name:"Luann Evert, APRN", spec:"Cardiology", from:"Hays", call:"(888) 625-4699", note:"Call the Hays office", photo:"v-evert"},
   {name:"Christy Jones, APRN", spec:"Cardiology", from:"Hays", call:"(888) 625-4699", note:"Call the Hays office", photo:"https://www.haysmed.com/wp-content/uploads/2023/02/Moeder-Christy-APRN-Cardiology.jpg"},
