@@ -528,3 +528,11 @@ dialog.profile::backdrop{background:rgba(10,19,29,.55)}
 .msgpanel .sent{background:var(--raised);border:1px solid var(--line);border-left:4px solid var(--good);border-radius:10px;padding:14px 16px}
 p,li,dd,dt,h1,h2,h3,h4,td,th{overflow-wrap:break-word}
 .dept>*,.body>*{min-width:0}
+
+/* Care-level boxes on the homepage are links */
+a.level{text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s,transform .15s}
+a.level:hover{border-color:var(--action);box-shadow:0 6px 20px rgba(10,22,38,.08);transform:translateY(-2px)}
+a.level.er:hover{border-color:var(--urgent);box-shadow:inset 0 0 0 1px var(--urgent),0 6px 20px rgba(10,22,38,.08)}
+a.level:focus-visible{outline:3px solid var(--action);outline-offset:3px}
+a.level .go{font-weight:700;color:var(--action)}
+a.level.er .go{color:var(--urgent)}
