@@ -62,7 +62,7 @@
   var MN=['January','February','March','April','May','June','July','August','September','October','November','December'];
   var WD=['Mon','Tue','Wed','Thu','Fri'];
   function today(){var n=new Date();return (n.getFullYear()===YEAR&&n.getMonth()+1===MONTH)?n.getDate():0}
-  function entry(e){return '<li><a href="'+e.url+'"><b>'+esc(e.spec)+'</b><span>'+esc(e.name)+(e.tele?' <em class="sc-tele">Video visit</em>':'')+(e.note?' · '+esc(e.note):'')+(e.own?' <em class="sc-own">Call their office</em>':'')+'</span></a></li>'}
+  function entry(e){return '<li><a href="'+e.url+'"><b>'+esc(e.spec)+'</b><span>'+esc(e.name)+(e.tele?' <em class="sc-tele">Telehealth</em>':'')+(e.own?' <em class="sc-own">Call their office</em>':'')+'</span></a></li>'}
   window.chScMonth=function(id){
     var box=document.getElementById(id); if(!box) return;
     var specs={}; Object.keys(DAYS).forEach(function(d){DAYS[d].forEach(function(e){specs[e.spec]=1})});
