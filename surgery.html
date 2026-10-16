@@ -74,6 +74,11 @@ section[id]{scroll-margin-top:140px}
 .mini-prov b{display:block;font-size:17px}
 .mini-prov span{color:var(--muted);font-size:15px}
 .mini-prov:hover b{color:var(--action)}
+.mini-prov.big{gap:clamp(20px,3vw,32px);padding:20px;max-width:640px}
+.mini-prov.big img{width:clamp(150px,22vw,220px);height:auto;aspect-ratio:4/5;border-radius:12px}
+.mini-prov.big b{font-size:clamp(22px,2.4vw,28px);font-weight:800}
+.mini-prov.big span{font-size:17px;display:block;margin-top:4px}
+@media (max-width:520px){.mini-prov.big{flex-direction:column;align-items:flex-start}.mini-prov.big img{width:100%;max-width:280px}}
 @media (max-width:860px){.dept{grid-template-columns:1fr}.body .cols.three{columns:2}.pricing{grid-template-columns:1fr}}
 @media (max-width:520px){.body .cols,.body .cols.three{columns:1}}
 
@@ -354,7 +359,7 @@ dialog.profile::backdrop{background:rgba(10,19,29,.55)}
         
       </div>
       <div class="body">
-<a class="mini-prov" href="providers.html#kopriva"><img src="img/people/dr-kopriva.jpg" alt=""><div><b>Brenda Kopriva, M.D.</b><span>General Surgeon</span></div></a>
+<a class="mini-prov big" href="providers.html#kopriva"><img src="img/people/dr-kopriva.jpg" alt=""><div><b>Brenda Kopriva, M.D.</b><span>General Surgeon</span></div></a>
       </div>
     </div>
   </section>
