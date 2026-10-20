@@ -176,6 +176,9 @@ section.tint{background:var(--surface)}
 .speclist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px}
 .speclist li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
 .speclist b{font-weight:700}
+.speclist a{display:flex;justify-content:space-between;gap:16px;width:100%;color:inherit;text-decoration:none}
+.speclist a span{color:var(--action)}
+.speclist a:hover b{color:var(--action);text-decoration:underline}
 .speclist span{color:var(--muted);font-size:16px;text-align:right}
 @media (max-width:860px){.spec{grid-template-columns:1fr}}
 @media (max-width:560px){.speclist{grid-template-columns:1fr}}
