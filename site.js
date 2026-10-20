@@ -188,7 +188,7 @@ if(!document.documentElement.lang)document.documentElement.lang="en";
     if(uc&&!er) L=LOC.fchc;
     var ph=p.photo?'<img class="ph" src="img/people/'+p.photo+'.jpg" alt="Portrait of '+esc(p.name)+'">':'<span class="ph" aria-hidden="true">'+ini(p.name)+'</span>';
     var acc=p.accepting===true?'Yes':p.accepting===false?'Not at this time':'';
-    var sched=er?'<div class="sched"><p>'+(uc?'Sees patients in Urgent Care at Family Center and in our Emergency Room.':'Sees patients in our Emergency Room at Citizens Medical Center. No appointment is needed.')+' For a life-threatening emergency, call 911.</p></div>'
+    var sched=er?(uc?'<div class="sched"><p>Sees patients in Urgent Care at Family Center and in our Emergency Room.</p></div>':'')
       : p.accepting===false?'<div class="sched"><p>Not accepting new patients right now. Current patients can schedule through MyChart or by calling</p><b>'+(L?L.ph:'(785) 462-6184')+'</b></div>'
       : '<div class="sched"><p>To schedule, call '+(L?esc(L.n):'our main line')+'</p><b>'+(p.phone||(L?L.ph:'(785) 462-7511'))+'</b><p>Current patients can also request appointments in MyChart.</p></div>';
     var f=[];

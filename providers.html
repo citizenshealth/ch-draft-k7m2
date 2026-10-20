@@ -259,7 +259,7 @@ dialog.profile::backdrop{background:rgba(10,19,29,.55)}
 
 <dialog class="profile" id="profile" aria-labelledby="pf-name"><div class="pf" id="pf"></div></dialog>
 
-<script src="providers.js?v=20261016b"></script>
+<script src="providers.js?v=20261020"></script>
 <script>
 (function(){
   var P=window.CH_PROVIDERS, V=window.CH_VISITING;
@@ -331,7 +331,7 @@ var SPL={'Cardiology':'sc-cardiology.html','Orthopedics':'orthopedics.html','Spi
     if(uc&&!er) L=LOC.fchc;
     var ph=p.photo?'<img class="ph" src="img/people/'+p.photo+'.jpg" alt="Portrait of '+esc(p.name)+'">':'<span class="ph" aria-hidden="true">'+initials(p.name)+'</span>';
     var acc=p.accepting===true?'Yes':p.accepting===false?'Not at this time':'';
-    var sched=er?'<div class="sched"><p>'+(uc?'Sees patients in Urgent Care at Family Center and in our Emergency Room.':'Sees patients in our Emergency Room at Citizens Medical Center. No appointment is needed.')+' For a life-threatening emergency, call 911.</p></div>'
+    var sched=er?(uc?'<div class="sched"><p>Sees patients in Urgent Care at Family Center and in our Emergency Room.</p></div>':'')
       : p.accepting===false?'<div class="sched"><p>Not accepting new patients right now. Current patients can schedule through MyChart or by calling</p><b>'+(L?L.ph:'(785) 462-6184')+'</b></div>'
       : '<div class="sched"><p>To schedule, call '+(L?esc(L.n):'our main line')+'</p><b>'+(p.phone||(L?L.ph:'(785) 462-7511'))+'</b><p>Current patients can also request appointments in MyChart.</p></div>';
     $('pf').innerHTML='<div class="pf-top"><span class="eyebrow">'+esc(p.type)+'</span><button class="pf-close" type="button" id="pfclose">Close</button></div>'
@@ -371,6 +371,6 @@ var SPL={'Cardiology':'sc-cardiology.html','Orthopedics':'orthopedics.html','Spi
 })();
 </script>
 <script src="services-data.js"></script>
-<script src="site.js"></script>
+<script src="site.js?v=20261020"></script>
 </body>
 </html>
