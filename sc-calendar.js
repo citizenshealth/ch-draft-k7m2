@@ -72,10 +72,13 @@
     function render(){
       var f=sel.value, first=new Date(YEAR,MONTH-1,1), last=new Date(YEAR,MONTH,0).getDate(), t=today();
       var lead=(first.getDay()+6)%7; /* Monday=0 */
+      var start=1; /* hide weeks that are already over */
+      if(t){var tw=(new Date(YEAR,MONTH-1,t).getDay()+6)%7; start=Math.max(1,t-tw); if(start>1) lead=0}
       var cells=[], d;
       for(var i=0;i<lead;i++) if(i<5) cells.push('<div class="sc-day sc-off"></div>');
-      for(d=1;d<=last;d++){
+      for(d=start;d<=last;d++){
         var wd=(new Date(YEAR,MONTH-1,d).getDay()+6)%7; if(wd>4) continue;
+        if(t&&d<t){cells.push('<div class="sc-day sc-past" aria-hidden="true"><div class="sc-date">'+d+'</div></div>');continue}
         var L=(DAYS[d]||[]).filter(function(e){return !f||e.spec===f});
         cells.push('<div class="sc-day'+(d===t?' sc-today':'')+(L.length?'':' sc-empty')+'"><div class="sc-date"><span class="sc-wd">'+WD[wd]+', '+MN[MONTH-1].slice(0,3)+' </span>'+d+(d===t?' <span class="sc-now">Today</span>':'')+'</div>'+(L.length?'<ul>'+L.map(entry).join('')+'</ul>':'<p class="sc-none">'+(f?'Not here this day':'No visiting providers')+'</p>')+'</div>');
       }

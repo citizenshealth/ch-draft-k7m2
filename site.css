@@ -576,3 +576,5 @@ a.level.er .go{color:var(--urgent)}
 .sc-own{display:inline-block;font-style:normal;font-size:12px;font-weight:700;padding:1px 7px;border-radius:999px;background:var(--surface);color:var(--ink);margin-top:3px}
 .sc-legend{padding:12px 18px;border-top:1px solid var(--line);font-size:15px;color:var(--muted);display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
 .sc-legend .sc-own{margin:0}
+.sc-day.sc-past{background:var(--surface);opacity:.55;min-height:0}
+@media (max-width:760px){.sc-day.sc-past{display:none}}
