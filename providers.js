@@ -122,7 +122,7 @@ window.CH_VISITING = [
   {name:"Brian Smith, M.D.", spec:"Urology", from:"Salina Urology", call:"(785) 460-1223"},
   {name:"Ernest Nitka, M.D.", spec:"Neurology", from:"Visiting neurologist", call:"(785) 460-1223", photo:"https://www.kcchsd.org/wp-content/uploads/2023/04/Ernest-Nitka.png"},
   {name:"Katrina Pack, M.D.", spec:"Neurology", from:"Colorado", call:"(785) 460-1223"},
-  {name:"Trent Davis, M.D.", spec:"Neurology", from:"Visiting neurologist", call:"(785) 460-1223", photo:"https://srhc.com/services/neurosciences/images/davis_trent2.jpg"},
+  {name:"Douglas Davis, M.D.", spec:"Neurology", from:"Visiting neurologist", call:"(785) 460-1223"},
   {name:"Pushkar Kanade, M.D.", spec:"Nephrology", from:"Visiting nephrologist", call:"(785) 460-1223"},
   {name:"Philip Fitzpatrick, M.D.", spec:"Ear, Nose & Throat", from:"Great Plains Health, North Platte", call:"(785) 460-1223", photo:"https://browncountyhospital.org/wp-content/uploads/2017-Phil_Fitzpatrick-e1723056560524.jpg"},
   {name:"Robert Hinze, DPM", spec:"Podiatry", from:"High Plains Podiatry, McCook", call:"(785) 460-1223"},
