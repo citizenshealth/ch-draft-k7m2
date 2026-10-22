@@ -103,9 +103,13 @@ if(!document.documentElement.lang)document.documentElement.lang="en";
   (window.CH_PROVIDERS||[]).forEach(function(p){idx.push([p.name+(p.cred?', '+p.cred:''),'Provider','providers.html#'+p.id,(p.aka||'')+' '+p.role+' '+p.spec.join(' ')+' '+p.type])});
   (window.CH_VISITING||[]).forEach(function(v){idx.push([v.name,'Specialist','providers.html#visiting',v.spec])});
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  var TOP=[['Pay a bill','patient-resources.html#pay'],['Find a provider','providers.html'],['Urgent Care hours','family-center.html#hours'],['Medical records','patient-resources.html#records'],['Visiting hours','medical-center.html#visiting'],['Specialty Clinic calendar','specialty-clinic.html#calendar'],['Prescription refills','palace-drug.html#refills'],['Careers','careers.html']];
   function run(input){
     var out=$(input.dataset.results),v=input.value.trim().toLowerCase();
-    if(!v){out.hidden=true;out.innerHTML='';return}
+    if(!v){
+      if(input.id==='hq'){out.innerHTML='<li class="top-h">Top searches</li>'+TOP.map(function(r){return '<li><a href="'+r[1]+'"><span>'+esc(r[0])+'</span></a></li>'}).join('');out.hidden=false}
+      else{out.hidden=true;out.innerHTML=''}
+      return}
     var words=v.split(/\s+/).filter(Boolean);
     function re(x){return x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}
     function has(hay,w){if(new RegExp('(^|[^a-z0-9])'+re(w)).test(hay))return true;if(w.length>5){var stem=w.slice(0,Math.max(5,w.length-4));return new RegExp('(^|[^a-z0-9])'+re(stem)).test(hay)}return false}
@@ -117,7 +121,7 @@ if(!document.documentElement.lang)document.documentElement.lang="en";
     out.innerHTML=hits.length?hits.map(function(r){return '<li><a href="'+r[2]+'"><span>'+esc(r[0])+'</span><span class="kind">'+r[1]+'</span></a></li>'}).join(''):'<li class="empty">No matches yet. Try a provider name, a service, or "bill".</li>';
     out.hidden=false;
   }
-  [].slice.call(document.querySelectorAll('.js-search')).forEach(function(i){i.addEventListener('input',function(){run(i)})});
+  [].slice.call(document.querySelectorAll('.js-search')).forEach(function(i){i.addEventListener('input',function(){run(i)});if(i.id==='hq')i.addEventListener('focus',function(){if(!i.value.trim())run(i)})});
   document.addEventListener('click',function(e){
     var c=e.target.closest('.chip[data-for]');
     if(c){var i=$(c.dataset.for);i.value=c.textContent;run(i);i.focus()}
@@ -260,4 +264,41 @@ if(!document.documentElement.lang)document.documentElement.lang="en";
   function scan(root){(root.querySelectorAll?root:document).querySelectorAll('a[href]').forEach(mark)}
   scan(document);
   new MutationObserver(function(m){m.forEach(function(r){r.addedNodes.forEach(function(n){if(n.nodeType===1){if(n.matches&&n.matches('a[href]'))mark(n);scan(n)}})})}).observe(document.body,{childList:true,subtree:true});
+})();
+
+/* "Open now / Closed" from posted hours. data-open="1-4 7-18;5 7-16;6 8-11.5" (0=Sun; hours in 24h, .5 = :30).
+   Uses Colby time. Holidays are not accounted for. */
+(function(){
+  var els=document.querySelectorAll('[data-open]'); if(!els.length) return;
+  var DN=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  function parse(spec){var w={};spec.split(';').forEach(function(part){var m=part.trim().split(/\s+/),d=m[0].split('-').map(Number),h=m[1].split('-').map(Number);for(var i=d[0];i<=(d[1]===undefined?d[0]:d[1]);i++)(w[i]=w[i]||[]).push(h)});return w}
+  function fmt(h){var hr=Math.floor(h),mn=Math.round((h-hr)*60),ap=hr>=12?'pm':'am',h12=hr%12||12;return h12+(mn?':'+(mn<10?'0':'')+mn:'')+ap}
+  function now(){try{var p={};new Intl.DateTimeFormat('en-US',{timeZone:'America/Chicago',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});return {d:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(p.weekday),h:(+p.hour%24)+(+p.minute)/60}}catch(e){var n=new Date();return {d:n.getDay(),h:n.getHours()+n.getMinutes()/60}}}
+  function update(){
+    var t=now();
+    els.forEach(function(el){
+      var w=parse(el.dataset.open),today=w[t.d]||[],open=null,next=null;
+      today.forEach(function(r){if(t.h>=r[0]&&t.h<r[1])open=r});
+      if(open){el.className='opennow is-open';el.textContent='Open now · until '+fmt(open[1]);return}
+      for(var k=0;k<8&&!next;k++){var d=(t.d+k)%7;(w[d]||[]).forEach(function(r){if(!next&&(k>0||r[0]>t.h))next={k:k,d:d,h:r[0]}})}
+      el.className='opennow is-closed';
+      el.textContent='Closed'+(next?' · opens '+fmt(next.h)+(next.k===0?' today':next.k===1?' tomorrow':' '+DN[next.d]):'');
+    });
+  }
+  update(); setInterval(update,60000);
+})();
+
+/* Phone-only action bar: Call, Directions, MyChart. Uses this page's main phone and map link when it has them. */
+(function(){
+  if(document.querySelector('.mbar')) return;
+  var ph='(785) 462-7511';
+  var dds=[].slice.call(document.querySelectorAll('main .keyfacts dd, main .meta dd'));
+  for(var i=0;i<dds.length;i++){var m=dds[i].textContent.match(/\(\d{3}\) \d{3}-\d{4}/);if(m){ph=m[0];break}}
+  var md=document.querySelector('meta[name="ch-directions"]'),map=document.querySelector('main a[href*="google.com/maps"]');
+  var dir=md?md.content:map?map.getAttribute('href'):'https://www.google.com/maps/dir/?api=1&destination=1525+S+Franklin+Ave+Colby+KS+67701';
+  var bar=document.createElement('nav');bar.className='mbar';bar.setAttribute('aria-label','Quick actions');
+  bar.innerHTML='<a href="tel:'+ph.replace(/\D/g,'')+'"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg><span>Call</span><span class="sr-only"> '+ph+'</span></a>'
+    +'<a href="'+dir+'" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span>Directions</span><span class="sr-only"> (opens in a new tab)</span></a>'
+    +'<a href="https://www.cmciks.com/patients-visitors/patient-portal/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm0 2c-4.4 0-8 2.2-8 5v2h16v-2c0-2.8-3.6-5-8-5z"/></svg><span>MyChart</span><span class="sr-only"> (opens in a new tab)</span></a>';
+  document.body.appendChild(bar);document.body.classList.add('has-mbar');
 })();

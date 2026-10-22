@@ -95,6 +95,10 @@ header.site .wrap{display:flex;align-items:center;gap:24px;padding-block:14px}
 .results li a:hover{color:var(--action)}
 .results .kind{font-size:14px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
 .results .empty{padding:12px 4px;color:var(--muted)}
+.results .top-h{padding:12px 4px 4px;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line)}
+#hresults:has(.top-h){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:28px}
+#hresults .top-h{grid-column:1/-1}
+@media (max-width:560px){#hresults:has(.top-h){grid-template-columns:1fr}}
 
 /* quick links */
 .quick{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-top:20px}
@@ -578,3 +582,21 @@ a.level.er .go{color:var(--urgent)}
 .sc-legend .sc-own{margin:0}
 .sc-day.sc-past{background:var(--surface);opacity:.55;min-height:0}
 @media (max-width:760px){.sc-day.sc-past{display:none}}
+
+.opennow{display:inline-flex;align-items:center;gap:7px;font-size:15px;font-weight:700;margin:6px 0}
+.opennow::before{content:"";width:9px;height:9px;border-radius:50%;background:currentColor;flex:none}
+.opennow:empty{display:none}
+.opennow.is-open{color:#1f7a3f}
+.opennow.is-closed{color:var(--muted)}
+.lcard .facts .opennow,.level .opennow,.hcard .opennow{display:flex}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .opennow.is-open{color:#6fd39a}}
+:root[data-theme="dark"] .opennow.is-open{color:#6fd39a}
+
+.mbar{display:none}
+@media (max-width:760px){
+  .mbar{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--bg);border-top:1px solid var(--line);box-shadow:0 -4px 16px rgba(10,19,29,.08);padding-bottom:env(safe-area-inset-bottom)}
+  .mbar a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 4px 10px;font-size:13px;font-weight:700;color:var(--ink);text-decoration:none}
+  .mbar a:first-child{color:var(--action)}
+  .mbar svg{width:22px;height:22px;fill:currentColor}
+  body.has-mbar{padding-bottom:calc(64px + env(safe-area-inset-bottom))}
+}
