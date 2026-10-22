@@ -350,7 +350,6 @@ var SPL={'Cardiology':'sc-cardiology.html','Orthopedics':'orthopedics.html','Spi
     $('pf').innerHTML='<div class="pf-top"><span class="eyebrow">'+esc(p.type)+'</span><button class="pf-close" type="button" id="pfclose">Close</button></div>'
       +'<div class="pf-head">'+ph+'<div><h2 id="pf-name">'+esc(p.name)+'</h2>'+(p.cred?'<p class="cred">'+esc(p.cred)+'</p>':'')+'<p class="role">'+esc(p.role)+'</p>'+(p.accepting===true?'<span class="pill" style="margin-top:10px;display:inline-block">Accepting new patients</span>':'')+'</div></div>'
       +sched
-      +((p.spec.length===1&&p.spec[0]==='Leadership')?'':'<p class="pf-page"><a href="provider-'+p.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')+'.html" style="color:var(--action);font-weight:700">Open full profile page →</a></p>')
       +(function(){var f=[];
         if(p.days)f.push(['Clinic days',esc(p.days)]);
         if(p.nurse)f.push(['Nurse',esc(p.nurse)+'<br><span style="font-weight:500;color:var(--muted)">'+esc(p.nursePhone)+'</span>']);
@@ -385,6 +384,6 @@ var SPL={'Cardiology':'sc-cardiology.html','Orthopedics':'orthopedics.html','Spi
 })();
 </script>
 <script src="services-data.js"></script>
-<script src="site.js?v=20261021"></script>
+<script src="site.js?v=20261021b"></script>
 </body>
 </html>

@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Build one static page per local provider (provider-<first>-<last>.html) from providers.js.
+"""Build one static page per local provider (<first>-<last>.html) from providers.js,
+plus a short link (<last>.html) that forwards to it when no one else shares that last name.
+These pages are for brochures, business cards and Google; the Find a Provider pop-up does not link to them.
 
 Run from the repo root:  python3 tools/provider_pages.py
-To remove the feature: delete provider-*.html, and the "Full profile page" links in
-providers.html and site.js (search for "pf-page").
+To remove the feature: run with --remove (deletes every page this script made).
 """
 import html, json, re, subprocess, glob, os
 
@@ -21,7 +22,10 @@ LOC = {
 BASE = 'https://citizenshealth.github.io/ch-draft-k7m2/'  # swap for the live domain at launch
 
 def slug(p):
-    return 'provider-' + re.sub(r'[^a-z0-9]+', '-', p['name'].lower()).strip('-') + '.html'
+    return re.sub(r'[^a-z0-9]+', '-', p['name'].lower()).strip('-') + '.html'
+
+MANIFEST = 'tools/provider-pages.json'
+import sys
 
 def e(s):
     return html.escape(str(s), quote=True)
@@ -41,8 +45,13 @@ PAGE_CSS = """<style>
 </style>
 """
 
-for old in glob.glob('provider-*.html'):
-    os.remove(old)
+old = json.load(open(MANIFEST)) if os.path.exists(MANIFEST) else []
+for f in old + glob.glob('provider-*.html'):
+    if os.path.exists(f):
+        os.remove(f)
+if '--remove' in sys.argv:
+    os.path.exists(MANIFEST) and os.remove(MANIFEST)
+    sys.exit('removed %d pages' % len(old))
 
 made = []
 for p in data:
@@ -119,4 +128,29 @@ for p in data:
     open(slug(p), 'w', encoding='utf-8').write(page)
     made.append((p['id'], slug(p)))
 
-print(len(made), 'provider pages')
+# Short links: last name only, skipped when two providers (local or visiting) share it
+vis = json.loads(subprocess.check_output(
+    ['node', '-e', "global.window={};require('./providers.js');process.stdout.write(JSON.stringify(window.CH_VISITING))"]))
+def last_parts(name):
+    return re.sub(r'[^a-z\-]', '', name.split(',')[0].split()[-1].lower()).split('-')
+count = {}
+for n in [p['name'] for p in data] + [v['name'] for v in vis]:
+    for part in last_parts(n):
+        count[part] = count.get(part, 0) + 1
+existing = set(glob.glob('*.html')) - set(f for _, f in made)
+aliases = []
+for pid, f in made:
+    p = next(x for x in data if x['id'] == pid)
+    parts = last_parts(p['name'])
+    short = '-'.join(parts) + '.html'
+    if any(count[x] > 1 for x in parts) or short in existing or short == f:
+        continue
+    open(short, 'w').write('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<title>%s · Citizens Health</title>\n'
+        '<meta http-equiv="refresh" content="0; url=%s">\n<link rel="canonical" href="%s">\n<meta name="robots" content="noindex">\n</head>\n'
+        '<body><p><a href="%s">%s</a></p></body>\n</html>\n' % (e(p['name']), f, f, f, e(p['name'])))
+    aliases.append(short)
+json.dump([f for _, f in made] + aliases, open(MANIFEST, 'w'), indent=0)
+print(len(made), 'provider pages,', len(aliases), 'short links')
+skipped = [x for x in (next(p for p in data if p['id']==pid)['name'] for pid, _ in made)
+           if '-'.join(last_parts(x)) + '.html' not in aliases]
+print('no short link (name shared):', ', '.join(skipped))

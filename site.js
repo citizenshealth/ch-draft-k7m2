@@ -200,7 +200,6 @@ if(!document.documentElement.lang)document.documentElement.lang="en";
     document.getElementById('chpf').innerHTML='<div class="pf-top"><span class="eyebrow">'+esc(p.type)+'</span><button class="pf-close" type="button">Close</button></div>'
       +'<div class="pf-head">'+ph+'<div><h2 id="chpf-name">'+esc(p.name)+'</h2>'+(p.cred?'<p class="cred">'+esc(p.cred)+'</p>':'')+'<p class="role">'+esc(p.role)+'</p>'+(p.accepting===true?'<span class="pill" style="margin-top:10px;display:inline-block">Accepting new patients</span>':'')+'</div></div>'
       +sched
-      +((p.spec.length===1&&p.spec[0]==='Leadership')?'':'<p class="pf-page"><a href="provider-'+p.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')+'.html" style="color:var(--action);font-weight:700">Open full profile page →</a></p>')
       +'<dl class="facts2">'+f.map(function(x,i){return '<div'+(i===f.length-1&&f.length%2?' style="grid-column:1/-1"':'')+'><dt>'+x[0]+'</dt><dd>'+x[1]+'</dd></div>'}).join('')+'</dl>'
       +(p.bio?'<div class="about"><h3 class="pfh">About</h3>'+p.bio.split('\n\n').map(function(x){return '<p>'+esc(x)+'</p>'}).join('')+'</div>':'')
       +(p.edu?'<div><h3 class="pfh">Education &amp; training</h3><ul class="pfedu">'+p.edu.map(function(e){var k=e.split(' | ');return '<li>'+(k.length>1?'<span class="edk">'+esc(k[0])+'</span>'+esc(k[1]):esc(e))+'</li>'}).join('')+'</ul></div>':'')

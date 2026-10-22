@@ -101,7 +101,7 @@ for f in pages:
     tags = ['<!-- seo -->',
             '<meta name="description" content="%s">' % html.escape(desc),
             '<meta property="og:site_name" content="Citizens Health">',
-            '<meta property="og:type" content="%s">' % ('profile' if f.startswith('provider-') else 'website'),
+            '<meta property="og:type" content="%s">' % ('profile' if 'data-desc=' in page else 'website'),
             '<meta property="og:title" content="%s">' % html.escape(title),
             '<meta property="og:description" content="%s">' % html.escape(desc),
             '<meta property="og:url" content="%s">' % (BASE + ('' if f == 'index.html' else f)),
