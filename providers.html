@@ -4,6 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Find a Provider · Citizens Health</title>
+<!-- seo -->
+<meta name="description" content="Find a provider at Citizens Health in Colby, Kansas. Search our family medicine, obstetrics, surgery, and emergency providers, and visiting specialists.">
+<meta property="og:site_name" content="Citizens Health">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Find a Provider · Citizens Health">
+<meta property="og:description" content="Find a provider at Citizens Health in Colby, Kansas. Search our family medicine, obstetrics, surgery, and emergency providers, and visiting specialists.">
+<meta property="og:url" content="https://citizenshealth.github.io/ch-draft-k7m2/providers.html">
+<meta property="og:image" content="https://citizenshealth.github.io/ch-draft-k7m2/img/people/'+p.photo+'.jpg">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://citizenshealth.github.io/ch-draft-k7m2/providers.html">
+<meta name="robots" content="noindex, nofollow">
+<!-- /seo -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&display=swap">
@@ -337,6 +350,7 @@ var SPL={'Cardiology':'sc-cardiology.html','Orthopedics':'orthopedics.html','Spi
     $('pf').innerHTML='<div class="pf-top"><span class="eyebrow">'+esc(p.type)+'</span><button class="pf-close" type="button" id="pfclose">Close</button></div>'
       +'<div class="pf-head">'+ph+'<div><h2 id="pf-name">'+esc(p.name)+'</h2>'+(p.cred?'<p class="cred">'+esc(p.cred)+'</p>':'')+'<p class="role">'+esc(p.role)+'</p>'+(p.accepting===true?'<span class="pill" style="margin-top:10px;display:inline-block">Accepting new patients</span>':'')+'</div></div>'
       +sched
+      +((p.spec.length===1&&p.spec[0]==='Leadership')?'':'<p class="pf-page"><a href="provider-'+p.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')+'.html" style="color:var(--action);font-weight:700">Open full profile page →</a></p>')
       +(function(){var f=[];
         if(p.days)f.push(['Clinic days',esc(p.days)]);
         if(p.nurse)f.push(['Nurse',esc(p.nurse)+'<br><span style="font-weight:500;color:var(--muted)">'+esc(p.nursePhone)+'</span>']);
@@ -371,6 +385,6 @@ var SPL={'Cardiology':'sc-cardiology.html','Orthopedics':'orthopedics.html','Spi
 })();
 </script>
 <script src="services-data.js"></script>
-<script src="site.js?v=20261020"></script>
+<script src="site.js?v=20261021"></script>
 </body>
 </html>
